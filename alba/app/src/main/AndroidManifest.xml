@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +21,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.CalculateSalaryActivity"
+            android:exported="true"
+            android:parentActivityName=".fragment.MyPageForUserFragment" />
+        <activity
+            android:name=".activity.ResumeShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ResumeUploadActivity"
+            android:exported="true"
+            android:parentActivityName=".fragment.MyPageForUserFragment" />
+        <activity
+            android:name=".fragment.MyPageForUserFragment"
+            android:exported="true"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".fragment.HomeFragment"
+            android:exported="true"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".fragment.MapFragment"
+            android:exported="true"
+            android:parentActivityName=".activity.MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld-hJJ33vs" />
     </application>
 
 </manifest>

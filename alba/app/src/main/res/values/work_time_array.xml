@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="work_time_array">
+        <item>선택하세요.</item>
+        <item>30분</item>
+        <item>1시간</item>
+        <item>1시간 30분</item>
+        <item>2시간</item>
+        <item>2시간 30분</item>
+        <item>3시간</item>
+        <item>3시간 30분</item>
+        <item>4시간</item>
+        <item>4시간 30분</item>
+        <item>5시간</item>
+        <item>5시간 30분</item>
+        <item>6시간</item>
+        <item>6시간 30분</item>
+        <item>7시간</item>
+        <item>7시간 30분</item>
+        <item>8시간</item>
+        <item>8시간 30분</item>
+        <item>9시간</item>
+        <item>9시간 30분</item>
+        <item>10시간</item>
+        <item>10시간 30분</item>
+        <item>11시간</item>
+        <item>11시간 30분</item>
+        <item>12시간</item>
+        <item>12시간 30분</item>
+        <item>13시간</item>
+        <item>13시간 30분</item>
+        <item>14시간</item>
+        <item>14시간 30분</item>
+        <item>15시간</item>
+        <item>15시간 30분</item>
+        <item>16시간</item>
+        <item>16시간 30분</item>
+        <item>17시간</item>
+        <item>17시간 30분</item>
+        <item>18시간</item>
+        <item>18시간 30분</item>
+        <item>19시간</item>
+        <item>19시간 30분</item>
+        <item>20시간</item>
+        <item>20시간 30분</item>
+        <item>21시간</item>
+        <item>21시간 30분</item>
+        <item>22시간</item>
+        <item>22시간 30분</item>
+        <item>23시간</item>
+        <item>23시간 30분</item>
+        <item>24시간</item>
+        <item>24시간 30분</item>
+    </string-array>
+</resources>

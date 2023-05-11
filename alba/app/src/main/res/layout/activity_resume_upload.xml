@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ResumeUploadActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/resumeUploadToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="10sp">
+
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/icon_user_profile_24" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="*"
+            android:layout_margin="10dp">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_height="match_parent"
+                    android:text="text1"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="text2"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="text3"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="text4"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="text5"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:orientation="vertical"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이력서 제목"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_button_grey"
+            android:inputType="text"
+            android:hint="  제목을 입력하세요"
+            android:maxHeight="48dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="경력"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_button_grey"
+            android:inputType="text"
+            android:hint="  경력을 입력하세요"
+            android:maxHeight="75dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="자기소개서"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_button_grey"
+            android:inputType="text"
+            android:hint="  자신을 소개해보세요."
+            android:maxHeight="125dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/finish_button"
+            android:text="완료하기"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
