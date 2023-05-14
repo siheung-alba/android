@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">alba</string>
+    <string name="login_name">시흥알바 로그인</string>
+    <string name="login_email">이메일 주소</string>
+    <string name="login_password">비밀번호</string>
+    <string name="login_shopjoin">사장님 회원가입</string>
+    <string name="login_join">회원가입</string>
+    <string name="login_shopbox">사장님 로그인</string>
+    <string name="login_start">시작하기</string>
+
 </resources>
