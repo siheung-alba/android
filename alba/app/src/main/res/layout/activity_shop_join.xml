@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginBottom="60dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시흥알바 사장님 회원가입"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/editshopID"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="10"
+                android:hint="이름"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/editshopNum"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="10"
+                android:hint="사업자 번호"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/editshopTell"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="11"
+                android:hint="전화번호"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/editshopPassword"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="10"
+                android:hint="비밀번호"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/editshopPasswordRe"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="10"
+                android:hint="비밀번호 재입력"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/editshopaddress"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="10"
+                android:hint="매장 주소"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#FFEDA4"
+            android:backgroundTint="#FFEDA4"
+            android:text="가입하기"
+            android:textSize="15dp" />
+    </LinearLayout>
+</LinearLayout>
