@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CalculateSalaryActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/calculateSalaryToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@drawable/rectangle_button_yellow"
+        android:text="2023년 최저시급은 9,620원 입니다."
+        android:textColor="#FF0000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="시급"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/setBasePayText"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:background="@drawable/round_button_grey"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="일일 근무시간"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/workTimeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:background="@drawable/spinner_background"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="일주 근무일수"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/daySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:background="@drawable/spinner_background"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="월 연장 근무시간"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/extendedWorkTimeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:background="@drawable/spinner_background"/>
+
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:stretchColumns="*">
+
+        <TableRow>
+            <Button
+                android:id="@+id/resetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="초기화"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:background="@drawable/outline_rectangle_button_grey"/>
+
+            <Button
+                android:id="@+id/calculateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="계산하기"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:background="@drawable/calculate_button"/>
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/calculateResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="월급은 00입니다."
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
