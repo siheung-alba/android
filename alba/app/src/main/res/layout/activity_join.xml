@@ -113,22 +113,29 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/logincolor"
                 android:ems="10"
-                android:hint="생년월일"
+                android:hint="생년월일 (선택)"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
                 android:text="" />
 
-            <Spinner
-                android:id="@+id/spinner"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/logincolor"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/logincolor"
+                    android:paddingLeft="20dp" />
 
 
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
