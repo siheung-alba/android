@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.bottomNavigationView.selectedItemId = R.id.home_menu
         setFrag(0)
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
