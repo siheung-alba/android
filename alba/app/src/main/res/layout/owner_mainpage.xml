@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="24dp"
+        android:letterSpacing="0.02"
+        android:text="채용공고 관리"
+        android:textFontWeight="400"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_alarm"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/ic_alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="14dp"
+        android:background="#F3F1F1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title1" />
+
+
+    <ImageView
+        android:id="@+id/iv_shop_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="38dp"
+        android:src="@drawable/ic_shop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:letterSpacing="0.02"
+        android:text="김OO"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_adress"
+        app:layout_constraintStart_toEndOf="@id/iv_shop_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_shop_icon" />
+
+
+    <TextView
+        android:id="@+id/tv_adress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:letterSpacing="0.02"
+        android:text="가게 주소 정왕동 정왕시 어쭈구"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_shop_icon"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/shop_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:letterSpacing="0.02"
+        android:text="정왕CU점"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/tv_name"
+        app:layout_constraintTop_toTopOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:letterSpacing="0.02"
+        android:text="채용중인 공고"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/iv_shop_icon"
+        app:layout_constraintTop_toBottomOf="@id/iv_shop_icon" />
+
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_20_yellow2"
+        android:drawablePadding="10dp"
+        android:letterSpacing="0.02"
+        android:text="공고 올리기"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_shop_icon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_recruiting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:clipToPadding="false"
+        android:paddingTop="7dp"
+        tools:listitem="@layout/item_recruiting"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_upload" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
