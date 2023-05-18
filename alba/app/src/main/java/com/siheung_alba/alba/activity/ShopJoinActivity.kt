@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.content.Intent
 import android.widget.Button
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.activity.HomeActivity
+import com.siheung_alba.alba.fragment.HomeFragment
 
 
 class ShopJoinActivity : AppCompatActivity() {
@@ -15,10 +15,10 @@ class ShopJoinActivity : AppCompatActivity() {
 
         val startbutton = findViewById<Button>(R.id.startButton)
 
-        startbutton.setOnClickListener ({
-            val intent = Intent(this, HomeActivity::class.java)
+        startbutton.setOnClickListener {
+            val intent = Intent(this, HomeFragment::class.java)
             startActivity(intent)
-        })
+        }
 
     }
 }

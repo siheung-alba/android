@@ -3,14 +3,11 @@ package com.siheung_alba.alba.activity
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Build
 import android.content.Intent
 import android.widget.EditText
 import android.widget.Button
-import android.widget.DatePicker
-import androidx.annotation.RequiresApi
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.activity.HomeActivity
+import com.siheung_alba.alba.fragment.HomeFragment
 import java.util.*
 
 
@@ -24,10 +21,10 @@ class JoinActivity : AppCompatActivity() {
         val startbutton = findViewById<Button>(R.id.startButton)
         val editdate = findViewById<EditText>(R.id.editDate)
 
-        startbutton.setOnClickListener ({
-            val intent = Intent(this, HomeActivity::class.java)
+        startbutton.setOnClickListener {
+            val intent = Intent(this, HomeFragment::class.java)
             startActivity(intent)
-        })
+        }
 
         editdate.setOnClickListener {
             val cal = Calendar.getInstance()    //캘린더뷰 만들기
