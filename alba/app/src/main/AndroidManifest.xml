@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld-hJJ33vs" />
+
         <activity
             android:name=".owner_mainpage"
             android:exported="false" />
@@ -38,25 +37,11 @@
             android:exported="true"
             android:parentActivityName=".fragment.MyPageForUserFragment" />
         <activity
-            android:name=".activity.JoinActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ShopJoinActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".fragment.MyPageForUserFragment"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".fragment.HomeFragment"
-            android:exported="true"
-            android:parentActivityName=".activity.MainActivity" />
-        <activity
-            android:name=".fragment.MapFragment"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
 

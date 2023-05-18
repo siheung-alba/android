@@ -1,13 +1,14 @@
 package com.siheung_alba.alba.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityMainBinding
 import com.siheung_alba.alba.fragment.HomeFragment
-import com.siheung_alba.alba.fragment.MapFragment
 import com.siheung_alba.alba.fragment.MyPageForUserFragment
 
+@Suppress("deprecation")
 class MainActivity : AppCompatActivity(){
 
     private val binding : ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -45,7 +46,8 @@ class MainActivity : AppCompatActivity(){
                 ft.replace(R.id.main_frame, HomeFragment()).commit()
             }
             1 -> {
-                ft.replace(R.id.main_frame, MapFragment()).commit()
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
             }
             2 -> {
                 ft.replace(R.id.main_frame, MyPageForUserFragment()).commit()
