@@ -46,8 +46,7 @@ class MainActivity : AppCompatActivity(){
                 ft.replace(R.id.main_frame, HomeFragment()).commit()
             }
             1 -> {
-                val intent = Intent(this, MapsActivity::class.java)
-                startActivity(intent)
+                ft.replace(R.id.main_frame, MapFragment()).commit()
             }
             2 -> {
                 ft.replace(R.id.main_frame, MyPageForUserFragment()).commit()
