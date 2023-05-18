@@ -7,13 +7,10 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.activity.ShopJoinActivity
-import com.siheung_alba.alba.activity.HomeActivity
+import com.siheung_alba.alba.fragment.HomeFragment
 
 
 class LoginActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,20 +31,20 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        startbutton.setOnClickListener ({
-            val intent = Intent(this, HomeActivity::class.java)
+        startbutton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        joinbutton.setOnClickListener ({
+        joinbutton.setOnClickListener {
             val intent = Intent(this, JoinActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        shopjoinbutton.setOnClickListener ({
+        shopjoinbutton.setOnClickListener {
             val intent = Intent(this, ShopJoinActivity::class.java)
             startActivity(intent)
-        })
+        }
 
 
 
