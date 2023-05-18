@@ -4,22 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.CalculateSalaryActivity">
+    tools:context=".activity.CalculateSalaryActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/calculateSalaryToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        android:background="@color/white"
+        app:titleTextColor="@color/black"
+        app:title="급여 계산기"
+        android:textSize="25dp"/>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:gravity="center"
         android:background="@drawable/rectangle_button_yellow"
         android:text="2023년 최저시급은 9,620원 입니다."
-        android:textColor="#FF0000"
+        android:textColor="#BE0000"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -115,13 +120,16 @@
         </TableRow>
     </TableLayout>
 
+
     <TextView
         android:id="@+id/calculateResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="bottom"
         android:text="월급은 00입니다."
         android:textSize="25dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

@@ -83,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="text"
             android:hint="  제목을 입력하세요"
@@ -101,6 +102,7 @@
             android:layout_height="75dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
+            android:layout_marginBottom="10dp"
             android:inputType="text"
             android:hint="  경력을 입력하세요"
             android:maxHeight="75dp"/>
