@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityMainBinding
 import com.siheung_alba.alba.fragment.HomeFragment
+import com.siheung_alba.alba.fragment.MapFragment
 import com.siheung_alba.alba.fragment.MyPageForUserFragment
 
 @Suppress("deprecation")
