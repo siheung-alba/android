@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.siheung_alba.alba.R
@@ -8,6 +9,7 @@ import com.siheung_alba.alba.fragment.HomeFragment
 import com.siheung_alba.alba.fragment.MapFragment
 import com.siheung_alba.alba.fragment.MyPageForUserFragment
 
+@Suppress("deprecation")
 class MainActivity : AppCompatActivity(){
 
     private val binding : ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
