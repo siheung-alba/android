@@ -20,8 +20,10 @@ class CalculateSalaryActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.calculateSalaryToolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        toolbar.title = "급여계산기"
+        supportActionBar!!.setDisplayShowTitleEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
 
         val workTimeSpinner = findViewById<Spinner>(R.id.workTimeSpinner)
         val extendedWorkTimeSpinner = findViewById<Spinner>(R.id.extendedWorkTimeSpinner)
