@@ -10,6 +10,7 @@
         android:id="@+id/myPageToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
@@ -68,15 +69,15 @@
 
         <Button
             android:id="@+id/resume_upload_btn"
-            android:layout_width="220dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            android:paddingRight="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/round_button_yellow"
+            android:drawableRight="@drawable/baseline_edit_24"
+            android:paddingRight="20dp"
             android:text="이력서 올리기"
-            android:textSize="20dp"
-            android:drawableRight="@drawable/open_in_new"/>
+            android:textSize="20dp" />
 
     </LinearLayout>
 
@@ -91,5 +92,11 @@
             android:layout_height="wrap_content"
             android:background="@drawable/round_button_grey"/>
 
+<!--        <ListView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/round_button_grey"/>-->
+
     </LinearLayout>
+
 </LinearLayout>
