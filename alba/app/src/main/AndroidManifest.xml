@@ -50,9 +50,6 @@
             android:name=".activity.ShopJoinActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".fragment.MyPageForUserFragment"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
