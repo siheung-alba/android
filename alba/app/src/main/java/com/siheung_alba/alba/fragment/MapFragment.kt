@@ -43,7 +43,7 @@ class MapFragment : Fragment() {
 
     }
 
-    //초기 위치를 설정하는 코드 - 한국공학대학교로 설정함
+    //초기 위치를 설정하는 코드 - 한국공학대학교로 설정
     private val setCallback = OnMapReadyCallback { googleMap ->
         gMap = googleMap
         val LatLng = LatLng(37.340, 126.733)
