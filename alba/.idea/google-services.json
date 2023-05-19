@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "471759065890",
+    "project_id": "alba-b721a",
+    "storage_bucket": "alba-b721a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471759065890:android:517089f03964d749308b7b",
+        "android_client_info": {
+          "package_name": "com.siheung_alba.alba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471759065890-r3lj3juu07vkr1ts96cearrvb5gclkvs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.siheung_alba.alba",
+            "certificate_hash": "4ab404bcec894fda2320bb0e91b828597124e3d3"
+          }
+        },
+        {
+          "client_id": "471759065890-07g1u73sjvs5adomsc1vq2g6b1al147n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX29Rop-6zfG7ZSk38y0x6bTBKteq3ur8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471759065890-07g1u73sjvs5adomsc1vq2g6b1al147n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
