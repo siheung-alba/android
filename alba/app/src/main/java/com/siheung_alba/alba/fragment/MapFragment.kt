@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.fragment
 
+import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -9,24 +10,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
-import com.siheung_alba.alba.R
-import com.siheung_alba.alba.databinding.ActivityMainBinding
-import com.siheung_alba.alba.databinding.FragmentMapBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-//import com.google.firebase.database.DatabaseReference
-//import com.google.firebase.database.ktx.database
-//import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.siheung_alba.alba.R
+
 
 class MapFragment : Fragment() {
 
-//    private val database = Firebase.database
+    private val db = Firebase.firestore
+    val collectionRef = db.collection("store")
+
+    private lateinit var markerArray: Array<Marker?>
+    private lateinit var latLngArray: Array<LatLng?>
 
     private lateinit var gMap: GoogleMap
     private var mapView: SupportMapFragment? = null
@@ -46,9 +49,29 @@ class MapFragment : Fragment() {
     //초기 위치를 설정하는 코드 - 한국공학대학교로 설정
     private val setCallback = OnMapReadyCallback { googleMap ->
         gMap = googleMap
-        val LatLng = LatLng(37.340, 126.733)
+        var count = 0
+
+        collectionRef
+            .get()
+            .addOnSuccessListener { documents ->
+                markerArray = arrayOfNulls(documents.size())
+                for (document in documents) {
+                    markerArray[count] = latLngArray[count]?.let {
+                        MarkerOptions()
+                            .position(it)
+                            .title("${document["name"]}")
+                            .snippet("latitude : ${document["latitude"]}, longitude : ${document["longitude"]}")
+                    }?.let {
+                        gMap.addMarker(
+                            it
+                        )
+                    }
+                    count++
+                }
+            }
+        val latLng = LatLng(37.340, 126.733)
         val cameraPosition = CameraPosition.Builder()
-            .target(LatLng)
+            .target(latLng)
             .zoom(14f)
             .build()
 
@@ -56,6 +79,7 @@ class MapFragment : Fragment() {
     }
 
     private fun initLocation() {
+        createMarkers() // 마커 설정
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
             ?: SupportMapFragment.newInstance().also {
                 childFragmentManager.beginTransaction().add(R.id.map_fragment, it).commit()
@@ -82,6 +106,27 @@ class MapFragment : Fragment() {
             } //권한
         mapFragment.getMapAsync(callback)
     }
+
+    private fun createMarkers() {
+        var count = 0
+        collectionRef
+            .get()
+            .addOnSuccessListener { documents->
+
+                latLngArray = arrayOfNulls(documents.size())
+
+                for(document in documents) {
+
+                    val latitude : String = (document["latitude"]).toString()
+                    val longitude : String = (document["longitude"]).toString()
+
+                    latLngArray[count] = LatLng(latitude.toDouble(), longitude.toDouble())
+                    android.util.Log.i(ContentValues.TAG, "${document.id} => ${document.data}")
+                    count++
+                }
+            }
+    }
+
     @Suppress("MissingPermission")
     fun setUpdateLocationListner() {
         val locationRequest = LocationRequest.create()
