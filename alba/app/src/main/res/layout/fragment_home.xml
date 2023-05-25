@@ -123,165 +123,16 @@
 
                             </LinearLayout>
 
-
-
-
-
-
-
                         </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/job_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="460dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:padding="20dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/home_gray_background">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginBottom="7dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="CU 정왕점"
-                                android:textColor="#000000"
-                                android:textSize="20dp"
-                                android:gravity="left"
-                                android:layout_weight="1"
-                                />
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="5/2"
-                                android:textColor="#000000"
-                                android:textSize="18dp"
-                                android:gravity="right"
-                                android:layout_weight="1"
-                                />
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="cu 정왕점에서 주말 오후 알바생 구합니다."
-                                android:textColor="#000000"
-                                android:textSize="15dp"
-                                />
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="3~6개월"
-                                android:textColor="#000000"
-                                android:textSize="15dp"
-                                android:paddingRight="20dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_marginBottom="3dp"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="시급 9,620원"
-                                android:textColor="#000000"
-                                android:textSize="15dp"
-                                android:paddingLeft="20dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_marginBottom="3dp"
-                                android:background="@drawable/home_leftbar"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="bottom">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_weight="1"
-                                >
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="성별무관"
-                                    android:textColor="#000000"
-                                    android:textSize="10dp"
-                                    android:layout_marginRight="10dp"
-                                    android:paddingRight="2dp"
-                                    android:paddingLeft="2dp"
-                                    android:background="@drawable/home_gray2_background"
-
-                                    />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="국적무관"
-                                    android:textColor="#000000"
-                                    android:textSize="10dp"
-                                    android:layout_marginRight="10dp"
-                                    android:paddingRight="2dp"
-                                    android:paddingLeft="2dp"
-                                    android:background="@drawable/home_gray2_background"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_weight="1"
-                                android:gravity="right">
-
-                                <Button
-                                    android:id="@+id/btn_1"
-                                    android:layout_width="100dp"
-                                    android:layout_height="30dp"
-                                    android:text="지원하기"
-                                    android:textSize="15dp"
-                                    android:background="@drawable/round_button_yellow"
-                                    />
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
             </LinearLayout>
 

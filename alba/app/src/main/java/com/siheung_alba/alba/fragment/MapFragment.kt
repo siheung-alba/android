@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.fragment
 
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.location.Location
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
@@ -17,7 +19,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -125,6 +126,7 @@ class MapFragment : Fragment() {
             }
 
         val jobFrame = view?.findViewById<FrameLayout>(R.id.job_frame)
+        val applyToBtn = view?.findViewById<Button>(R.id.applyToBtn)
         gMap!!.setOnMarkerClickListener ( object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
                 jobFrame?.visibility = View.VISIBLE
@@ -146,8 +148,17 @@ class MapFragment : Fragment() {
                 sex.text = arr[4]
                 nation.text = arr[5]
 
+                applyToBtn?.setOnClickListener {
+                    val builder = AlertDialog.Builder(requireContext())
+                    builder.setTitle("지원이 완료되었습니다.")
+                        .setMessage("사장님이 이력서 열람 후 회원님 전화번호로 연락이 갈 예정입니다. ")
+                    builder.show()
+                }
+
                 return false
             }
+
+
         })
         gMap!!.setOnMapClickListener { jobFrame?.visibility = View.GONE }
     }
@@ -179,29 +190,6 @@ class MapFragment : Fragment() {
             } //권한
         mapFragment.getMapAsync(callback)
     }
-
-    /*
-    private fun createMarkers() {
-        var count = 0
-        colStoreRef
-            .get()
-            .addOnSuccessListener { documents->
-
-                latLngArray = arrayOfNulls(documents.size())
-
-                for(document in documents) {
-
-                    val latitude : String = (document["latitude"]).toString()
-                    val longitude : String = (document["longitude"]).toString()
-
-                    latLngArray[count] = LatLng(latitude.toDouble(), longitude.toDouble())
-                    android.util.Log.i(ContentValues.TAG, "${document.id} => ${document.data}")
-                    count++
-                }
-            }
-    }
-
-     */
 
     @Suppress("MissingPermission")
     fun setUpdateLocationListner() {

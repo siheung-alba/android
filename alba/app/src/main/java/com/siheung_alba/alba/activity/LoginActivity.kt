@@ -18,30 +18,34 @@ class LoginActivity : AppCompatActivity() {
 
         val checkbox = findViewById<CheckBox>(R.id.checkbox_shop_login)
         val textview = findViewById<TextView>(R.id.login_name)
-        val startbutton = findViewById<Button>(R.id.startButton)
-        val joinbutton = findViewById<TextView>(R.id.join_button)
-        val shopjoinbutton = findViewById<TextView>(R.id.shop_join_button)
+        val startButton = findViewById<Button>(R.id.startButton)
+        val joinButton = findViewById<TextView>(R.id.join_button)
+        val shopJoinButton = findViewById<TextView>(R.id.shop_join_button)
 
 
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 textview.text = "시흥알바 사장님 로그인"
+                startButton.setOnClickListener {
+                    val intent = Intent(this, MainForOwnerActivity::class.java)
+                    startActivity(intent)
+                }
+
             } else {
                 textview.text = "시흥알바 로그인"
+                startButton.setOnClickListener {
+                    val intent = Intent(this, MainForUserActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 
-        startbutton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
-        joinbutton.setOnClickListener {
+        joinButton.setOnClickListener {
             val intent = Intent(this, JoinActivity::class.java)
             startActivity(intent)
         }
 
-        shopjoinbutton.setOnClickListener {
+        shopJoinButton.setOnClickListener {
             val intent = Intent(this, ShopJoinActivity::class.java)
             startActivity(intent)
         }

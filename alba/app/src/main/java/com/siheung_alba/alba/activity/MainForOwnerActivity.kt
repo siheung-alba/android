@@ -3,15 +3,12 @@ package com.siheung_alba.alba.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.databinding.ActivityMainBinding
+import com.siheung_alba.alba.databinding.ActivityMainForOwnerBinding
 import com.siheung_alba.alba.fragment.HomeFragment
 import com.siheung_alba.alba.fragment.MapFragment
-import com.siheung_alba.alba.fragment.MyPageForUserFragment
 
-@Suppress("deprecation")
-class MainActivity : AppCompatActivity(){
-
-    private val binding : ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+class MainForOwnerActivity : AppCompatActivity() {
+    private val binding : ActivityMainForOwnerBinding by lazy { ActivityMainForOwnerBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +46,7 @@ class MainActivity : AppCompatActivity(){
                 ft.replace(R.id.main_frame, MapFragment()).commit()
             }
             2 -> {
-                ft.replace(R.id.main_frame, MyPageForUserFragment()).commit()
+                ft.replace(R.id.main_frame, MyPageForOwnerFragment()).commit()
             }
         }
     }
