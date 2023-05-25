@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.fragment
 
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.location.Location
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
@@ -125,6 +127,7 @@ class MapFragment : Fragment() {
             }
 
         val jobFrame = view?.findViewById<FrameLayout>(R.id.job_frame)
+        val applyToBtn = view?.findViewById<Button>(R.id.applyToBtn)
         gMap!!.setOnMarkerClickListener ( object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
                 jobFrame?.visibility = View.VISIBLE
@@ -146,8 +149,17 @@ class MapFragment : Fragment() {
                 sex.text = arr[4]
                 nation.text = arr[5]
 
+                applyToBtn?.setOnClickListener {
+                    val builder = AlertDialog.Builder(requireContext())
+                    builder.setTitle("지원이 완료되었습니다.")
+                        .setMessage("사장님이 이력서 열람 후 회원님 전화번호로 연락이 갈 예정입니다. ")
+                    builder.show()
+                }
+
                 return false
             }
+
+
         })
         gMap!!.setOnMapClickListener { jobFrame?.visibility = View.GONE }
     }
