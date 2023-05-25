@@ -5,15 +5,20 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -26,15 +31,15 @@ import com.siheung_alba.alba.R
 class MapFragment : Fragment() {
 
     private val db = Firebase.firestore
-    val collectionRef = db.collection("store")
-
-    private lateinit var markerArray: Array<Marker?>
-    private lateinit var latLngArray: Array<LatLng?>
+    private val colStoreRef = db.collection("store")
+    private val colJobRef = db.collection("job" )
 
     private lateinit var gMap: GoogleMap
     private var mapView: SupportMapFragment? = null
+
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient //자동으로 gps값을 받아온다.
     private lateinit var locationCallback: LocationCallback //gps 응답 값을 가져온다.
+
     var permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION)
     val permission_request = 99
 
@@ -49,26 +54,6 @@ class MapFragment : Fragment() {
     //초기 위치를 설정하는 코드 - 한국공학대학교로 설정
     private val setCallback = OnMapReadyCallback { googleMap ->
         gMap = googleMap
-        var count = 0
-
-        collectionRef
-            .get()
-            .addOnSuccessListener { documents ->
-                markerArray = arrayOfNulls(documents.size())
-                for (document in documents) {
-                    markerArray[count] = latLngArray[count]?.let {
-                        MarkerOptions()
-                            .position(it)
-                            .title("${document["name"]}")
-                            .snippet("latitude : ${document["latitude"]}, longitude : ${document["longitude"]}")
-                    }?.let {
-                        gMap.addMarker(
-                            it
-                        )
-                    }
-                    count++
-                }
-            }
         val latLng = LatLng(37.340, 126.733)
         val cameraPosition = CameraPosition.Builder()
             .target(latLng)
@@ -76,10 +61,98 @@ class MapFragment : Fragment() {
             .build()
 
         gMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+
+        var count = 0
+
+        colStoreRef // 위도 경도 가져오기
+            .get()
+            .addOnSuccessListener { storeDocuments->
+                for(storeDocument in storeDocuments) {
+
+                    colJobRef
+                        .get()
+                        .addOnSuccessListener { jobDocuments ->
+                            for (jobDocument in jobDocuments) {
+                                // user_id 확인
+                                if (storeDocument.data["user_id"].toString() == jobDocument.data["user_id"].toString()) {
+                                    count++
+                                    var location = LatLng(
+                                        storeDocument.data["latitude"].toString().toDouble(),
+                                        storeDocument.data["longitude"].toString().toDouble()
+                                    )
+
+                                    val markerOptions = MarkerOptions() // 핀
+                                    markerOptions.title(jobDocument["title"].toString()) // 이름
+                                    markerOptions.position(location) // 위치
+                                    markerOptions.icon(
+                                        BitmapDescriptorFactory.defaultMarker(
+                                            BitmapDescriptorFactory.HUE_YELLOW
+                                        )
+                                    )
+
+                                    val marker = gMap.addMarker(markerOptions) // 핀 추가 및 마커 생성
+
+                                    marker.tag =
+                                        jobDocument.data?.get("crated_at").toString() + "/" +
+                                                jobDocument.data?.get("add_text").toString() + "/" +
+                                                jobDocument.data?.get("term").toString() + "/" +
+                                                jobDocument.data?.get("money").toString() + "/" +
+                                                jobDocument.data?.get("sex").toString() + "/" +
+                                                jobDocument.data?.get("nation").toString()
+
+                                    Log.d(
+                                        ContentValues.TAG,
+                                        "${storeDocument.id} => ${storeDocument.data}"
+                                    )
+
+                                    if (storeDocuments.size() <= count) //마지막 핀으로 카메라 이동
+                                        gMap.moveCamera(
+                                            CameraUpdateFactory.newLatLngZoom(
+                                                location,
+                                                16F
+                                            )
+                                        )
+                                }
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w("mapPoint", "Error getting jobDocuments", exception)
+                        }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("mapPoint", "Error getting storeDocuments.", exception)
+            }
+
+        val jobFrame = view?.findViewById<FrameLayout>(R.id.job_frame)
+        gMap!!.setOnMarkerClickListener ( object : GoogleMap.OnMarkerClickListener {
+            override fun onMarkerClick(marker: Marker): Boolean {
+                jobFrame?.visibility = View.VISIBLE
+                var name = requireView().findViewById<TextView>(R.id.store_name) // 매장 이름
+                var createAt = requireView().findViewById<TextView>(R.id.create_at) // 생성 날짜
+                var addDescription = requireView().findViewById<TextView>(R.id.store_text) // 설명
+                var term = requireView().findViewById<TextView>(R.id.work_term) // 근무 기간
+                var money = requireView().findViewById<TextView>(R.id.money) // 시급
+                var sex = requireView().findViewById<TextView>(R.id.sexCondition) // 성별 조건
+                var nation = requireView().findViewById<TextView>(R.id.nationCondition) // 국적 조건
+
+                var arr = marker.tag.toString().split("/") //마커에 붙인 태그를 /로 나눔
+
+                name.text = marker.title
+                createAt.text = arr[0]
+                addDescription.text = arr[1]
+                term.text = arr[2]
+                money.text = arr[3]
+                sex.text = arr[4]
+                nation.text = arr[5]
+
+                return false
+            }
+        })
+        gMap!!.setOnMapClickListener { jobFrame?.visibility = View.GONE }
     }
 
     private fun initLocation() {
-        createMarkers() // 마커 설정
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment?
             ?: SupportMapFragment.newInstance().also {
                 childFragmentManager.beginTransaction().add(R.id.map_fragment, it).commit()
@@ -107,9 +180,10 @@ class MapFragment : Fragment() {
         mapFragment.getMapAsync(callback)
     }
 
+    /*
     private fun createMarkers() {
         var count = 0
-        collectionRef
+        colStoreRef
             .get()
             .addOnSuccessListener { documents->
 
@@ -126,6 +200,8 @@ class MapFragment : Fragment() {
                 }
             }
     }
+
+     */
 
     @Suppress("MissingPermission")
     fun setUpdateLocationListner() {
@@ -169,8 +245,13 @@ class MapFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        val view = inflater.inflate(R.layout.fragment_map, container, false)
+        val jobFrame = view.findViewById<FrameLayout>(R.id.job_frame)
+        jobFrame.visibility = View.GONE
+
+        return view
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -188,7 +269,6 @@ class MapFragment : Fragment() {
             }
         }
     }
-
     override fun onResume() {
         super.onResume()
         mapView?.onResume()
@@ -209,4 +289,7 @@ class MapFragment : Fragment() {
         mapView?.onLowMemory()
     }
 
+
 }
+
+
