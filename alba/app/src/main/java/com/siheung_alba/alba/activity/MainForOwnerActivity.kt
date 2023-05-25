@@ -6,6 +6,7 @@ import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityMainForOwnerBinding
 import com.siheung_alba.alba.fragment.HomeFragment
 import com.siheung_alba.alba.fragment.MapFragment
+import com.siheung_alba.alba.fragment.MyPageForOwnerFragment
 
 class MainForOwnerActivity : AppCompatActivity() {
     private val binding : ActivityMainForOwnerBinding by lazy { ActivityMainForOwnerBinding.inflate(layoutInflater) }

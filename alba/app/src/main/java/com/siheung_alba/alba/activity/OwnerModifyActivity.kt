@@ -6,7 +6,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.siheung_alba.alba.R
 
-class OwnerUpload : AppCompatActivity() {
+class OwnerModifyActivity : AppCompatActivity() {
     private lateinit var uploadTitle: EditText
     private lateinit var period: EditText
     private lateinit var salary: EditText
@@ -18,7 +18,7 @@ class OwnerUpload : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.owner_upload)
+        setContentView(R.layout.activity_owner_upload)
 
         uploadTitle = findViewById(R.id.upload_title)
         period = findViewById(R.id.period)
@@ -37,6 +37,7 @@ class OwnerUpload : AppCompatActivity() {
             val jobGender = gender.text.toString()
             val jobCountry = country.text.toString()
             val additionalDetails = detail.text.toString()
+
 
         }
     }
