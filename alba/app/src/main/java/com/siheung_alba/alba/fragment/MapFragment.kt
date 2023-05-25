@@ -19,7 +19,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -191,29 +190,6 @@ class MapFragment : Fragment() {
             } //권한
         mapFragment.getMapAsync(callback)
     }
-
-    /*
-    private fun createMarkers() {
-        var count = 0
-        colStoreRef
-            .get()
-            .addOnSuccessListener { documents->
-
-                latLngArray = arrayOfNulls(documents.size())
-
-                for(document in documents) {
-
-                    val latitude : String = (document["latitude"]).toString()
-                    val longitude : String = (document["longitude"]).toString()
-
-                    latLngArray[count] = LatLng(latitude.toDouble(), longitude.toDouble())
-                    android.util.Log.i(ContentValues.TAG, "${document.id} => ${document.data}")
-                    count++
-                }
-            }
-    }
-
-     */
 
     @Suppress("MissingPermission")
     fun setUpdateLocationListner() {
