@@ -22,9 +22,11 @@
 
         <activity
             android:name=".owner_mainpage"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,31 +36,39 @@
         </activity>
         <activity
             android:name=".activity.CalculateSalaryActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".fragment.MyPageForUserFragment" />
         <activity
-            android:name=".activity.ResumeShowActivity"
+            android:name=".fragment.ResumeShowFragment"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.ResumeUploadActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".fragment.MyPageForUserFragment" />
         <activity
             android:name=".activity.JoinActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.ShopJoinActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".fragment.MyPageForUserFragment"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".fragment.HomeFragment"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".fragment.MapFragment"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
     </application>
