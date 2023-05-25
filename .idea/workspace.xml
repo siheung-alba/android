@@ -17,6 +17,24 @@
       <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/activity_resume_upload.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/activity_resume_upload.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/menu/spinner_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/menu/spinner_background.xml" afterDir="false" />
     </list>
+    <list default="true" id="01ed23fb-c51e-4e43-b2b6-55d9a9a9cbba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/android.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alba/app/src/main/java/com/siheung_alba/alba/activity/OwnerModify.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alba/app/src/main/java/com/siheung_alba/alba/activity/OwnerResume.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alba/app/src/main/java/com/siheung_alba/alba/activity/OwnerUpload.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alba/app/src/main/java/com/siheung_alba/alba/fragment/OwnerPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/src/main/java/com/siheung_alba/alba/owner_mainpage.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_mainpage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_mainpage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_modify.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_modify.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_resume.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_resume.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_upload.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/owner_upload.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +49,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2PXZ8jasFs8y07jB43CWd1u3wcF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,7 +68,7 @@
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "C:/Users/jjiwo/siheung-alba/android/alba"
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />

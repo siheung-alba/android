@@ -1,61 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="24dp"
-        android:letterSpacing="0.02"
-        android:text=" 지원 이력서 열람"
-        android:textFontWeight="400"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="43dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/resume_1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_underbar"
+            android:padding="20dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:text="지원 이력서 열람"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+    </LinearLayout>
 
     <TextView
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:id="@+id/resume_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
         android:background="#F3F1F1"
-        android:text="   김00 / 메가커피 성실한 알바"
-        android:textStyle="bold"
-        android:textSize="15dp"
         android:gravity="center_vertical"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="108dp"
-        tools:ignore="MissingConstraints" />
+        android:text="   김00 / 메가커피 성실한 알바"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/resume_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:id="@+id/resume_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
         android:background="#F3F1F1"
-        android:text="   김00 / 메가커피 성실한 알바"
-        android:textStyle="bold"
-        android:textSize="15dp"
         android:gravity="center_vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="184dp" />
+        android:text="   김00 / 메가커피 성실한 알바"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/resume_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resume_1" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:id="@+id/resume_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="366dp"
         android:background="#F3F1F1"
-        android:text="   김00 / 메가커피 성실한 알바"
-        android:textStyle="bold"
-        android:textSize="15dp"
         android:gravity="center_vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="263dp" />
+        android:text="   김00 / 메가커피 성실한 알바"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resume_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
