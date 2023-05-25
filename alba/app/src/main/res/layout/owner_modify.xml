@@ -5,155 +5,157 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/title2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="24dp"
-        android:letterSpacing="0.02"
-        android:text="채용공고"
-        android:textFontWeight="400"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view_line"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="14dp"
-        android:background="#F3F1F1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/upload_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title2" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_underbar"
+            android:padding="20dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:text="채용공고수정"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/upload_title"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
         android:hint="제목(00알바 구합니다)"
         android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintBottom_toTopOf="@+id/period"
+        app:layout_constraintEnd_toEndOf="@+id/period"
+        app:layout_constraintStart_toStartOf="@+id/period"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <EditText
         android:id="@+id/period"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
         android:hint="근무기간"
         android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="160dp" />
+        app:layout_constraintBottom_toTopOf="@+id/salary"
+        app:layout_constraintEnd_toEndOf="@+id/salary"
+        app:layout_constraintStart_toStartOf="@+id/salary"
+        app:layout_constraintTop_toBottomOf="@+id/upload_title" />
 
     <EditText
         android:id="@+id/salary"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
         android:hint="시급"
         android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="230dp" />
+        app:layout_constraintBottom_toTopOf="@+id/age"
+        app:layout_constraintEnd_toEndOf="@+id/age"
+        app:layout_constraintStart_toStartOf="@+id/age"
+        app:layout_constraintTop_toBottomOf="@+id/period" />
 
     <EditText
         android:id="@+id/age"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
         android:hint="나이"
         android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintBottom_toTopOf="@+id/gender"
+        app:layout_constraintEnd_toEndOf="@+id/gender"
+        app:layout_constraintStart_toStartOf="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@+id/salary" />
 
-    <TextView
+    <EditText
         android:id="@+id/gender"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
-        android:text="성별"
+        android:hint="성별"
+        android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintBottom_toTopOf="@+id/country"
+        app:layout_constraintEnd_toEndOf="@+id/country"
+        app:layout_constraintStart_toStartOf="@+id/country"
+        app:layout_constraintTop_toBottomOf="@+id/age" />
 
-    <Button
-        android:id="@+id/btn_gender"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:background="@drawable/icon_angle_down"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="385dp"
-        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btn_country"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:background="@drawable/icon_angle_down"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="455dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
+    <EditText
         android:id="@+id/country"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
-        android:text="국적"
+        android:hint="국적"
+        android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="440dp" />
+        app:layout_constraintBottom_toTopOf="@+id/detail"
+        app:layout_constraintEnd_toEndOf="@+id/detail"
+        app:layout_constraintStart_toStartOf="@+id/detail"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     <EditText
         android:id="@+id/detail"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/black"
         android:gravity="center_vertical"
         android:hint="추가하고 싶은 내용"
         android:text=""
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="510dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnPostJob"
+        app:layout_constraintEnd_toEndOf="@+id/btnPostJob"
+        app:layout_constraintStart_toStartOf="@+id/btnPostJob"
+        app:layout_constraintTop_toBottomOf="@+id/country" />
 
     <Button
-        android:id="@+id/btn_upload"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:id="@+id/btnPostJob"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="106dp"
         android:background="#FFEDA4"
         android:backgroundTint="#FFEDA4"
         android:text="공고 수정 완료하기"
         android:textSize="16dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="580dp"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
