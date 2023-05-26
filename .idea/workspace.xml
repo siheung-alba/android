@@ -10,6 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ed23fb-c51e-4e43-b2b6-55d9a9a9cbba" name="Changes" comment="">
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/activity_calculate_salary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/activity_calculate_salary.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/layout/activity_main.xml" afterDir="false" />
@@ -18,6 +23,10 @@
       <change beforePath="$PROJECT_DIR$/alba/app/src/main/res/menu/spinner_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alba/app/src/main/res/menu/spinner_background.xml" afterDir="false" />
     </list>
     <list default="true" id="01ed23fb-c51e-4e43-b2b6-55d9a9a9cbba" name="Changes" comment="">
+<<<<<<< Updated upstream
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
       <change afterPath="$PROJECT_DIR$/.idea/android.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/alba/app/src/main/java/com/siheung_alba/alba/activity/OwnerModify.kt" afterDir="false" />
@@ -40,7 +49,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< Updated upstream
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\jjiwo\.android\avd\Galaxy_Nexus_API_29.avd]" />
+=======
+<<<<<<< HEAD
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\KANG DONG HYUN\.android\avd\Pixel_2_API_29_2.avd]" />
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\jjiwo\.android\avd\Galaxy_Nexus_API_29.avd]" />
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -60,6 +77,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/KANG DONG HYUN/Documents/myproject/android/alba&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -67,6 +94,10 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "C:/Users/jjiwo/siheung-alba/android/alba"
+<<<<<<< Updated upstream
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
   }
 }</component>
   <component name="RunManager">

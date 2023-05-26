@@ -7,7 +7,19 @@
     tools:context=".fragment.OwnerPageFragment">
 
     <androidx.appcompat.widget.Toolbar
+<<<<<<< Updated upstream
         android:id="@+id/myPageToolbar"
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        android:id="@+id/ownerPageToolbar"
+=======
+        android:id="@+id/myPageToolbar"
+>>>>>>> donghyun2
+=======
+        android:id="@+id/myPageToolbar"
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
@@ -83,7 +95,19 @@
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:layout_gravity="right"
+<<<<<<< Updated upstream
             android:layout_marginLeft="50dp"
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            android:layout_marginLeft="60dp"
+=======
+            android:layout_marginLeft="50dp"
+>>>>>>> donghyun2
+=======
+            android:layout_marginLeft="50dp"
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
             android:layout_marginRight="10dp"
             android:paddingRight="20dp"
             android:background="@drawable/round_button_yellow"
@@ -171,7 +195,18 @@
             >
 
 
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> donghyun2
+=======
+
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
             <TextView
 
                 android:layout_width="55dp"
@@ -182,11 +217,33 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:background="#D9D9D9"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
 
                 />
 
         </RelativeLayout>
 
+=======
+>>>>>>> Stashed changes
+
+                />
+
+        </RelativeLayout>
+
+<<<<<<< Updated upstream
+=======
+>>>>>>> donghyun2
+=======
+
+                />
+
+        </RelativeLayout>
+
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         <RelativeLayout
             android:layout_marginTop="87dp"
             android:layout_marginStart="71dp"

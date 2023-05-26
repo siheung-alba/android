@@ -30,8 +30,23 @@
 
     <TextView
         android:id="@+id/resume_1"
+<<<<<<< Updated upstream
         android:layout_width="0dp"
         android:layout_height="0dp"
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+=======
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+>>>>>>> donghyun2
+=======
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="55dp"
@@ -47,11 +62,30 @@
 
     <TextView
         android:id="@+id/resume_2"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+=======
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="55dp"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> donghyun2
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         android:background="#F3F1F1"
         android:gravity="center_vertical"
         android:text="   김00 / 메가커피 성실한 알바"
@@ -64,11 +98,32 @@
 
     <TextView
         android:id="@+id/resume_3"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="300dp"
+=======
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="366dp"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> donghyun2
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
         android:background="#F3F1F1"
         android:gravity="center_vertical"
         android:text="   김00 / 메가커피 성실한 알바"

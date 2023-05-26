@@ -20,10 +20,44 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld" />
 
+<<<<<<< Updated upstream
         <activity
             android:name=".activity.MainForOwnerActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.MainForUserActivity"
+=======
+<<<<<<< HEAD
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"/>
+
+        <activity android:name=".activity.LoginActivity"
+<<<<<<< HEAD
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.OwnerUpload"
+=======
+>>>>>>> donghyun2
+=======
+        <activity
+            android:name=".activity.MainForOwnerActivity"
+>>>>>>> Stashed changes
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld" />
+        <activity
+<<<<<<< Updated upstream
+            android:name=".activity.LoginActivity"
+=======
             android:name=".activity.MainForUserActivity"
             android:exported="false" />
 
@@ -32,6 +66,8 @@
             android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld" />
         <activity
             android:name=".activity.LoginActivity"
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,8 +100,36 @@
 
             android:exported="false" />
         <activity
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            android:name=".activity.OwnerModify"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.OwnerResume"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+=======
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
             android:name=".activity.OwnerResume"
             android:exported="false" />
+>>>>>>> donghyun2
         <activity
             android:name=".fragment.MyPageForUserFragment"
             android:exported="true"
@@ -73,6 +137,7 @@
         <activity
             android:name=".fragment.HomeFragment"
             android:exported="true" />
+<<<<<<< Updated upstream
         <activity
             android:name=".fragment.MapFragment"
             android:exported="true" />
@@ -80,6 +145,22 @@
             android:name=".fragment.OwnerPageFragment"
             android:exported="true"
             android:parentActivityName=".activity.MainActivity" />
+=======
+        <activity
+            android:name=".fragment.MapFragment"
+            android:exported="true" />
+        <activity
+            android:name=".fragment.OwnerPageFragment"
+            android:exported="true"
+            android:parentActivityName=".activity.MainActivity" />
+<<<<<<< HEAD
+        <activity
+            android:name=".fragment.OwnerPageFragment"
+            android:exported="true"
+            android:parentActivityName=".activity.MainActivity" />
+=======
+>>>>>>> donghyun2
+>>>>>>> Stashed changes
     </application>
 
 </manifest>
