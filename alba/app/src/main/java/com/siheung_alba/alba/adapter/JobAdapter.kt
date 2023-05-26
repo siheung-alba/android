@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.siheung_alba.alba.model.JobModel
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class JobAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
@@ -28,6 +30,7 @@ class JobAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAd
         holder.term.text = itemList[position].jobTerm
         holder.sex.text = itemList[position].jobSex
         holder.nation.text = itemList[position].jobNation
+        holder.update.text = itemList[position].updatedAt
 
     }
 
@@ -43,5 +46,6 @@ class JobAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAd
         val term: TextView = itemView.findViewById(R.id.work_term)
         val sex: TextView = itemView.findViewById(R.id.sexCondition)
         val nation: TextView = itemView.findViewById(R.id.nationCondition)
+        var update: TextView = itemView.findViewById(R.id.create_at)
     }
 }

@@ -94,13 +94,12 @@ class MapFragment : Fragment() {
                                     val marker = gMap.addMarker(markerOptions) // 핀 추가 및 마커 생성
 
                                     marker.tag =
-                                        jobDocument.data?.get("crated_at").toString() + "/" +
-                                                jobDocument.data?.get("add_text").toString() + "/" +
-                                                jobDocument.data?.get("term").toString() + "/" +
-                                                jobDocument.data?.get("money").toString() + "/" +
-                                                jobDocument.data?.get("sex").toString() + "/" +
-                                                jobDocument.data?.get("nation").toString()
-
+                                        jobDocument.data?.get("updated_at").toString() + "^" + //업데이트 날짜
+                                                jobDocument.data?.get("add_text").toString() + "^" + // 설명
+                                                jobDocument.data?.get("term").toString() + "^" + // 기간
+                                                jobDocument.data?.get("money").toString() + "^" + // 시급
+                                                jobDocument.data?.get("sex").toString() + "^" + // 성별
+                                                jobDocument.data?.get("nation").toString()  // 국적
                                     Log.d(
                                         ContentValues.TAG,
                                         "${storeDocument.id} => ${storeDocument.data}"
@@ -131,17 +130,17 @@ class MapFragment : Fragment() {
             override fun onMarkerClick(marker: Marker): Boolean {
                 jobFrame?.visibility = View.VISIBLE
                 var name = requireView().findViewById<TextView>(R.id.store_name) // 매장 이름
-                var createAt = requireView().findViewById<TextView>(R.id.create_at) // 생성 날짜
+                var updateAt = requireView().findViewById<TextView>(R.id.update_at) // 생성 날짜
                 var addDescription = requireView().findViewById<TextView>(R.id.store_text) // 설명
                 var term = requireView().findViewById<TextView>(R.id.work_term) // 근무 기간
                 var money = requireView().findViewById<TextView>(R.id.money) // 시급
                 var sex = requireView().findViewById<TextView>(R.id.sexCondition) // 성별 조건
                 var nation = requireView().findViewById<TextView>(R.id.nationCondition) // 국적 조건
 
-                var arr = marker.tag.toString().split("/") //마커에 붙인 태그를 /로 나눔
+                var arr = marker.tag.toString().split("^") //마커에 붙인 태그를 /로 나눔
 
                 name.text = marker.title
-                createAt.text = arr[0]
+                updateAt.text = arr[0]
                 addDescription.text = arr[1]
                 term.text = arr[2]
                 money.text = arr[3]
@@ -157,8 +156,6 @@ class MapFragment : Fragment() {
 
                 return false
             }
-
-
         })
         gMap!!.setOnMapClickListener { jobFrame?.visibility = View.GONE }
     }
@@ -221,8 +218,7 @@ class MapFragment : Fragment() {
         val myLocation = LatLng(location.latitude, location.longitude)
         val markerOptions  = MarkerOptions()
             .position(myLocation)
-            .title("Marker title") // 마커의 제목 설정
-            .snippet("Marker Snippet") // 마커의 설명 설정
+            .title("내 위치") // 마커의 제목 설정
 
         val LATLNG = LatLng(myLocation.latitude, myLocation.longitude)
         val cameraPosition = CameraPosition.Builder().target(LATLNG).zoom(15.0f).build()

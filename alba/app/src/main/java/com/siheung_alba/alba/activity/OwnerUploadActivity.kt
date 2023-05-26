@@ -8,14 +8,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.fragment.MyPageForOwnerFragment
+import com.siheung_alba.alba.model.JobModel
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
 
 class OwnerUploadActivity : AppCompatActivity() {
 
     private val db = Firebase.firestore
+    private val user_id = "apple" // 유저 아이디
+    private val current = LocalDateTime.now()
+    private val formatter = DateTimeFormatter.ofPattern("M/d")
+    private val formatted = current.format(formatter)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +54,10 @@ class OwnerUploadActivity : AppCompatActivity() {
                 "sex" to sex.text.toString(),
                 "nation" to nation.text.toString(),
                 "add_text" to addText.text.toString(),
+                "user_id" to user_id,
+                "created_at" to formatted,
+                "updated_at" to formatted
+
             )
             db.collection("job")
                 .add(data)
@@ -55,6 +69,8 @@ class OwnerUploadActivity : AppCompatActivity() {
                     // 실패할 경우
                     android.util.Log.w("OwnerUploadActivity", "Error getting documents: $exception")
                 }
+
         }
+
     }
 }

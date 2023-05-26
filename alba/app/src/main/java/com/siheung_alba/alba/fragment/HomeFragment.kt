@@ -44,7 +44,8 @@ class HomeFragment : Fragment() {
                         document.data["term"].toString(),
                         document.data["money"].toString(),
                         document.data["nation"].toString(),
-                        document.data["sex"].toString()
+                        document.data["sex"].toString(),
+                        document.data["updated_at"].toString()
                     )
                     itemList.add(item)
                 }

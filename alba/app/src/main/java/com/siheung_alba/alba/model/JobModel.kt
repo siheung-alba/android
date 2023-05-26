@@ -7,4 +7,5 @@ class JobModel(
     var jobMoney: String?,
     var jobNation: String?,
     var jobSex: String?,
+    var updatedAt: String?
 )

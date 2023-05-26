@@ -9,12 +9,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.activity.OwnerResumeActivity
 import com.siheung_alba.alba.activity.OwnerUploadActivity
 import com.siheung_alba.alba.activity.ResumeUploadActivity
+import com.siheung_alba.alba.adapter.JobAdapter
+import com.siheung_alba.alba.model.JobModel
 
 class MyPageForOwnerFragment : Fragment() {
+
+    private val db = Firebase.firestore
+    private val colJobRef = db.collection("job")
+    private val itemList = arrayListOf<JobModel>()
+    private val adapter = JobAdapter(itemList)
+    private val user_id = "apple" // 유저 아이디
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -50,7 +62,33 @@ class MyPageForOwnerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val jobList = view?.findViewById<RecyclerView>(R.id.job_list)
+        jobList?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        jobList?.adapter = adapter
 
+        colJobRef
+            .get()
+            .addOnSuccessListener { result ->
+                itemList.clear()
+                for(document in result) {
+                    if (document.data["user_id"].toString() == user_id) {
+                        val item = JobModel(
+                            document.data["title"].toString(),
+                            document.data["add_text"].toString(),
+                            document.data["term"].toString(),
+                            document.data["money"].toString(),
+                            document.data["nation"].toString(),
+                            document.data["sex"].toString(),
+                            document.data["updated_at"].toString()
+                        )
+                        itemList.add(item)
+                    }
+                    adapter.notifyDataSetChanged() // 리사이클러 뷰 갱신
+                }
+            }
+            .addOnFailureListener { exception ->
+                android.util.Log.w("MainActivity", "Error getting documents: $exception")
+            }
     }
 
 }
