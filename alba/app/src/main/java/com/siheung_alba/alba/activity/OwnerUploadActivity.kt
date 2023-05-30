@@ -1,23 +1,16 @@
 package com.siheung_alba.alba.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.fragment.MyPageForOwnerFragment
-import com.siheung_alba.alba.model.JobModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Calendar
 
 class OwnerUploadActivity : AppCompatActivity() {
 
@@ -32,22 +25,23 @@ class OwnerUploadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_owner_upload)
 
         val toolbar: Toolbar = findViewById(R.id.resumeUploadToolbar)
+        toolbar.title = "채용공고 올리기"
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        val title : EditText = findViewById(R.id.edtTitle)
+        val storeTitle : EditText = findViewById(R.id.edt_store)
         val term : EditText = findViewById(R.id.edtTerm)
         val money : EditText = findViewById(R.id.edtMoney)
         val age : EditText = findViewById(R.id.edtAge)
         val sex : EditText = findViewById(R.id.edtSex)
         val nation : EditText = findViewById(R.id.edtNation)
         val addText : EditText = findViewById(R.id.edt_add_text)
+        val detail : EditText = findViewById(R.id.edt_detail)
         val btnPostJob: Button = findViewById(R.id.btnPostJob)
 
         btnPostJob.setOnClickListener {
             val data = hashMapOf(
-                "title" to title.text.toString(),
+                "title" to storeTitle.text.toString(),
                 "term" to term.text.toString(),
                 "money" to money.text.toString(),
                 "age" to age.text.toString(),

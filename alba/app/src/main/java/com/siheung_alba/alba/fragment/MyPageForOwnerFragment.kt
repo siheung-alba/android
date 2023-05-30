@@ -16,8 +16,8 @@ import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.activity.OwnerResumeActivity
 import com.siheung_alba.alba.activity.OwnerUploadActivity
-import com.siheung_alba.alba.activity.ResumeUploadActivity
-import com.siheung_alba.alba.adapter.JobAdapter
+import com.siheung_alba.alba.adapter.OwnerHomeAdapter
+import com.siheung_alba.alba.adapter.OwnerModifyAdapter
 import com.siheung_alba.alba.model.JobModel
 
 class MyPageForOwnerFragment : Fragment() {
@@ -25,7 +25,7 @@ class MyPageForOwnerFragment : Fragment() {
     private val db = Firebase.firestore
     private val colJobRef = db.collection("job")
     private val itemList = arrayListOf<JobModel>()
-    private val adapter = JobAdapter(itemList)
+    private val adapter = OwnerHomeAdapter(itemList)
     private val user_id = "apple" // 유저 아이디
 
     @SuppressLint("MissingInflatedId")
@@ -89,6 +89,7 @@ class MyPageForOwnerFragment : Fragment() {
             .addOnFailureListener { exception ->
                 android.util.Log.w("MainActivity", "Error getting documents: $exception")
             }
+
     }
 
 }

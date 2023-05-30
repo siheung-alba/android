@@ -38,4 +38,5 @@ class MyPageForUserFragment : Fragment() {
         }
         return view
     }
+
 }

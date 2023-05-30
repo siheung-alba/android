@@ -1,161 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ownerUploadLayout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/resumeUploadToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/upload_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:gravity="bottom"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
 
-        <TextView
+
+        <EditText
+            android:id="@+id/edt_store"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/home_underbar"
-            android:padding="20dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
-            android:text="채용공고수정"
-            android:textColor="#000000"
-            android:textSize="25dp" />
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  매장을 선택해주세요"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_add_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  제목(00알바 구합니다)"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtTerm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  근무기간"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/edtMoney"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  시급"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/edtAge"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  나이"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/edtSex"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  성별"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/edtNation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  국적"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/edt_detail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  추가하고 싶은 내용"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPostJob"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/finish_button"
+            android:text="공고 업로드"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/upload_title"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="제목(00알바 구합니다)"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/period"
-        app:layout_constraintEnd_toEndOf="@+id/period"
-        app:layout_constraintStart_toStartOf="@+id/period"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <EditText
-        android:id="@+id/period"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="근무기간"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/salary"
-        app:layout_constraintEnd_toEndOf="@+id/salary"
-        app:layout_constraintStart_toStartOf="@+id/salary"
-        app:layout_constraintTop_toBottomOf="@+id/upload_title" />
-
-    <EditText
-        android:id="@+id/salary"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="시급"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/age"
-        app:layout_constraintEnd_toEndOf="@+id/age"
-        app:layout_constraintStart_toStartOf="@+id/age"
-        app:layout_constraintTop_toBottomOf="@+id/period" />
-
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="나이"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/gender"
-        app:layout_constraintEnd_toEndOf="@+id/gender"
-        app:layout_constraintStart_toStartOf="@+id/gender"
-        app:layout_constraintTop_toBottomOf="@+id/salary" />
-
-    <EditText
-        android:id="@+id/gender"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="성별"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/country"
-        app:layout_constraintEnd_toEndOf="@+id/country"
-        app:layout_constraintStart_toStartOf="@+id/country"
-        app:layout_constraintTop_toBottomOf="@+id/age" />
-
-
-    <EditText
-        android:id="@+id/country"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="국적"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/detail"
-        app:layout_constraintEnd_toEndOf="@+id/detail"
-        app:layout_constraintStart_toStartOf="@+id/detail"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
-
-    <EditText
-        android:id="@+id/detail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/black"
-        android:gravity="center_vertical"
-        android:hint="추가하고 싶은 내용"
-        android:text=""
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnPostJob"
-        app:layout_constraintEnd_toEndOf="@+id/btnPostJob"
-        app:layout_constraintStart_toStartOf="@+id/btnPostJob"
-        app:layout_constraintTop_toBottomOf="@+id/country" />
-
-    <Button
-        android:id="@+id/btnPostJob"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="106dp"
-        android:background="#FFEDA4"
-        android:backgroundTint="#FFEDA4"
-        android:text="공고 수정 완료하기"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -17,10 +17,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="bottom"
-        android:layout_margin="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
+
 
         <EditText
-            android:id="@+id/edtTitle"
+            android:id="@+id/edt_store"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/black"
+            android:gravity="center_vertical"
+            android:hint="  매장을 선택해주세요"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_add_text"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="25dp"
@@ -87,7 +101,7 @@
             android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/edt_add_text"
+            android:id="@+id/edt_detail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="25dp"

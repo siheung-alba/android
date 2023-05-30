@@ -33,11 +33,12 @@ class LoginActivity : AppCompatActivity() {
 
             } else {
                 textview.text = "시흥알바 로그인"
-                startButton.setOnClickListener {
-                    val intent = Intent(this, MainForUserActivity::class.java)
-                    startActivity(intent)
-                }
             }
+        }
+
+        startButton.setOnClickListener {
+            val intent = Intent(this, MainForUserActivity::class.java)
+            startActivity(intent)
         }
 
         joinButton.setOnClickListener {

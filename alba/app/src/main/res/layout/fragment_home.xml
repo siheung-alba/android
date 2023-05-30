@@ -6,50 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/homeToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="채용공고"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:background="@drawable/home_underbar"
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:padding="20dp"
-                />
-        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            android:layout_weight="25">
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:fillViewport="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="20dp">
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
 
-                    android:padding="20dp"
+                    android:background="@drawable/home_yellow_border"
                     android:orientation="horizontal"
-                    android:background="@drawable/home_yellow_border">
+                    android:padding="20dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -68,24 +60,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width ="wrap_content"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="시흥 정왕점 이디야에서 알바생을 모집합니다. "
-                                android:textSize = "18dp"
-                                android:textColor ="#034DA2"
-                                android:textStyle="bold"
                                 android:padding="10dp"
+                                android:text="시흥 정왕점 이디야에서 알바생을 모집합니다. "
+                                android:textColor="#034DA2"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
 
                                 />
 
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -98,12 +92,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_width ="wrap_content"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="월.수.금 마감"
-                                    android:textSize = "15dp"
-                                    android:textColor ="#000000"
-                                    />
+                                    android:textColor="#000000"
+                                    android:textSize="15dp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -114,10 +107,9 @@
                                     <Button
                                         android:layout_width="100dp"
                                         android:layout_height="30dp"
-                                        android:text="지원하기"
-                                        android:textSize="15dp"
                                         android:background="@drawable/round_button_yellow"
-                                        />
+                                        android:text="지원하기"
+                                        android:textSize="15dp" />
                                 </LinearLayout>
 
 
@@ -131,11 +123,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/job_list"
                     android:layout_width="match_parent"
-                    android:layout_height="460dp" />
+                    android:layout_height="wrap_content" />
 
 
             </LinearLayout>
-
 
 
         </ScrollView>
