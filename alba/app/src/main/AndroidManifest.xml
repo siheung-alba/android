@@ -35,6 +35,12 @@
             android:value="YOUR_API_KEY" />
 
         <activity
+<<<<<<< Updated upstream
+=======
+            android:name=".owner_mainpage"
+            android:exported="false" />
+        <activity
+>>>>>>> Stashed changes
             android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -60,6 +66,9 @@
             android:parentActivityName=".fragment.MyPageForUserFragment" />
         <activity
             android:name=".activity.JoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ShopJoinActivity"

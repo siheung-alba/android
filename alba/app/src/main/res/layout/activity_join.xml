@@ -40,7 +40,7 @@
 
 
             <EditText
-                android:id="@+id/editID"
+                android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
@@ -91,8 +91,9 @@
                 android:paddingLeft="20dp"
                 android:text="" />
 
+
             <EditText
-                android:id="@+id/editPasswordRe"
+                android:id="@+id/editPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
@@ -104,91 +105,101 @@
                 android:paddingLeft="20dp"
                 android:text="" />
 
-
-            <EditText
-                android:id="@+id/editDate"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/input_border"
-                android:ems="10"
-                android:hint="생년월일 (선택)"
-                android:inputType="textPersonName"
-                android:paddingLeft="20dp"
-                android:text="" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/editDateResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/input_border"
+                    android:hint="생년월일"
+                    android:inputType="textPersonName"
+
+                    android:text="" />
+
+                <Button
+                    android:gravity="center"
+                    android:id="@+id/editDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="7"
+                    android:background="@drawable/input_border"
+                    android:ems="10"
+                    android:hint="선택"
+                    android:inputType="textPersonName"
+                    android:text="" />
+            </LinearLayout>
+
+
+            <Spinner
+                android:id="@+id/nationSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/spinner_background" />
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/spinner"
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="여성"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    />
+
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="남성"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/startJoinButton"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/input_border"
-                    android:paddingLeft="20dp" />
-
-
+                    android:background="#FFEDA4"
+                    android:backgroundTint="#FFEDA4"
+                    android:text="가입하기"
+                    android:textSize="15dp" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:onClick="checked"
-            android:text="여성"
-            android:textSize="13dp"
-            android:textStyle="bold"
-
-            />
-
-        <CheckBox
-            android:id="@+id/female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:onClick="checked"
-            android:text="남성"
-            android:textSize="13dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="#FFEDA4"
-            android:backgroundTint="#FFEDA4"
-            android:text="가입하기"
-            android:textSize="15dp" />
-    </LinearLayout>
 </LinearLayout>
