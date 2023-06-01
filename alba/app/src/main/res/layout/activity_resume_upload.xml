@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ResumeUploadActivity">
+    tools:context=".user.ResumeUploadActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/resumeUploadToolbar"
@@ -24,6 +24,7 @@
 
 
         <ImageButton
+            android:id="@+id/resume_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/icon_user_profile_24" />
@@ -86,6 +87,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_title"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
@@ -103,6 +105,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_career"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginTop="8dp"
@@ -120,6 +123,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_introduce"
             android:layout_width="match_parent"
             android:layout_height="125dp"
             android:layout_marginTop="8dp"
@@ -137,6 +141,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/resume_done_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/finish_button"

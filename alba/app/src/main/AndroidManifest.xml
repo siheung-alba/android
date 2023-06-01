@@ -25,12 +25,7 @@
             android:name=".activity.MainForOwnerActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainForUserActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"
+            android:name=".user.MainForUserActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,19 +33,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".activity.CalculateSalaryActivity"
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".user.CalculateSalaryActivity"
             android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".fragment.MyPageForUserFragment" />
+            android:parentActivityName=".user.MyPageForUserFragment" />
+<!--        <activity-->
+<!--            android:name=".user.ResumeShowActivity"-->
+<!--            android:exported="false" />-->
         <activity
-            android:name=".activity.ResumeShowActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ResumeUploadActivity"
+            android:name=".user.ResumeUploadActivity"
             android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".fragment.MyPageForUserFragment" />
+            android:parentActivityName=".user.MyPageForUserFragment" />
         <activity
             android:name=".activity.JoinActivity"
             android:screenOrientation="portrait"
@@ -70,10 +76,10 @@
             android:name=".activity.OwnerResumeActivity"
             android:exported="false" />
         <activity
-            android:name=".fragment.MyPageForUserFragment"
+            android:name=".user.MyPageForUserFragment"
             android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".activity.MainForUserActivity" />
+            android:parentActivityName=".user.MainForUserActivity" />
         <activity
             android:name=".fragment.HomeFragment"
             android:screenOrientation="portrait"

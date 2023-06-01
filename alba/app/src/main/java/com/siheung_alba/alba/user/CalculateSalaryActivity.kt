@@ -1,4 +1,4 @@
-package com.siheung_alba.alba.activity
+package com.siheung_alba.alba.user
 
 import com.siheung_alba.alba.R
 import androidx.appcompat.app.AppCompatActivity

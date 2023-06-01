@@ -1,4 +1,4 @@
-package com.siheung_alba.alba.activity
+package com.siheung_alba.alba.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityMainForUserBinding
 import com.siheung_alba.alba.fragment.HomeFragment
 import com.siheung_alba.alba.fragment.MapFragment
-import com.siheung_alba.alba.fragment.MyPageForUserFragment
+import com.siheung_alba.alba.user.MyPageForUserFragment
 
 class MainForUserActivity : AppCompatActivity() {
     private val binding : ActivityMainForUserBinding by lazy { ActivityMainForUserBinding.inflate(layoutInflater) }
