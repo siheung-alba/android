@@ -36,24 +36,24 @@ class LoginActivity : AppCompatActivity() {
         val checkbox = findViewById<CheckBox>(R.id.checkbox_shop_login)
         val textview = findViewById<TextView>(R.id.login_name)
         val startButton = findViewById<Button>(R.id.startButton)
-        val joinbutton = findViewById<Button>(R.id.join_button)
-        val shopjoinbutton = findViewById<Button>(R.id.shop_join_button)
+        val joinButton = findViewById<Button>(R.id.join_button)
+        val shopJoinButton = findViewById<Button>(R.id.shop_join_button)
 
 
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 textview.text = "시흥알바 사장님 로그인"
-                startButton.setOnClickListener {
-                    val intent = Intent(this, MainForOwnerActivity::class.java)
-                    startActivity(intent)
-                }
+//                startButton.setOnClickListener {
+//                    val intent = Intent(this, MainForOwnerActivity::class.java)
+//                    startActivity(intent)
+//                }
 
             } else {
                 textview.text = "시흥알바 로그인"
             }
         }
 
-        startbutton.setOnClickListener {
+        startButton.setOnClickListener {
 
             var email = email.text.toString()
             var pwd = pwd.text.toString()
@@ -62,8 +62,8 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 
-            val intent = Intent(this, MainForUserActivity::class.java)
-            startActivity(intent)
+                val intent = Intent(this, MainForUserActivity::class.java)
+                startActivity(intent)
                         Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
 
                     } else {

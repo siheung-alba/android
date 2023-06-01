@@ -18,11 +18,9 @@
         <activity
             android:name=".adapter.JobAdapter"
             android:exported="false" />
-        <!--
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld" />
-        -->
         <activity
             android:name=".activity.MainForOwnerActivity"
             android:exported="false" />
@@ -30,17 +28,7 @@
             android:name=".activity.MainForUserActivity"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
-
         <activity
-<<<<<<< Updated upstream
-=======
-            android:name=".owner_mainpage"
-            android:exported="false" />
-        <activity
->>>>>>> Stashed changes
             android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -66,9 +54,6 @@
             android:parentActivityName=".fragment.MyPageForUserFragment" />
         <activity
             android:name=".activity.JoinActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ShopJoinActivity"
