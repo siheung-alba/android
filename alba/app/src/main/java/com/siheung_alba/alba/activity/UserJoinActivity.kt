@@ -16,14 +16,16 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.ktx.database
 import com.siheung_alba.alba.R
+<<<<<<< Updated upstream:alba/app/src/main/java/com/siheung_alba/alba/activity/JoinActivity.kt
 import com.siheung_alba.alba.user.MainForUserActivity
+=======
+>>>>>>> Stashed changes:alba/app/src/main/java/com/siheung_alba/alba/activity/UserJoinActivity.kt
 import java.util.*
 
 
 
-class JoinActivity : AppCompatActivity() {
+class UserJoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth // 파이어베이스
 

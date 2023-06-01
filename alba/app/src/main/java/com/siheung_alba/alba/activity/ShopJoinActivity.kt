@@ -10,14 +10,22 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.fragment.HomeFragment
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class ShopJoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth // 파이어베이스
+    private var db = Firebase.firestore
+    private var ownerCol = db.collection("owner")
+    private val current = LocalDateTime.now()
+    private val formatter = DateTimeFormatter.ofPattern("M/d")
+    private val formatted = current.format(formatter)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         auth = Firebase.auth // 파이어베이스
@@ -98,9 +106,30 @@ class ShopJoinActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             Toast.makeText(this, "생성되었습니다.", Toast.LENGTH_LONG).show()
 
-                                val intent = Intent(this, MainForOwnerActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
+                            val data = hashMapOf(
+                                "owmerName" to editshopname,
+                                "ownerEmail" to editshopemail,
+                                "ownerPhone" to editshoptell,
+                                "ownerPwd" to editshoppassword,
+                                "ownerAddress" to editshopaddress,
+                                "ownerNumber" to editshopnum,
+                                "created_at" to formatted,
+                                "updated_at" to formatted
+                            )
+
+                            ownerCol
+                                .add(data)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "데이터가 추가되었습니다.", Toast.LENGTH_LONG).show()
+                                    val intent = Intent(this, MainForOwnerActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intent)
+                                }
+                                .addOnFailureListener {exception ->
+                                    Log.w("fail", "Error getting documents: $exception")
+                                }
+
+
 
                         } else {
                             Toast.makeText(this, "실패하였습니다.", Toast.LENGTH_LONG).show()

@@ -12,7 +12,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+<<<<<<< Updated upstream
 import com.siheung_alba.alba.user.MainForUserActivity
+=======
+>>>>>>> Stashed changes
 
 
 class LoginActivity : AppCompatActivity() {
@@ -39,20 +42,16 @@ class LoginActivity : AppCompatActivity() {
         val joinButton = findViewById<Button>(R.id.join_button)
         val shopJoinButton = findViewById<Button>(R.id.shop_join_button)
 
-
+        var flag = 0
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 textview.text = "시흥알바 사장님 로그인"
-//                startButton.setOnClickListener {
-//                    val intent = Intent(this, MainForOwnerActivity::class.java)
-//                    startActivity(intent)
-//                }
-
-            } else {
+                flag = 1
+            }
+            else {
                 textview.text = "시흥알바 로그인"
             }
         }
-
         startButton.setOnClickListener {
 
             var email = email.text.toString()
@@ -62,29 +61,30 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 
-                        val intent = Intent(this, MainForUserActivity::class.java)
-                        startActivity(intent)
+                        if (flag == 0) {
+                            val intent = Intent(this, MainForUserActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else {
+                            val intent = Intent(this, MainForOwnerActivity::class.java)
+                            startActivity(intent)
+                        }
                         Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-
-                    } else {
+                    }
+                    else {
                         Toast.makeText(this, "이메일 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
 
         joinButton.setOnClickListener {
-            val intent = Intent(this, JoinActivity::class.java)
+            val intent = Intent(this, UserJoinActivity::class.java)
             startActivity(intent)
-
         }
 
         shopJoinButton.setOnClickListener {
             val intent = Intent(this, ShopJoinActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
     }
 }

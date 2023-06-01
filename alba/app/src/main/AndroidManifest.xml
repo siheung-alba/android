@@ -58,8 +58,12 @@
             android:exported="true"
             android:parentActivityName=".user.MyPageForUserFragment" />
         <activity
+<<<<<<< Updated upstream
             android:name=".activity.JoinActivity"
             android:screenOrientation="portrait"
+=======
+            android:name=".activity.UserJoinActivity"
+>>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name=".activity.ShopJoinActivity"
