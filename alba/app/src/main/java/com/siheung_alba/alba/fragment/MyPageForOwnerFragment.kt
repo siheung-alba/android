@@ -79,7 +79,9 @@ class MyPageForOwnerFragment : Fragment() {
                             document.data["money"].toString(),
                             document.data["nation"].toString(),
                             document.data["sex"].toString(),
-                            document.data["updated_at"].toString()
+                            document.data["updated_at"].toString(),
+                            document.data["age"].toString(),
+                            document.data["extra_text"].toString()
                         )
                         itemList.add(item)
                     }

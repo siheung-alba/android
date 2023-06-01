@@ -33,6 +33,22 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_weight="0.2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showbtn"
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:background="#F3F1F1"
+                android:layout_gravity="bottom"
+                android:text="상세보기"
+                android:textSize="13dp"
+                android:textColor="#DFA700"/>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_weight="1" />
 
             <TextView
@@ -110,6 +126,42 @@
                     android:text="sex"
                     android:textSize="14dp"
                     android:textColor="#000000"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:id="@+id/ageCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_button_grey_for_condition"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="bottom"
+                    android:text="age"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
+                    android:visibility="gone"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:id="@+id/extra_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_button_grey_for_condition"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="bottom"
+                    android:text="extra text"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
+                    android:visibility="gone"/>
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
