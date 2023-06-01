@@ -29,9 +29,6 @@ class LoginActivity : AppCompatActivity() {
         var email = findViewById<EditText>(R.id.loginEmail)
         var pwd = findViewById<EditText>(R.id.loginPassword)
 
-
-
-
         val checkbox = findViewById<CheckBox>(R.id.checkbox_shop_login)
         val textview = findViewById<TextView>(R.id.login_name)
         val startButton = findViewById<Button>(R.id.startButton)

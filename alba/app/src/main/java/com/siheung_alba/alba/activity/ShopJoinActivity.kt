@@ -128,9 +128,6 @@ class ShopJoinActivity : AppCompatActivity() {
                                 .addOnFailureListener {exception ->
                                     Log.w("fail", "Error getting documents: $exception")
                                 }
-
-
-
                         } else {
                             Toast.makeText(this, "실패하였습니다.", Toast.LENGTH_LONG).show()
                             Log.e(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
@@ -138,9 +135,6 @@ class ShopJoinActivity : AppCompatActivity() {
                     }
 
             }
-
-
         }
-
     }
 }
