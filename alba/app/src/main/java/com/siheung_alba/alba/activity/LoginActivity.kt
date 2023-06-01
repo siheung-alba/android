@@ -62,8 +62,8 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 
-                val intent = Intent(this, MainForUserActivity::class.java)
-                startActivity(intent)
+                        val intent = Intent(this, MainForUserActivity::class.java)
+                        startActivity(intent)
                         Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
 
                     } else {

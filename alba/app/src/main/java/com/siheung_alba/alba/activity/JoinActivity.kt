@@ -64,10 +64,9 @@ class JoinActivity : AppCompatActivity() {
             var pwd = pwd.text.toString()
             var pwd2 = pwd2.text.toString()
             var editdateresultjoin = editdateresult.text.toString()
-            var nationspinnerjoin = nationspinner.getSelectedItem().toString();
+            var nationspinnerjoin = nationspinner.selectedItem.toString();
             /*var male = male.text.toString();
             var female = female.text.toString();*/
-
 
             // 값이 비어있는지 확인
 
@@ -122,14 +121,15 @@ class JoinActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             Toast.makeText(this, "생성되었습니다.", Toast.LENGTH_LONG).show()
 
+//
+//                            val database = Firebase.database
+//                            val myRef = database.getReference("message")
+//
+//                            myRef.setValue(email)
+
                             val intent = Intent(this, MainForUserActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
-
-                            val database = Firebase.database
-                            val myRef = database.getReference("message")
-
-                            myRef.setValue(email)
 
                         } else {
                             Toast.makeText(this, "실패하였습니다.", Toast.LENGTH_LONG).show()
