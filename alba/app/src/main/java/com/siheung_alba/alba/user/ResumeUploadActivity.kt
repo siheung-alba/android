@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.user
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,6 +14,7 @@ import com.siheung_alba.alba.databinding.ActivityResumeUploadBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+// 이력서 작성하기 페이지
 class ResumeUploadActivity : AppCompatActivity() {
 
 //    private lateinit var binding: ActivityResumeUploadBinding
@@ -55,6 +57,7 @@ class ResumeUploadActivity : AppCompatActivity() {
                 .add(data)
                 .addOnSuccessListener {
                     Toast.makeText(this, "이력서 작성이 완료되었습니다", Toast.LENGTH_SHORT).show()
+                    finish()
                 }
                 .addOnFailureListener{
                     exception ->
