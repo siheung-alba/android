@@ -57,31 +57,41 @@ class MyPageForUserFragment : Fragment() {
         val user = auth.currentUser
 //        val email = user?.email
 
+
+
         if (user != null ) {
             val email = user.email
 
             Log.d("MyPageForUserFragment", "Fetching user information for email: $email")
 
             // 유저 정보를 가져와서 텍스트뷰에 설정
-            val userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1)
-            val userInfoTextView2: TextView = view.findViewById(R.id.mypage_info_text2)
-            val userInfoTextView3: TextView = view.findViewById(R.id.mypage_info_text3)
-            val userInfoTextView4: TextView = view.findViewById(R.id.mypage_info_text4)
+            var userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1) // 이름
+            var userInfoTextView2: TextView = view.findViewById(R.id.mypage_info_text2) // 성별
+            var userInfoTextView3: TextView = view.findViewById(R.id.mypage_info_text3) // 나이
+            var userInfoTextView4: TextView = view.findViewById(R.id.mypage_info_text4) // 국적
 
-            if (email != null) {
                 db.collection("user")
-                    .document(email)
+//                    .document(email)
                     .get()
-                    .addOnSuccessListener { documentSnapshot ->
-                        val user = documentSnapshot.toObject(UserModel::class.java)
-                        user?.let {
-                            userInfoTextView1.text = "테스트"
-//                            userInfoTextView1.text = "이름: ${it.name}"
-                            userInfoTextView2.text = "성별: ${it.sex}"
-                            val age = calculateAge(it.birthday)
-                            userInfoTextView3.text = "나이: 만 $age 세"
-                            userInfoTextView4.text = "국적: ${it.nation}"
+                    .addOnSuccessListener { documents ->
+                        for(document in documents) {
+                            if(document.data["email"] == "jiji@gmail.com") { // 본인 이메일이랑 일치하는 문서 들어가기
+                                userInfoTextView1.text = document.data["name"].toString() // 이름
+                                userInfoTextView2.text = document.data["sex"].toString() // 성별
+                                userInfoTextView3.text = document.data["birthday"].toString() // 나이
+                                userInfoTextView4.text = document.data["nation"].toString() // 국적
+                            }
                         }
+
+//                        val user = documentSnapshot.toObject(UserModel::class.java)
+//                        user?.let {
+//                            userInfoTextView1.text = "테스트"
+////                            userInfoTextView1.text = "이름: ${it.name}"
+//                            userInfoTextView2.text = "성별: ${it.sex}"
+//                            val age = calculateAge(it.birthday)
+//                            userInfoTextView3.text = "나이: 만 $age 세"
+//                            userInfoTextView4.text = "국적: ${it.nation}"
+//                        }
                     }
                     .addOnFailureListener { exception ->
                         Log.e(
@@ -92,12 +102,10 @@ class MyPageForUserFragment : Fragment() {
                         // 실패 처리
                         // 예: 로그 출력 등
                     }
-            }
+
 
         }
             return view
-
-
     }
 
     private fun calculateAge(birthday: String): Int {
