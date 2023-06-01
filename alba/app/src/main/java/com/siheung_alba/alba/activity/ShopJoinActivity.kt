@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.util.Log
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -26,6 +27,12 @@ class ShopJoinActivity : AppCompatActivity() {
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ofPattern("M/d")
     private val formatted = current.format(formatter)
+
+    private fun isValidEmail(email: String): Boolean {
+        val pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         auth = Firebase.auth // 파이어베이스
@@ -72,6 +79,8 @@ class ShopJoinActivity : AppCompatActivity() {
             if(editshopnum.isEmpty()) {
                 Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
                 isGoToJoin = false
+            } else if (!isValidEmail(editshopnum)) {
+                Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
             }
 
             if(editshoptell.isEmpty()) {
@@ -82,6 +91,8 @@ class ShopJoinActivity : AppCompatActivity() {
             if(editshoppassword.isEmpty()) {
                 Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
                 isGoToJoin = false
+            } else if (editshoppassword.length <= 5) {
+                Toast.makeText(this, "6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
 
             if(editshoppasswordre.isEmpty()) {
