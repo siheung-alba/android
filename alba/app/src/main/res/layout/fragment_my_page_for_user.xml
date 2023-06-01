@@ -35,11 +35,13 @@
             <TableRow>
 
                 <TextView
+                    android:id="@+id/mypage_info_text1"
                     android:text="text1"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:id="@+id/mypage_info_text2"
                     android:text="text2"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
@@ -49,10 +51,12 @@
             <TableRow>
 
                 <TextView
+                    android:id="@+id/mypage_info_text3"
                     android:text="text3"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/mypage_info_text4"
                     android:text="text4"
                     android:textSize="20dp"
                     android:textStyle="bold"/>

@@ -38,13 +38,14 @@
             <TableRow>
 
                 <TextView
-                    android:id="@+id/userName"
+                    android:id="@+id/resume_upload_text1"
                     android:layout_height="match_parent"
                     android:text="text1"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/resume_upload_text2"
                     android:text="text2"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
@@ -53,10 +54,12 @@
 
             <TableRow>
                 <TextView
+                    android:id="@+id/resume_upload_text3"
                     android:text="text3"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/resume_upload_text4"
                     android:text="text4"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
@@ -92,9 +95,11 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="  제목을 입력하세요"
-            android:maxHeight="48dp"/>
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:maxHeight="80dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -107,12 +112,14 @@
         <EditText
             android:id="@+id/resume_career"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="85dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="  경력을 입력하세요"
-            android:maxHeight="75dp"/>
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:maxHeight="120dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -125,12 +132,14 @@
         <EditText
             android:id="@+id/resume_introduce"
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="135dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="  자신을 소개해보세요."
-            android:maxHeight="125dp"/>
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:maxHeight="300dp"/>
 
     </LinearLayout>
 
