@@ -18,6 +18,10 @@
         <activity
             android:name=".adapter.JobAdapter"
             android:exported="false" />
+
+        <activity
+            android:name=".model.JobModel"
+            android:exported="false"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld" />
@@ -26,6 +30,11 @@
             android:exported="false" />
         <activity
             android:name=".user.MainForUserActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,35 +44,19 @@
         </activity>
 
         <activity
-            android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity
             android:name=".user.CalculateSalaryActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".user.MyPageForUserFragment" />
-<!--        <activity-->
-<!--            android:name=".user.ResumeShowActivity"-->
-<!--            android:exported="false" />-->
+
         <activity
             android:name=".user.ResumeUploadActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".user.MyPageForUserFragment" />
         <activity
-<<<<<<< Updated upstream
-            android:name=".activity.JoinActivity"
-            android:screenOrientation="portrait"
-=======
             android:name=".activity.UserJoinActivity"
->>>>>>> Stashed changes
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.ShopJoinActivity"
@@ -88,12 +81,16 @@
             android:name=".fragment.HomeFragment"
             android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".activity.MainActivity" />
+            android:parentActivityName=".activity.UserJoinActivity" />
         <activity
             android:name=".fragment.MapFragment"
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".activity.MainForOwnerActivity" />
+        <activity
+            android:name=".activity.PopupActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.Popup"/>
     </application>
 
 </manifest>

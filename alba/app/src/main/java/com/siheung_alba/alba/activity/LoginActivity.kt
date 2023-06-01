@@ -12,11 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
-<<<<<<< Updated upstream
 import com.siheung_alba.alba.user.MainForUserActivity
-=======
->>>>>>> Stashed changes
-
 
 class LoginActivity : AppCompatActivity() {
 

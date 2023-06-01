@@ -17,10 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
 import com.siheung_alba.alba.R
-<<<<<<< Updated upstream:alba/app/src/main/java/com/siheung_alba/alba/activity/JoinActivity.kt
 import com.siheung_alba.alba.user.MainForUserActivity
-=======
->>>>>>> Stashed changes:alba/app/src/main/java/com/siheung_alba/alba/activity/UserJoinActivity.kt
 import java.util.*
 
 
