@@ -2,22 +2,18 @@ package com.siheung_alba.alba.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.activity.PopupActivity
-import com.siheung_alba.alba.model.JobAdapter
+import com.siheung_alba.alba.adapter.JobAdapter
 import com.siheung_alba.alba.model.JobModel
 
 

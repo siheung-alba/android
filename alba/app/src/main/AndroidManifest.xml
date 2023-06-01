@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
         <activity
-            android:name=".model.JobAdapter"
+            android:name=".adapter.JobAdapter"
             android:exported="false" />
         <!--
         <meta-data
