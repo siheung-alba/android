@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.util.Log
+import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -35,6 +36,12 @@ class UserJoinActivity : AppCompatActivity() {
     private val formatter = DateTimeFormatter.ofPattern("M/d")
     private val formatted = current.format(formatter)
 
+    private fun isValidEmail(email: String): Boolean {
+        val pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
+    }
+
+
     var dateString = ""
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -50,6 +57,9 @@ class UserJoinActivity : AppCompatActivity() {
         var editTell = findViewById<EditText>(R.id.editTell)
         var editPassword = findViewById<EditText>(R.id.editPassword)
         var editCheckPassword = findViewById<EditText>(R.id.editPassword2)
+
+
+
 
 
         // 날짜, 국적
@@ -69,7 +79,6 @@ class UserJoinActivity : AppCompatActivity() {
         var adapterNation = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nationData)
 
         nationSpinner.adapter = adapterNation
-
         // 여성 남성 값 저장
         val genderRadioGroup = findViewById<RadioGroup>(R.id.genderRadioGroup) // 성별 라디오 그룹
         var male = findViewById<RadioButton>(R.id.male) // 남성
@@ -77,8 +86,8 @@ class UserJoinActivity : AppCompatActivity() {
         var selectedGender = ""
         genderRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.male -> selectedGender = male.text.toString()
-                R.id.female -> selectedGender = female.text.toString()
+                R.id.male -> selectedGender = "남성"
+                R.id.female -> selectedGender = "여성"
             }
         }
         val startJoinButton = findViewById<Button>(R.id.startJoinButton) // 가입 버튼
@@ -90,7 +99,7 @@ class UserJoinActivity : AppCompatActivity() {
             var phone = editTell.text.toString() // 전화번호
             var password = editPassword.text.toString() // 비밀번호
             var checkPassword = editCheckPassword.text.toString() // 비밀번호 확인
-            var nation = nationSpinner.selectedItem.toString();
+            var nation = nationSpinner.selectedItem.toString(); // 국적
 
             // 값이 비어있는지 확인
 
@@ -102,6 +111,8 @@ class UserJoinActivity : AppCompatActivity() {
             if(email.isEmpty()) {
                 Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_LONG).show()
                 isGoToJoin = false
+            } else if (!isValidEmail(email)) {
+                Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
             }
 
             if(phone.isEmpty()) {
@@ -112,6 +123,8 @@ class UserJoinActivity : AppCompatActivity() {
             if(password.isEmpty()) {
                 Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show()
                 isGoToJoin = false
+            } else if (password.length <= 5) {
+                Toast.makeText(this, "6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
 
             if(checkPassword.isEmpty()) {
@@ -134,9 +147,11 @@ class UserJoinActivity : AppCompatActivity() {
                 isGoToJoin = false
             }
 
-            if(!male.isSelected || !female.isSelected) {
+
+            if(selectedGender.isEmpty()) {
                 Toast.makeText(this, "성별을 입력해주세요", Toast.LENGTH_LONG).show()
             }
+
 
             if(isGoToJoin) {
                 auth.createUserWithEmailAndPassword(email, password)
