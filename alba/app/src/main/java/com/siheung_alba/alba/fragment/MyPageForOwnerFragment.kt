@@ -11,6 +11,7 @@ import android.widget.Button
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
@@ -66,12 +67,16 @@ class MyPageForOwnerFragment : Fragment() {
         jobList?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         jobList?.adapter = adapter
 
+        val user = Firebase.auth.currentUser
+
+        val userEmail = user?.email
+
         colJobRef
             .get()
             .addOnSuccessListener { result ->
                 itemList.clear()
                 for(document in result) {
-                    if (document.data["user_id"].toString() == user_id) {
+                    if (document.data["email"].toString() == userEmail) {
                         val item = JobModel(
                             document.data["title"].toString(),
                             document.data["add_text"].toString(),

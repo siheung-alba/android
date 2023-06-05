@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
@@ -15,7 +16,6 @@ import java.time.format.DateTimeFormatter
 class OwnerUploadActivity : AppCompatActivity() {
 
     private val db = Firebase.firestore
-    private val user_id = "apple" // 유저 아이디
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ofPattern("M/d")
     private val formatted = current.format(formatter)
@@ -29,6 +29,9 @@ class OwnerUploadActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+        val user = Firebase.auth.currentUser
+
+        val userEmail = user?.email
         val storeTitle : EditText = findViewById(R.id.edt_store)
         val term : EditText = findViewById(R.id.edtTerm)
         val money : EditText = findViewById(R.id.edtMoney)
@@ -48,7 +51,7 @@ class OwnerUploadActivity : AppCompatActivity() {
                 "sex" to sex.text.toString(),
                 "nation" to nation.text.toString(),
                 "add_text" to addText.text.toString(),
-                "user_id" to user_id,
+                "email" to userEmail,
                 "created_at" to formatted,
                 "updated_at" to formatted
 

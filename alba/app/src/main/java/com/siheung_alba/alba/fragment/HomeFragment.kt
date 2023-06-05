@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.activity.LoginActivity
 import com.siheung_alba.alba.activity.PopupActivity
 import com.siheung_alba.alba.adapter.JobAdapter
 import com.siheung_alba.alba.model.JobModel
@@ -24,6 +28,8 @@ class HomeFragment : Fragment() {
     private val itemList = arrayListOf<JobModel>()
     private val adapter = JobAdapter(itemList)
 
+    private lateinit var auth: FirebaseAuth // 파이어베이스
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         return view
@@ -34,6 +40,7 @@ class HomeFragment : Fragment() {
 
         val toolbar: Toolbar = view.findViewById(R.id.homeToolbar)
         toolbar.title = "채용공고"
+        toolbar.inflateMenu(R.menu.home_menu)
 
         val jobList = view?.findViewById<RecyclerView>(R.id.job_list)
         jobList?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -80,5 +87,20 @@ class HomeFragment : Fragment() {
                 context.startActivity(intent)
             }
         })
+
+        // 로그아웃 처리
+        auth = Firebase.auth
+
+        toolbar.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                R.id.action_logout -> {
+                    Firebase.auth.signOut()
+                    startActivity(Intent(activity, LoginActivity::class.java)) // 로그인 화면으로 빠지기
+                    true
+                }
+                else -> false
+            }
+        }
+        setHasOptionsMenu(true)
     }
 }

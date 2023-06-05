@@ -9,75 +9,96 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.databinding.ActivityLoginBinding
 import com.siheung_alba.alba.user.MainForUserActivity
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth // 파이어베이스
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityLoginBinding
+    private var flag = 0
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        auth = Firebase.auth // 파이어베이스
-
+        binding = ActivityLoginBinding.inflate(layoutInflater)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
 
-        // 가입
-        var email = findViewById<EditText>(R.id.loginEmail)
-        var pwd = findViewById<EditText>(R.id.loginPassword)
+        auth = Firebase.auth
 
-        val checkbox = findViewById<CheckBox>(R.id.checkbox_shop_login)
-        val textview = findViewById<TextView>(R.id.login_name)
-        val startButton = findViewById<Button>(R.id.startButton)
-        val joinButton = findViewById<Button>(R.id.join_button)
-        val shopJoinButton = findViewById<Button>(R.id.shop_join_button)
-
-        var flag = 0
-        checkbox.setOnCheckedChangeListener { _, isChecked ->
+        binding.checkboxShopLogin.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                textview.text = "시흥알바 사장님 로그인"
+                binding.loginName.text = "시흥알바 사장님 로그인"
                 flag = 1
             }
             else {
-                textview.text = "시흥알바 로그인"
+                binding.loginName.text = "시흥알바 로그인"
             }
         }
-        startButton.setOnClickListener {
 
-            var email = email.text.toString()
-            var pwd = pwd.text.toString()
-
-            auth.signInWithEmailAndPassword(email, pwd)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-
-                        if (flag == 0) {
-                            val intent = Intent(this, MainForUserActivity::class.java)
-                            startActivity(intent)
-                        }
-                        else {
-                            val intent = Intent(this, MainForOwnerActivity::class.java)
-                            startActivity(intent)
-                        }
-                        Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Toast.makeText(this, "이메일 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
-                    }
-                }
+        binding.startButton.setOnClickListener {
+            emailLogin()
         }
 
-        joinButton.setOnClickListener {
+        binding.joinButton.setOnClickListener {
             val intent = Intent(this, UserJoinActivity::class.java)
             startActivity(intent)
         }
 
-        shopJoinButton.setOnClickListener {
+        binding.shopJoinButton.setOnClickListener {
             val intent = Intent(this, ShopJoinActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun emailLogin() {
+        if(binding.loginEmail.text.toString().isNullOrEmpty() || binding.loginPassword.text.toString().isNullOrEmpty()) {
+            Toast.makeText(this, "이메일 혹은 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+        }else {
+            signinEmail()
+        }
+    }
+    private fun signinEmail() {
+
+        auth.signInWithEmailAndPassword(binding.loginEmail.text.toString(), binding.loginPassword.text.toString())
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    when(flag) {
+                        1 -> moveMainPageForOwner(task.result?.user)
+                        0 -> moveMainPageForUser(task.result?.user)
+                        else -> Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, "잘못된 정보를 입력했거나, 계정이 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun moveMainPageForUser(user: FirebaseUser?) {
+        if(user != null) {
+            startActivity(Intent(this, MainForUserActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun moveMainPageForOwner(user: FirebaseUser?) {
+        if(user != null) {
+            startActivity(Intent(this, MainForOwnerActivity::class.java))
+            finish()
+        }
+    }
+
+    // 로그인 유지하는 기능이라는데....
+    override fun onStart() {
+        super.onStart()
+        when(flag) {
+            1 -> moveMainPageForOwner(auth?.currentUser)
+            0 -> moveMainPageForUser(auth?.currentUser)
+        }
+
     }
 }
