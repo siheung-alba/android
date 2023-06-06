@@ -15,16 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
-        <activity
-            android:name=".adapter.JobAdapter"
-            android:exported="false" />
 
-        <activity
-            android:name=".model.JobModel"
-            android:exported="false"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld" />
+            android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld-hJJ33vs" />
         <activity
             android:name=".activity.MainForOwnerActivity"
             android:exported="false" />
@@ -48,6 +42,27 @@
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".user.MyPageForUserFragment" />
+
+
+
+        <activity
+            android:name=".fragment.MyPageForOwnerFragment"
+            android:exported="true"
+            android:parentActivityName=".activity.MainForOwnerActivity"/>
+
+        <activity
+            android:name=".fragment.HomeFragment"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:parentActivityName=".activity.UserJoinActivity" />
+        <activity
+            android:name=".fragment.MapFragment"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:parentActivityName=".activity.MainForOwnerActivity" />
+
+
+
 
         <activity
             android:name=".user.ResumeUploadActivity"
@@ -77,16 +92,7 @@
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".user.MainForUserActivity" />
-        <activity
-            android:name=".fragment.HomeFragment"
-            android:screenOrientation="portrait"
-            android:exported="true"
-            android:parentActivityName=".activity.UserJoinActivity" />
-        <activity
-            android:name=".fragment.MapFragment"
-            android:screenOrientation="portrait"
-            android:exported="true"
-            android:parentActivityName=".activity.MainForOwnerActivity" />
+
         <activity
             android:name=".activity.PopupActivity"
             android:exported="false"

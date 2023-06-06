@@ -74,8 +74,8 @@ class MapFragment : Fragment() {
                         .get()
                         .addOnSuccessListener { jobDocuments ->
                             for (jobDocument in jobDocuments) {
-                                // user_id 확인
-                                if (storeDocument.data["user_id"].toString() == jobDocument.data["user_id"].toString()) {
+
+                                if (storeDocument.data["email"].toString() == jobDocument.data["email"].toString()) {
                                     count++
                                     var location = LatLng(
                                         storeDocument.data["latitude"].toString().toDouble(),

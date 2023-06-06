@@ -42,7 +42,7 @@
             <EditText
                 android:id="@+id/editName"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/input_border"
@@ -62,11 +62,11 @@
                 <EditText
                     android:id="@+id/editEmail"
                     android:layout_width="230dp"
-                    android:layout_height="55dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/input_border"
                     android:ems="10"
                     android:hint="이메일"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:paddingLeft="20dp"
                     android:text="" />
 
@@ -76,7 +76,7 @@
                     android:layout_weight="1"/>
 
                 <Button
-                    android:id="@+id/check_email_btn"
+                    android:id="@+id/checkEmailBtn"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
@@ -86,12 +86,20 @@
                     android:background="@drawable/check_exist_email_btn"/>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/checkText"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#696969"/>
+
             <EditText
                 android:id="@+id/editTell"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/input_border"
                 android:ems="11"
                 android:hint="전화번호"
@@ -102,7 +110,7 @@
             <EditText
                 android:id="@+id/editPassword"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/input_border"
@@ -116,7 +124,7 @@
             <EditText
                 android:id="@+id/editPassword2"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/input_border"
@@ -135,7 +143,7 @@
                     android:gravity="center"
                     android:id="@+id/editDateResult"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="3"
                     android:background="@drawable/input_border"
@@ -148,7 +156,7 @@
                     android:gravity="center"
                     android:id="@+id/editDate"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="7"
                     android:background="@drawable/input_border"
@@ -162,10 +170,9 @@
             <Spinner
                 android:id="@+id/nationSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/spinner_background" />
-
 
             <RadioGroup
                 android:id="@+id/genderRadioGroup"

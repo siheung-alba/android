@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -54,10 +55,9 @@ class MyPageForUserFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
 
-        val user = auth.currentUser
-//        val email = user?.email
+        val user = Firebase.auth.currentUser
 
-
+        val userEmail = user?.email
 
         if (user != null ) {
             val email = user.email
@@ -75,7 +75,7 @@ class MyPageForUserFragment : Fragment() {
                     .get()
                     .addOnSuccessListener { documents ->
                         for(document in documents) {
-                            if(document.data["email"] == "jiji@gmail.com") { // 본인 이메일이랑 일치하는 문서 들어가기
+                            if(document.data["email"] == userEmail) { // 본인 이메일이랑 일치하는 문서 들어가기
                                 userInfoTextView1.text = document.data["name"].toString() // 이름
                                 userInfoTextView2.text = document.data["sex"].toString() // 성별
                                 userInfoTextView3.text = document.data["birthday"].toString() // 나이
