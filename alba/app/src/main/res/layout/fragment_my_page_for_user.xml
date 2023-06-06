@@ -37,13 +37,14 @@
                 <TextView
                     android:id="@+id/mypage_info_text1"
                     android:text="text1"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
+                    android:paddingBottom="10dp"
                     android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/mypage_info_text2"
                     android:text="text2"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
             </TableRow>
@@ -53,12 +54,12 @@
                 <TextView
                     android:id="@+id/mypage_info_text3"
                     android:text="text3"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/mypage_info_text4"
                     android:text="text4"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
             </TableRow>
@@ -91,7 +92,8 @@
         android:orientation="vertical"
         android:layout_margin="20dp">
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/resume_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_button_grey"/>
