@@ -40,18 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="시급"
+            android:layout_marginBottom="5dp"
             android:textSize="18dp"
             android:textStyle="bold"/>
 
-<!--        <EditText-->
-<!--            android:id="@+id/setBasePayText"-->
-<!--            android:hint=" 원 "-->
-<!--            android:gravity="end|center_vertical"-->
-<!--            android:paddingEnd="6dp"-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:inputType="number"-->
-<!--            android:background="@drawable/round_button_grey"/>-->
 
         <LinearLayout
             android:layout_width="200dp"
@@ -81,12 +73,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="일일 근무시간"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/workTimeSpinner"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
@@ -94,12 +87,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="일주 근무일수"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/daySpinner"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
@@ -107,12 +101,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="월 연장 근무시간"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/extendedWorkTimeSpinner"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
@@ -121,12 +116,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="세금 적용"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/taxSpinner"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
@@ -171,8 +167,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="bottom"
-        android:text="월급은 00입니다."
+        android:text="예상되는 월급은 00원 입니다."
         android:textSize="25dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginTop="30dp"/>
 
