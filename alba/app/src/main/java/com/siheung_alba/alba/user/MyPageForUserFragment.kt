@@ -8,12 +8,17 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.user.CalculateSalaryActivity
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.adapter.ResumeAdapter
+import com.siheung_alba.alba.model.ResumeModel
 import com.siheung_alba.alba.model.UserModel
 import com.siheung_alba.alba.user.ResumeUploadActivity
 
@@ -21,6 +26,11 @@ class MyPageForUserFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
+    val user = Firebase.auth.currentUser
+    val userEmail = user?.email
+    private val colResumeRef = db.collection("resume")
+    private val itemList = arrayListOf<ResumeModel>()
+    private val adapter = ResumeAdapter(itemList)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,9 +58,19 @@ class MyPageForUserFragment : Fragment() {
         }
         setHasOptionsMenu(true)
 
+        val userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1)
+        val userInfoTextView2: TextView = view.findViewById(R.id.mypage_info_text2)
+        val userInfoTextView3: TextView = view.findViewById(R.id.mypage_info_text3)
+        val userInfoTextView4: TextView = view.findViewById(R.id.mypage_info_text4)
+
+
         // 이력서 업로드 페이지로 이동
         uploadBtn.setOnClickListener {
             val intent = Intent(activity, ResumeUploadActivity::class.java)
+            intent.putExtra("userName", userInfoTextView1.text.toString())
+            intent.putExtra("userSex", userInfoTextView2.text.toString())
+            intent.putExtra("userAge", userInfoTextView3.text.toString())
+            intent.putExtra("userNation", userInfoTextView4.text.toString())
             startActivity(intent)
         }
 
@@ -61,16 +81,15 @@ class MyPageForUserFragment : Fragment() {
             return currentYear - birthYear + 1
         }
 
-        Log.d("MyPageForUserFragment", "Fetching user information...")
+//        Log.d("MyPageForUserFragment", "Fetching user information...")
 
         auth = FirebaseAuth.getInstance()
-
         val user = auth.currentUser
 
         if (user != null) {
             val email = user.email
 
-            Log.d("MyPageForUserFragment", "Fetching user information for email: $email")
+//            Log.d("MyPageForUserFragment", "Fetching user information for email: $email")
 
             // 유저 정보를 가져와서 텍스트뷰에 설정
             var userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1) // 이름
@@ -103,7 +122,39 @@ class MyPageForUserFragment : Fragment() {
 
             }
         }
-            return view
 
+            return view
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val resumeList = view.findViewById<RecyclerView>(R.id.resume_list)
+        resumeList.layoutManager = LinearLayoutManager(requireContext())
+        resumeList.adapter = adapter
+
+        colResumeRef
+            .whereEqualTo("email", userEmail)
+            .get()
+            .addOnSuccessListener { result ->
+                itemList.clear()
+                for (document in result) {
+                    val item = ResumeModel(
+                        document.data["email"] as? String?,
+                        document.data["title"] as? String?,
+                        document.data["career"] as? String?,
+                        document.data["introduce"] as? String?,
+                        document.data["updated_at"] as? String?
+                    )
+                    itemList.add(item)
+                }
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                Log.w("MyPageForUserFragment", "Error getting documents: $exception")
+            }
+    }
+
+
+
 }

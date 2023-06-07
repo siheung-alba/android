@@ -95,13 +95,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/resume_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_button_grey"/>
+            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
-<!--        <ListView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/round_button_grey"/>-->
+
 
     </LinearLayout>
 
