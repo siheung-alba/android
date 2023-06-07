@@ -1,20 +1,21 @@
 package com.siheung_alba.alba.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.content.pm.PackageManager
+import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityLoginBinding
 import com.siheung_alba.alba.user.MainForUserActivity
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -27,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
 
         auth = Firebase.auth
 
