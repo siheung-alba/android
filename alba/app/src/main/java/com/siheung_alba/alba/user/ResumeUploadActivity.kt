@@ -1,17 +1,22 @@
 package com.siheung_alba.alba.user
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.databinding.ActivityResumeUploadBinding
+//import com.siheung_alba.alba.databinding.ActivityResumeUploadBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -38,11 +43,33 @@ class ResumeUploadActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+
 //        val userImg : ImgButton = findViewById(R.id.resume_img)  // 유저 이미지 업로드 버튼
         val title : EditText = findViewById(R.id.resume_title)  // 이력서 제목
         val career : EditText = findViewById(R.id.resume_career) // 경력
         val intro : EditText = findViewById(R.id.resume_introduce) // 자기소개서
         val done_btn: Button = findViewById(R.id.resume_done_btn)
+
+        val userNameTextView : TextView = findViewById(R.id.resume_upload_text1) // 이름
+        val userName : String = userNameTextView.text.toString()
+        val userSexTextView : TextView = findViewById(R.id.resume_upload_text2) // 성별
+        val userSex : String = userSexTextView.text.toString()
+        val userAgeTextView : TextView = findViewById(R.id.resume_upload_text3) // 나이
+        val userAge : String = userAgeTextView.text.toString()
+        val userNationTextView : TextView = findViewById(R.id.resume_upload_text4) // 국적
+        val userNation : String = userNationTextView.text.toString()
+
+        val intent = intent
+        val receivedUserName = intent.getStringExtra("userName")
+        val receivedUserSex = intent.getStringExtra("userSex")
+        val receivedUserAge = intent.getStringExtra("userAge")
+        val receivedUserNation = intent.getStringExtra("userNation")
+
+        userNameTextView.text = receivedUserName
+        userSexTextView.text = receivedUserSex
+        userAgeTextView.text = receivedUserAge
+        userNationTextView.text = receivedUserNation
+
 
 
         done_btn.setOnClickListener {
@@ -62,12 +89,15 @@ class ResumeUploadActivity : AppCompatActivity() {
                     "updated_at" to formatted
                 )
 
-
                 db.collection("resume")
                     .add(data)
                     .addOnSuccessListener {
                         Toast.makeText(this, "이력서 작성이 완료되었습니다", Toast.LENGTH_SHORT).show()
-                        finish()
+
+//                        // 이력서 작성이 완료되면 유저 마이페이지 액티비티로 돌아가기 위해 Intent를 생성하여 전환
+//                        val intent = Intent(this, MyPageForUserFragment::class.java)
+//                        startActivity(intent)
+                        finish() // 현재 액티비티 종료
                     }
                     .addOnFailureListener { exception ->
                         // 실패할 경우
