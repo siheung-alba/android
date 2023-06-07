@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="extended_work_time_array">
-        <item>선택하세요.</item>
+        <item>해당 없음 </item>
         <item>1시간</item>
         <item>1시간 30분</item>
         <item>2시간</item>
