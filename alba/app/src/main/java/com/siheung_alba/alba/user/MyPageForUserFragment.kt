@@ -81,7 +81,7 @@ class MyPageForUserFragment : Fragment() {
             return currentYear - birthYear + 1
         }
 
-        Log.d("MyPageForUserFragment", "Fetching user information...")
+//        Log.d("MyPageForUserFragment", "Fetching user information...")
 
 //        Log.d("MyPageForUserFragment", "Fetching user information...")
 
@@ -124,7 +124,39 @@ class MyPageForUserFragment : Fragment() {
 
             }
         }
-            return view
 
+            return view
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val resumeList = view.findViewById<RecyclerView>(R.id.resume_list)
+        resumeList.layoutManager = LinearLayoutManager(requireContext())
+        resumeList.adapter = adapter
+
+        colResumeRef
+            .whereEqualTo("email", userEmail)
+            .get()
+            .addOnSuccessListener { result ->
+                itemList.clear()
+                for (document in result) {
+                    val item = ResumeModel(
+                        document.data["email"] as? String?,
+                        document.data["title"] as? String?,
+                        document.data["career"] as? String?,
+                        document.data["introduce"] as? String?,
+                        document.data["updated_at"] as? String?
+                    )
+                    itemList.add(item)
+                }
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                Log.w("MyPageForUserFragment", "Error getting documents: $exception")
+            }
+    }
+
+
+
 }
