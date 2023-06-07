@@ -67,6 +67,7 @@ class OwnerUploadActivity : AppCompatActivity() {
                     android.util.Log.w("OwnerUploadActivity", "Error getting documents: $exception")
                 }
 
+            finish()
         }
 
     }
