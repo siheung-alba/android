@@ -78,6 +78,7 @@ class CalculateSalaryActivity : AppCompatActivity() {
 
             binding.calculateResult.text = "예상 금액: $formattedTaxedPay 원"
         }
+    }
 
 
         // 초기화 버튼
