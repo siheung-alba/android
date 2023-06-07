@@ -19,14 +19,12 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
-        </LinearLayout>
+        </LinearLayout><!--
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="25"
-            android:fillViewport="true">
-
+            android:fillViewport="true">-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,14 +117,23 @@
 
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/job_list"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/job_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"/>
+
+                </ScrollView>
+
             </LinearLayout>
 
-
-        </ScrollView>
+<!--
+        </ScrollView>-->
 
     </LinearLayout>
 
