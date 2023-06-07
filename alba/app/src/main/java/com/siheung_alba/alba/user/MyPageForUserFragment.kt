@@ -83,7 +83,7 @@ class MyPageForUserFragment : Fragment() {
             return currentYear - birthYear + 1
         }
 
-        Log.d("MyPageForUserFragment", "Fetching user information...")
+//        Log.d("MyPageForUserFragment", "Fetching user information...")
 
 //        Log.d("MyPageForUserFragment", "Fetching user information...")
 
@@ -126,7 +126,9 @@ class MyPageForUserFragment : Fragment() {
 
             }
         }
+
             return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
