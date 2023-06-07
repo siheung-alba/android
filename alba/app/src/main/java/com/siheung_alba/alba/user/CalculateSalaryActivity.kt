@@ -71,16 +71,33 @@ class CalculateSalaryActivity : AppCompatActivity() {
             val formattedTaxedPay = DecimalFormat("###,###.##").format(taxedPay)
 
 
-            Log.d("CalculateSalaryActivity", "workHours: $workHours")
-            Log.d("CalculateSalaryActivity", "WorkDays: $workDays")
-            Log.d("CalculateSalaryActivity", "basePay: $basePay")
-            Log.d("CalculateSalaryActivity", "extendedWork: $extendedWork")
-            Log.d("CalculateSalaryActivity", "totalPay: $totalPay")
-            Log.d("CalculateSalaryActivity", "taxRate: $taxRate")
-            Log.d("CalculateSalaryActivity", "taxedPay: $taxedPay")
+//            Log.d("CalculateSalaryActivity", "workHours: $workHours")
+//            Log.d("CalculateSalaryActivity", "WorkDays: $workDays")
+//            Log.d("CalculateSalaryActivity", "taxRate: $taxRate")
+//            Log.d("CalculateSalaryActivity", "taxedPay: $taxedPay")
 
             binding.calculateResult.text = "예상 금액: $formattedTaxedPay 원"
         }
+
+
+        // 초기화 버튼
+
+        // 초기화 버튼 클릭 이벤트 처리
+        binding.resetBtn.setOnClickListener {
+            // 시급 입력란 초기화
+            binding.setBasePayText.text = null
+
+            // 스피너 초기화
+            val defaultPosition = 0
+            binding.workTimeSpinner.setSelection(defaultPosition)
+            binding.daySpinner.setSelection(defaultPosition)
+            binding.extendedWorkTimeSpinner.setSelection(defaultPosition)
+            binding.taxSpinner.setSelection(defaultPosition)
+        }
+
+
+
+
     }
 
     // 주휴수당 계산기
