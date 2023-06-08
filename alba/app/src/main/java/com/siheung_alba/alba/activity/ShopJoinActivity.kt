@@ -7,12 +7,13 @@ import android.content.Intent
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.databinding.ActivityShopJoinBinding
-import com.siheung_alba.alba.kakao_map_api.AddressApiActivity
+import com.siheung_alba.alba.address.AddressApiActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -51,14 +52,15 @@ class ShopJoinActivity : AppCompatActivity() {
             isChecked()
         }
 
+        binding.editshopAddress.isFocusable = false
         //이용약관 버튼
         binding.check.setOnClickListener{
             val intent = Intent(this, CheckPageActivity::class.java)
             startActivity(intent)
         binding.editshopAddress.setOnClickListener {
-            startActivity(Intent(this, AddressApiActivity::class.java))
+            val intent = Intent(this, AddressApiActivity::class.java)
+            getSearchResult.launch(intent)
         }
-    }
 
 
         }
@@ -78,7 +80,7 @@ class ShopJoinActivity : AppCompatActivity() {
             // 값이 비어있는지 확인
             checkValue()
 
-            if(noBlank) {
+            if (noBlank) {
                 val data = hashMapOf(
                     "owmerName" to shopName, // 매장 이름
                     "ownerEmail" to shopEmail, // 사장님 이메일
@@ -92,8 +94,17 @@ class ShopJoinActivity : AppCompatActivity() {
                 makeAccount(data)
             }
         }
+    }
 
-
+    private val getSearchResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            if (data != null) {
+                val resultData = data.getStringExtra("data")
+                binding.editshopAddress.setText(resultData)
+            }
+        }
+    }
 
     private fun isValidEmail(email: String): Boolean {
         val pattern = Patterns.EMAIL_ADDRESS
