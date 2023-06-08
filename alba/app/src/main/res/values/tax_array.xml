@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tax_array">
+        <item>적용안함</item>
+        <item>소득세 (3.3 %)</item>
+        <item>4대보험 (9.32 %)</item>
+    </string-array>
+    <item name="taxSpinner" type="id" />
+</resources>

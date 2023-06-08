@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="work_time_array">
-        <item>선택하세요.</item>
-        <item>30분</item>
+        <item>선택하세요</item>
         <item>1시간</item>
         <item>1시간 30분</item>
         <item>2시간</item>
@@ -50,6 +49,5 @@
         <item>23시간</item>
         <item>23시간 30분</item>
         <item>24시간</item>
-        <item>24시간 30분</item>
     </string-array>
 </resources>

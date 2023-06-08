@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="day_array">
-        <item>선택하세요.</item>
+        <item>선택하세요</item>
         <item>1일</item>
         <item>2일</item>
         <item>3일</item>
@@ -9,7 +9,6 @@
         <item>5일</item>
         <item>6일</item>
         <item>7일</item>
-        <item>매일</item>
     </string-array>
 
 </resources>

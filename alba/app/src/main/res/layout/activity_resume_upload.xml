@@ -41,13 +41,13 @@
                     android:id="@+id/resume_upload_text1"
                     android:layout_height="match_parent"
                     android:text="text1"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/resume_upload_text2"
                     android:text="text2"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
             </TableRow>
@@ -56,12 +56,12 @@
                 <TextView
                     android:id="@+id/resume_upload_text3"
                     android:text="text3"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/resume_upload_text4"
                     android:text="text4"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
             </TableRow>
 
