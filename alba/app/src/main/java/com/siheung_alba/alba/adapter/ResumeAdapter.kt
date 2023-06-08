@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.siheung_alba.alba.R
 import com.siheung_alba.alba.model.ResumeModel
+import com.siheung_alba.alba.user.ResumeShowActivity
+
+//import com.siheung_alba.alba.user.ResumeShowActivity
 
 class ResumeAdapter(var itemList: ArrayList<ResumeModel>) : RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder>() {
 
@@ -25,10 +29,13 @@ class ResumeAdapter(var itemList: ArrayList<ResumeModel>) : RecyclerView.Adapter
         holder.introduce.text = item.introduce
         holder.created.text = item.updated_at
 
-        // 아이템 클릭 이벤트 처리
         holder.itemView.setOnClickListener {
-            showButtonClickListener?.onShowButtonClick(item)
+            // 클릭 시 이력서 상세 페이지로 이동
+            val intent = Intent(holder.itemView.context, ResumeShowActivity::class.java)
+            intent.putExtra("resume", item) // 이력서 정보 전달
+            holder.itemView.context.startActivity(intent)
         }
+
     }
 
 
