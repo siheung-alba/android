@@ -19,6 +19,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld-hJJ33vs" />
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="af80c44eaf5a956fd07fcf76b0b627c1"/>
         <activity
             android:name=".activity.MainForOwnerActivity"
             android:exported="false" />
