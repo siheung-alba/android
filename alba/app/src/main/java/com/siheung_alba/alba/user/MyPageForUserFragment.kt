@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.firestore.Query
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +22,7 @@ import com.siheung_alba.alba.adapter.ResumeAdapter
 import com.siheung_alba.alba.model.ResumeModel
 import com.siheung_alba.alba.model.UserModel
 import com.siheung_alba.alba.user.ResumeUploadActivity
+import java.util.*
 
 class MyPageForUserFragment : Fragment() {
 
@@ -77,7 +79,7 @@ class MyPageForUserFragment : Fragment() {
         // 나이 계산 함수
         fun calculateAge(birthday: String): Int {
             val birthYear = birthday.split("/")[0].toInt()
-            val currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
+            val currentYear = Calendar.getInstance().get(Calendar.YEAR)
             return currentYear - birthYear + 1
         }
 
@@ -137,6 +139,7 @@ class MyPageForUserFragment : Fragment() {
 
         colResumeRef
             .whereEqualTo("email", userEmail)
+            .orderBy("updated_at", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
                 itemList.clear()
@@ -156,6 +159,8 @@ class MyPageForUserFragment : Fragment() {
                 Log.w("MyPageForUserFragment", "Error getting documents: $exception")
             }
     }
+
+
 
 
 
