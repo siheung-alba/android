@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.content.Intent
 import android.util.Log
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityShopJoinBinding
+import com.siheung_alba.alba.kakao_map_api.AddressApiActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -57,6 +55,10 @@ class ShopJoinActivity : AppCompatActivity() {
         binding.check.setOnClickListener{
             val intent = Intent(this, CheckPageActivity::class.java)
             startActivity(intent)
+        binding.editshopAddress.setOnClickListener {
+            startActivity(Intent(this, AddressApiActivity::class.java))
+        }
+    }
 
 
         }
@@ -90,7 +92,8 @@ class ShopJoinActivity : AppCompatActivity() {
                 makeAccount(data)
             }
         }
-    }
+
+
 
     private fun isValidEmail(email: String): Boolean {
         val pattern = Patterns.EMAIL_ADDRESS
