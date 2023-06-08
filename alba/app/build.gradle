@@ -38,6 +38,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '7.0'
+    }
 }
 
 dependencies {
@@ -71,3 +75,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 }
+
+tasks.register("prepareKotlinBuildScriptModel"){}

@@ -124,7 +124,7 @@ class UserJoinActivity : AppCompatActivity() {
             Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
         } else if (password.length <= 5) {
-            Toast.makeText(this, "6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "비밀번호 6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
         }
         if(checkPassword.isEmpty()) {
             Toast.makeText(this, "비밀번호 재입력을 입력해주세요.", Toast.LENGTH_LONG).show()
