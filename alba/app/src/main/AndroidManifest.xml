@@ -79,13 +79,16 @@
             android:exported="false" />
         <activity
             android:name=".activity.OwnerUploadActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".fragment.MyPageForOwnerFragment" />
         <activity
             android:name=".activity.OwnerModifyActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.OwnerResumeActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".user.MyPageForUserFragment"
@@ -95,8 +98,13 @@
 
         <activity
             android:name=".activity.PopupActivity"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:theme="@style/AppTheme.Popup"/>
+        <activity android:name=".user.ResumeShowActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:parentActivityName=".user.MyPageForUserFragment"/>
     </application>
 
 </manifest>

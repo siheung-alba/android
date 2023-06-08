@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ResumeShowActivity">
+    tools:context=".user.ResumeShowActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,12 +34,12 @@
                     android:id="@+id/userName"
                     android:layout_height="match_parent"
                     android:text="text1"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:text="text2"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
             </TableRow>
@@ -47,11 +47,11 @@
             <TableRow>
                 <TextView
                     android:text="text3"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
                 <TextView
                     android:text="text4"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
             </TableRow>
 
@@ -80,56 +80,65 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_update_title"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="  제목을 입력하세요"
-            android:maxHeight="48dp"/>
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:maxHeight="80dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="경력"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_update_career"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="85dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:layout_marginBottom="10dp"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="  경력을 입력하세요"
-            android:maxHeight="75dp"/>
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:maxHeight="120dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="자기소개서"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_update_introduce"
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="135dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="  자신을 소개해보세요."
-            android:maxHeight="125dp"/>
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:maxHeight="300dp"/>
 
     </LinearLayout>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:stretchColumns="*">
 
         <TableRow>
