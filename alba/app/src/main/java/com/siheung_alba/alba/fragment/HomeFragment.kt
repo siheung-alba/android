@@ -114,8 +114,6 @@ class HomeFragment : Fragment() {
 
                 saveApplyData(resumeId, email, jobEmail, jobId)
 
-                //jobTitle은 inent로 보내서 화면에 띄우기
-
                 val content = requireContext()
                 val intent = Intent(context, PopupActivity::class.java)
                 intent.putExtra("title", item.jobTitle)
@@ -173,19 +171,18 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    //apply컬렉션에 resume_id, job_id, 현재 로그인 된 email. owner 이메일 저장
     private fun saveApplyData(
         resumeId: String?,
         email: String?,
-        jobEmail: String?,
-        jobId: String?
+        jobId: String?,
+        jobEmail: String?
     ) {
         val applyDate = hashMapOf(
             "resume_id" to resumeId,
             "applicant" to email,
-            "owner" to jobEmail,
-            "job_id" to jobId
-        )
+            "job_id" to jobId,
+            "owner" to jobEmail
+            )
         val applyCollection = db.collection("apply")
         applyCollection.add(applyDate)
             .addOnSuccessListener { documentReference ->

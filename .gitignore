@@ -6,3 +6,7 @@ alba/app/src/main/AndroidManifest.xml
 alba/app/src/main/java/com/siheung_alba/alba/activity/MainActivity.kt
 
 alba/app/src/main/res/layout/fragment_home.xml
+
+alba/app/src/main/java/com/siheung_alba/alba/adapter/JobAdapter.kt
+
+alba/app/src/main/java/com/siheung_alba/alba/fragment/HomeFragment.kt

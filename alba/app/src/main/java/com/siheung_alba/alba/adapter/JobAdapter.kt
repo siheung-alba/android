@@ -141,5 +141,7 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
             .addOnFailureListener{exception ->
                 callback(null)
             }
-    }
+
+        }
+
 }

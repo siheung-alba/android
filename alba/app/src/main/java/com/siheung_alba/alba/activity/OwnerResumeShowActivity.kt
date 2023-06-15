@@ -41,7 +41,7 @@ class OwnerResumeShowActivity : AppCompatActivity() {
                     binding.career.text = career
                     binding.introduce.text = introduce
 
-                        Log.e("check", "resume_id:${resume_id}, title:${title}, career:${career}, introduce:${introduce}")
+                    Log.e("check", "resume_id:${resume_id}, title:${title}, career:${career}, introduce:${introduce}")
                     }
 
                     else {

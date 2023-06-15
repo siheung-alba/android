@@ -48,7 +48,8 @@ class PopupActivity : Activity() {/*
         val extratext = intent.getStringExtra("extratext")*/
 
         // 정보를 해당 TextView에 설정
-        titleTextView.text = title/*
+        titleTextView.text = title
+    /*
         addtextTextView.text = addtext
         moneyTextView.text = money
         termTextView.text = term
