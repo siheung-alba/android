@@ -2,12 +2,12 @@ package com.siheung_alba.alba.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -15,10 +15,14 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.activity.DetailActivity
 import com.siheung_alba.alba.activity.LoginActivity
 import com.siheung_alba.alba.activity.PopupActivity
+import com.siheung_alba.alba.activity.ResumePopupActivity
 import com.siheung_alba.alba.adapter.JobAdapter
+import com.siheung_alba.alba.adapter.ResumeAdapter
 import com.siheung_alba.alba.model.JobModel
+import com.siheung_alba.alba.model.ResumeModel
 
 
 class HomeFragment : Fragment() {
@@ -26,11 +30,19 @@ class HomeFragment : Fragment() {
     private val db = Firebase.firestore
     private val colJobRef = db.collection("job")
     private val itemList = arrayListOf<JobModel>()
-    private val adapter = JobAdapter(itemList)
+    private val jobadapter = JobAdapter(itemList)
+
+    private val resumecollection = db.collection("resume")
+    private val reitemList = arrayListOf<ResumeModel>()
+    private val resumeadapter = ResumeAdapter(reitemList)
 
     private lateinit var auth: FirebaseAuth // 파이어베이스
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         return view
     }
@@ -43,14 +55,15 @@ class HomeFragment : Fragment() {
         toolbar.inflateMenu(R.menu.home_menu)
 
         val jobList = view?.findViewById<RecyclerView>(R.id.job_list)
-        jobList?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        jobList?.adapter = adapter
+        jobList?.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        jobList?.adapter = jobadapter
 
         colJobRef
             .get()
             .addOnSuccessListener { result ->
                 itemList.clear()
-                for(document in result) {
+                for (document in result) {
                     val item = JobModel(
                         document.data["title"].toString(),
                         document.data["add_text"].toString(),
@@ -60,21 +73,23 @@ class HomeFragment : Fragment() {
                         document.data["sex"].toString(),
                         document.data["updated_at"].toString(),
                         document.data["age"].toString(),
-                        document.data["extra_text"].toString()
+                        document.data["extra_text"].toString(),
+                        document.data["job_id"].toString(),
+                        document.data["email"].toString()
                     )
                     itemList.add(item)
 
                 }
-                adapter.notifyDataSetChanged() // 리사이클러 뷰 갱신
+                jobadapter.notifyDataSetChanged() // 리사이클러 뷰 갱신
             }
             .addOnFailureListener { exception ->
                 android.util.Log.w("MainActivity", "Error getting documents: $exception")
             }
 
-        adapter.setOnShowButtonClickListener(object : JobAdapter.OnShowButtonClickListener {
+        jobadapter.setOnShowButtonClickListener(object : JobAdapter.OnShowButtonClickListener {
             override fun onShowButtonClick(item: JobModel) {
                 val context = requireContext()
-                val intent = Intent(context, PopupActivity::class.java)
+                val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra("title", item.jobTitle)
                 intent.putExtra("addtext", item.jobAddtext)
                 intent.putExtra("money", item.jobMoney)
@@ -88,19 +103,97 @@ class HomeFragment : Fragment() {
             }
         })
 
+        jobadapter.setOnApplyButtonClickListener(object : JobAdapter.OnApplyButtonClickListener {
+            override fun onApplyButtonClick(
+                resumeId: String?,
+                email: String?,
+                jobEmail: String?,
+                jobId: String?,
+                item: JobModel
+            ) {
+
+                saveApplyData(resumeId, email, jobEmail, jobId)
+
+                //jobTitle은 inent로 보내서 화면에 띄우기
+
+                val content = requireContext()
+                val intent = Intent(context, PopupActivity::class.java)
+                intent.putExtra("title", item.jobTitle)
+
+                /*val intent = Intent(context, ResumePopupActivity::class.java)
+                intent.putExtra("title", item.jobTitle)
+                intent.putExtra("email", email)
+                intent.putExtra("jobId", jobId)
+                intent.putExtra("jobEmail", jobEmail)*/
+
+                content.startActivity(intent)
+            }
+        })
+/*
+
+        resumeadapter.setOnChoiceButtonClickListener(object : ResumeAdapter.OnChoiceButtonClickListener{
+            override fun onChoiceButtonClick(
+                resumeId: String?
+            ) {
+
+                val intent = intent
+                val title = intent.getStringExtra("title")
+                val email = intent.getStringExtra("email")
+                val jobId = intent.getStringExtra("jobId")
+                val jobEmail = intent.getStringExtra("jobEmail")
+
+                saveApplyData(resumeId, email, jobEmail, jobId)
+
+                val content = requireContext()
+                val intent = Intent(context, PopupActivity::class.java)
+                intent.putExtra("title", item.jobTitle)
+                intent.putExtra("email", email)
+                intent.putExtra("jobId", jobId)
+                intent.putExtra("jobEmail", jobEmail)
+
+                content.startActivity(intent)
+            }
+        })
+*/
+
         // 로그아웃 처리
         auth = Firebase.auth
 
         toolbar.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.action_logout -> {
                     Firebase.auth.signOut()
                     startActivity(Intent(activity, LoginActivity::class.java)) // 로그인 화면으로 빠지기
                     true
                 }
+
                 else -> false
             }
         }
         setHasOptionsMenu(true)
+    }
+
+    //apply컬렉션에 resume_id, job_id, 현재 로그인 된 email. owner 이메일 저장
+    private fun saveApplyData(
+        resumeId: String?,
+        email: String?,
+        jobEmail: String?,
+        jobId: String?
+    ) {
+        val applyDate = hashMapOf(
+            "resume_id" to resumeId,
+            "applicant" to email,
+            "owner" to jobEmail,
+            "job_id" to jobId
+        )
+        val applyCollection = db.collection("apply")
+        applyCollection.add(applyDate)
+            .addOnSuccessListener { documentReference ->
+                Log.e("apply", "Apply data saved with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.e("apply", "Error saving apply data", e)
+            }
+
     }
 }

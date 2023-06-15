@@ -1,82 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.OwnerResumeActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/resume_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-        <TextView
+     <!--   <TextView
+            android:id="@+id/text"
+            android:text="지원된 이력서"
+            android:gravity="left"
+            android:textSize="26dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>-->
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/ownerResume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/home_underbar"
-            android:padding="20dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
-            android:text="지원 이력서 열람"
-            android:textColor="#000000"
-            android:textSize="25dp" />
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/resume_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="55dp"
-        android:background="#F3F1F1"
-        android:gravity="center_vertical"
-        android:text="   김00 / 메가커피 성실한 알바"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/resume_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/apply_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:listitem="@layout/owner_resume_item_layout" />
 
-    <TextView
-        android:id="@+id/resume_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="55dp"
-        android:background="#F3F1F1"
-        android:gravity="center_vertical"
-        android:text="   김00 / 메가커피 성실한 알바"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/resume_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resume_1" />
-
-    <TextView
-        android:id="@+id/resume_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="366dp"
-        android:background="#F3F1F1"
-        android:gravity="center_vertical"
-        android:text="   김00 / 메가커피 성실한 알바"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resume_2" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -9,5 +9,7 @@ class JobModel(
     var jobSex: String?,
     var updatedAt: String?,
     var jobAge: String?,
-    var jobExtratext:String?
+    var jobExtratext:String?,
+    var job_id:String?,
+    var email:String?,
 )
