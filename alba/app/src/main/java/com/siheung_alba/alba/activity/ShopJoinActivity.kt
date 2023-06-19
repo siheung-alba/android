@@ -53,6 +53,14 @@ class ShopJoinActivity : AppCompatActivity() {
             isChecked()
         }
 
+        //이용약관 버튼
+        binding.check.setOnClickListener{
+            val intent = Intent(this, CheckPageActivity::class.java)
+            startActivity(intent)
+
+
+        }
+
 
         binding.startButton.setOnClickListener {
 
@@ -131,6 +139,10 @@ class ShopJoinActivity : AppCompatActivity() {
         if(shopAddress.isEmpty()) {
             Toast.makeText(this, "매장주소를 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
+        }
+
+        if(!binding.checkBtn.isChecked) {
+            Toast.makeText(this, "이용약관 승인이 안되었습니다.", Toast.LENGTH_LONG).show()
         }
     }
     private fun isChecked() {

@@ -15,72 +15,68 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.CheckPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adapter.OwnerEditAdapter"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_VYrvozIg50vkm9k0pHaZkld-hJJ33vs" />
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="af80c44eaf5a956fd07fcf76b0b627c1"/>
+            android:value="af80c44eaf5a956fd07fcf76b0b627c1" />
+
         <activity
             android:name=".activity.MainForOwnerActivity"
             android:exported="false" />
         <activity
             android:name=".user.MainForUserActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".user.CalculateSalaryActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".user.MyPageForUserFragment" />
-
-
-
+            android:parentActivityName=".user.MyPageForUserFragment"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".fragment.MyPageForOwnerFragment"
             android:exported="true"
-            android:parentActivityName=".activity.MainForOwnerActivity"/>
-
+            android:parentActivityName=".activity.MainForOwnerActivity" />
         <activity
             android:name=".fragment.HomeFragment"
-            android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".activity.UserJoinActivity" />
+            android:parentActivityName=".activity.UserJoinActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".fragment.MapFragment"
-            android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".activity.MainForOwnerActivity" />
-
-
-
-
+            android:parentActivityName=".activity.MainForOwnerActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user.ResumeUploadActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".user.MyPageForUserFragment" />
+            android:parentActivityName=".user.MyPageForUserFragment"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.UserJoinActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ShopJoinActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.OwnerUploadActivity"
             android:exported="true"
@@ -92,15 +88,17 @@
             android:name=".activity.OwnerResumeActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.ShopEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".user.MyPageForUserFragment"
-            android:screenOrientation="portrait"
             android:exported="true"
-            android:parentActivityName=".user.MainForUserActivity" />
-
+            android:parentActivityName=".user.MainForUserActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PopupActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.Popup"/>
+            android:theme="@style/AppTheme.Popup" />
     </application>
 
 </manifest>
