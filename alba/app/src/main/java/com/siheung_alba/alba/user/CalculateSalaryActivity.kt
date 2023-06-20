@@ -104,27 +104,6 @@ class CalculateSalaryActivity : AppCompatActivity() {
 
     }
 
-
-        // 초기화 버튼
-
-        // 초기화 버튼 클릭 이벤트 처리
-        binding.resetBtn.setOnClickListener {
-            // 시급 입력란 초기화
-            binding.setBasePayText.text = null
-
-            // 스피너 초기화
-            val defaultPosition = 0
-            binding.workTimeSpinner.setSelection(defaultPosition)
-            binding.daySpinner.setSelection(defaultPosition)
-            binding.extendedWorkTimeSpinner.setSelection(defaultPosition)
-            binding.taxSpinner.setSelection(defaultPosition)
-        }
-
-
-
-
-    }
-
     // 주휴수당 계산기
     private fun calculateHolidayAllowance(weekWork: Float, basePay: Float): Float {
         val weeklyWorkHours = 40.0f
@@ -192,4 +171,3 @@ class CalculateSalaryActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
-
