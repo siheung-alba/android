@@ -62,4 +62,3 @@ class PopupActivity : Activity() {
         finish()
     }
 }
-

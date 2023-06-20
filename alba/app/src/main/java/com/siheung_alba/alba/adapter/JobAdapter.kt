@@ -1,25 +1,18 @@
 package com.siheung_alba.alba.adapter
 
-import android.util.Log
 import com.siheung_alba.alba.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.model.JobModel
-import com.siheung_alba.alba.model.ResumeModel
 
 
-class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+class JobAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     public var showButtonClickListener: OnShowButtonClickListener? = null
-    public var applyButtonClickListener:OnApplyButtonClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobAdapter.JobViewHolder {
 
@@ -28,6 +21,7 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
     }
 
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
+
         holder.title.text = itemList[position].jobTitle
         holder.add_text.text = itemList[position].jobAddtext
         holder.money.text = itemList[position].jobMoney
@@ -40,35 +34,6 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
 
         holder.showButton.setOnClickListener {
             showButtonClickListener?.onShowButtonClick(itemList[position])
-        }
-        holder.applyButton.setOnClickListener {
-            val loggedInEmail = getCurrentLoggedInEmail()
-
-            if(loggedInEmail != null){
-                getOtherInfoByEmail(loggedInEmail){resumeId ->
-                    if(resumeId != null){
-                        applyButtonClickListener?.onApplyButtonClick(
-                            resumeId,
-                            loggedInEmail,
-                            itemList[position].email,
-                            itemList[position].job_id,
-                            itemList[position]
-                        )
-
-                    }else{
-                        Log.e("check", "Unable to get resume ID")
-                    }
-                }
-            }else{
-                Log.e("check", "Unable to get logged-in email")
-
-            }
-          /*  applyButtonClickListener?.onApplyButtonClick(
-                loggedInEmail,
-                itemList[position].email,
-                itemList[position].job_id,
-                itemList[position]
-            )*/
         }
     }
 
@@ -84,19 +49,6 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         fun onShowButtonClick(item: JobModel)
     }
 
-    public fun setOnApplyButtonClickListener(listener: OnApplyButtonClickListener) {
-        applyButtonClickListener = listener
-    }
-
-    public interface OnApplyButtonClickListener {
-        fun onApplyButtonClick(
-            resumeId: String?,
-            email: String?,
-            jobEmail: String?,
-            jobId: String?,
-            item:JobModel
-        )
-    }
 
     inner class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -111,35 +63,5 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         var extra_text: TextView = itemView.findViewById(R.id.extra_text)
 
         val showButton: Button = itemView.findViewById(R.id.showbtn)
-        val applyButton: Button = itemView.findViewById(R.id.applyToBtn)
     }
-
-    private fun getCurrentLoggedInEmail(): String?{
-        val user = Firebase.auth.currentUser
-        return user?.email
-    }
-
-        private fun getOtherInfoByEmail(email: String, callback: (String?) -> Unit){
-            val db = Firebase.firestore
-            val resumeCollection = db.collection("resume")
-            val query = resumeCollection.whereEqualTo("email", email)
-
-            query.get()
-                .addOnSuccessListener { documents ->
-                    if(!documents.isEmpty){
-                        for(document in documents) {
-                            val resumeId = document.getString("resume_id")
-                            callback(resumeId)
-
-
-                        }
-                    }else{
-                        callback(null)
-
-                    }
-                }
-                .addOnFailureListener{exception ->
-                    callback(null)
-                }
-        }
 }
