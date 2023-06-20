@@ -77,6 +77,7 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
         detail.setText(jobExtratextEdit)
 
 
+
         // 수정버튼 클릭시 이력서 업데이트
         val checkJobBtn: Button = findViewById(R.id.checkJobBtn)
         checkJobBtn.setOnClickListener {
@@ -158,6 +159,42 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
                     Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
                 }*/
         }
+
+        // 삭제버튼 클릭시
+        val deleteJobBtn: Button = findViewById(R.id.deleteJobBtn)
+        deleteJobBtn.setOnClickListener {
+
+            val collectionRef = db.collection("job")
+
+
+            collectionRef.document(jobId!!)
+                .delete()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "이력서가 성공적으로 삭제되었습니다", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("OwnerResumeActivity", "Error deleting resume: $exception")
+                    Toast.makeText(this, "이력서 삭제에 실패했습니다", Toast.LENGTH_SHORT).show()
+                }
+
+
+
+
+
+            /*db.collection("job")
+                .document(jobId!!)
+                .update(OwnerData)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("OwnerResumeActivity", "Error updating resume: $exception")
+                    Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
+                }*/
+        }
+
 
 
     }
