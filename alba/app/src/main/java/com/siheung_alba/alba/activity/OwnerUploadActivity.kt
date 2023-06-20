@@ -57,6 +57,7 @@ class OwnerUploadActivity : AppCompatActivity() {
                 "add_text" to addText.text.toString(),
                 "extra_text" to detail.text.toString(),
                 "email" to userEmail,
+                /*"job_id" to Math.random(),*/
                 "created_at" to formatted,
                 "updated_at" to formatted
 

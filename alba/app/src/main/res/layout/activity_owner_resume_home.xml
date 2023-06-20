@@ -118,7 +118,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btnPostJob"
+                android:id="@+id/checkJobBtn"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/finish_button"
