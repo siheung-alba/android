@@ -28,14 +28,15 @@ class ResumeAdapter(var itemList: ArrayList<ResumeModel>) : RecyclerView.Adapter
         holder.introduce.text = item.introduce
         holder.created.text = item.updated_at
 
-        holder.itemView.setOnClickListener {
-            // 클릭 시 이력서 상세 페이지로 이동
-            val intent = Intent(holder.itemView.context, ResumeShowActivity::class.java)
-            intent.putExtra("title", item.title)
-            intent.putExtra("introduce", item.introduce) // 수정된 부분
-            intent.putExtra("created_at", item.updated_at) // 이력서 정보 전달
-            holder.itemView.context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener {
+//            // 클릭 시 이력서 상세 페이지로 이동
+//            showButtonClickListener?.onShowButtonClick(item)
+//            val intent = Intent(holder.itemView.context, ResumeShowActivity::class.java)
+//            intent.putExtra("title", item.title)
+//            intent.putExtra("introduce", item.introduce) // 수정된 부분
+//            intent.putExtra("created_at", item.updated_at) // 이력서 정보 전달
+//            holder.itemView.context.startActivity(intent)
+//        }
 
         holder.itemView.setOnClickListener {
             showButtonClickListener?.onShowButtonClick(item)
