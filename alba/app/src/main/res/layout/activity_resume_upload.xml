@@ -76,7 +76,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="375dp"
+        android:layout_height="505dp"
         android:orientation="vertical"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -92,11 +92,13 @@
         <EditText
             android:id="@+id/resume_title"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:hint="  제목을 입력하세요"
+            android:minLines="2"
             android:maxLines="5"
             android:scrollbars="vertical"
             android:maxHeight="80dp"/>
@@ -104,7 +106,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="경력"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -114,6 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:layout_marginTop="8dp"
+            android:padding="8dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:hint="  경력을 입력하세요"
@@ -124,7 +127,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="자기소개서"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -132,11 +135,13 @@
         <EditText
             android:id="@+id/resume_introduce"
             android:layout_width="match_parent"
-            android:layout_height="135dp"
+            android:layout_height="250dp"
             android:layout_marginTop="8dp"
+            android:padding="8dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:hint="  자신을 소개해보세요."
+            android:minLines="5"
             android:maxLines="10"
             android:scrollbars="vertical"
             android:maxHeight="300dp"/>

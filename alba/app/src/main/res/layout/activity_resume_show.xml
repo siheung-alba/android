@@ -5,7 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ResumeShowActivity">
+    tools:context=".user.ResumeShowActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/resumeShowToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/resumeShowToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,27 +47,30 @@
             <TableRow>
 
                 <TextView
-                    android:id="@+id/userName"
+                    android:id="@+id/resume_show_text1"
                     android:layout_height="match_parent"
                     android:text="text1"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/resume_show_text2"
                     android:text="text2"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
             </TableRow>
 
             <TableRow>
                 <TextView
+                    android:id="@+id/resume_show_text3"
                     android:text="text3"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/resume_show_text4"
                     android:text="text4"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
             </TableRow>
 
@@ -66,7 +85,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="375dp"
+        android:layout_height="500dp"
         android:orientation="vertical"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -80,60 +99,72 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_show_title"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="10dp"
+            android:padding="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
-            android:hint="  제목을 입력하세요"
-            android:maxHeight="48dp"/>
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:maxHeight="80dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="경력"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_show_career"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:padding="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:layout_marginBottom="10dp"
-            android:inputType="text"
-            android:hint="  경력을 입력하세요"
-            android:maxHeight="75dp"/>
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:maxHeight="100dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="자기소개서"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/resume_show_introduce"
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:padding="8dp"
             android:background="@drawable/rectangle_button_grey"
-            android:inputType="text"
-            android:hint="  자신을 소개해보세요."
-            android:maxHeight="125dp"/>
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="9"
+            android:scrollbars="vertical"
+            android:maxHeight="100dp"/>
 
     </LinearLayout>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:stretchColumns="*">
 
         <TableRow>
             <Button
+                android:id="@+id/change_resume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -143,6 +174,7 @@
                 android:background="@drawable/edit_button"/>
 
             <Button
+                android:id="@+id/delete_resume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
