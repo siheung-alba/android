@@ -47,10 +47,20 @@ class ResumeShowActivity : AppCompatActivity() {
 
         // 이력서 정보를 받아오기 위해 인텐트에서 데이터 추출
         val resumeId = intent.getStringExtra("resume_id")
+        Log.d("ResumeShowActivity", "resume_id: $resumeId")
+
         val resumeTitle = intent.getStringExtra("title")
+        Log.d("ResumeShowActivity", "title: $resumeTitle")
+
         val resumeCareer = intent.getStringExtra("career")
+        Log.d("ResumeShowActivity", "career: $resumeCareer")
+
         val resumeIntroduce = intent.getStringExtra("introduce")
+        Log.d("ResumeShowActivity", "introduce: $resumeIntroduce")
+
         val receivedUserName = intent.getStringExtra("userName")
+        Log.d("ResumeShowActivity", "userName: $receivedUserName")
+
         val receivedUserSex = intent.getStringExtra("userSex")
         val receivedUserAge = intent.getStringExtra("userAge")
         val receivedUserNation = intent.getStringExtra("userNation")
@@ -81,29 +91,32 @@ class ResumeShowActivity : AppCompatActivity() {
             val editedCareer = careerEditText.text.toString()
             val editedIntroduce = introEditText.text.toString()
 
+
             val resumeData = hashMapOf<String, Any>(
                 "title" to editedTitle,
                 "career" to editedCareer,
-                "introduce" to editedIntroduce
+                "introduce" to editedIntroduce,
+                "updated_at" to formatted
             )
+
+//            val resumeId = resume.resumeId
 
             db.collection("resume")
                 .document(resumeId!!)
                 .update(resumeData)
                 .addOnSuccessListener {
                     Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
-                    val resultIntent = Intent()
-                    resultIntent.putExtra("editedTitle", editedTitle)
-                    resultIntent.putExtra("editedCareer", editedCareer)
-                    resultIntent.putExtra("editedIntroduce", editedIntroduce)
-                    setResult(Activity.RESULT_OK, resultIntent)
+//                    val resultIntent = Intent()
+//                    resultIntent.putExtra("editedTitle", editedTitle)
+//                    resultIntent.putExtra("editedCareer", editedCareer)
+//                    resultIntent.putExtra("editedIntroduce", editedIntroduce)
+//                    setResult(Activity.RESULT_OK, resultIntent)
                     finish()
                 }
                 .addOnFailureListener { exception ->
                     Log.e("ResumeShowActivity", "Error updating resume: $exception")
                     Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
                 }
-
         }
 
 

@@ -146,10 +146,15 @@ class MyPageForUserFragment : Fragment() {
                         document.data["title"] as? String?,
                         document.data["career"] as? String?,
                         document.data["introduce"] as? String?,
-                        document.data["resume_id"] as? String?,
+//                        document.data["resume_id"] as? String?,
+                        document.id,
+                        document.data["created_at"] as? String?,
                         document.data["updated_at"] as? String?
                     )
                     itemList.add(item)  // 이력서 목록에 추가
+
+//                    val resumeId = document.data["resume_id"] as? String
+//                    Log.d("MyPageForUserFragment", "resume_id: $resumeId") // resume_id 값 로그로 출력
                 }
                 adapter.notifyDataSetChanged()
             }
