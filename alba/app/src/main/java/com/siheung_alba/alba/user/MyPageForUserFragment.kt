@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.user
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -83,10 +84,6 @@ class MyPageForUserFragment : Fragment() {
             return currentYear - birthYear + 1
         }
 
-//        Log.d("MyPageForUserFragment", "Fetching user information...")
-
-//        Log.d("MyPageForUserFragment", "Fetching user information...")
-
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
 
@@ -94,12 +91,6 @@ class MyPageForUserFragment : Fragment() {
             val email = user.email
 
 //            Log.d("MyPageForUserFragment", "Fetching user information for email: $email")
-
-            // 유저 정보를 가져와서 텍스트뷰에 설정
-            var userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1) // 이름
-            var userInfoTextView2: TextView = view.findViewById(R.id.mypage_info_text2) // 성별
-            var userInfoTextView3: TextView = view.findViewById(R.id.mypage_info_text3) // 나이
-            var userInfoTextView4: TextView = view.findViewById(R.id.mypage_info_text4) // 국적
 
             if (email != null) {
                 db.collection("user")
@@ -109,13 +100,13 @@ class MyPageForUserFragment : Fragment() {
                         for (document in documents) {
                             userInfoTextView1.text =
                                 "이름 : " + document.data["name"].toString() // 이름
-                            userInfoTextView2.text = "성별 : " + document.data["sex"].toString() // 성별
+                            userInfoTextView2.text =
+                                "성별 : " + document.data["sex"].toString() // 성별
                             userInfoTextView3.text =
                                 "나이 : " + calculateAge(document.data["birthday"].toString()) // 나이
                             userInfoTextView4.text =
                                 "국적 : " + document.data["nation"].toString() // 국적
                         }
-
                     }
                     .addOnFailureListener { exception ->
                         Log.e(
@@ -123,10 +114,8 @@ class MyPageForUserFragment : Fragment() {
                             "Failed to retrieve user information: $exception"
                         )
                     }
-
             }
         }
-
             return view
     }
 
@@ -136,6 +125,11 @@ class MyPageForUserFragment : Fragment() {
         val resumeList = view.findViewById<RecyclerView>(R.id.resume_list)
         resumeList.layoutManager = LinearLayoutManager(requireContext())
         resumeList.adapter = adapter
+
+        val userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1) // 이름
+        val userInfoTextView2: TextView = view.findViewById(R.id.mypage_info_text2) // 성별
+        val userInfoTextView3: TextView = view.findViewById(R.id.mypage_info_text3) // 나이
+        val userInfoTextView4: TextView = view.findViewById(R.id.mypage_info_text4) // 국적
 
         colResumeRef
             .whereEqualTo("email", userEmail)
@@ -149,6 +143,7 @@ class MyPageForUserFragment : Fragment() {
                         document.data["title"] as? String?,
                         document.data["career"] as? String?,
                         document.data["introduce"] as? String?,
+                        document.data["resume_id"] as? String?,
                         document.data["updated_at"] as? String?
                     )
                     itemList.add(item)
@@ -158,6 +153,22 @@ class MyPageForUserFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w("MyPageForUserFragment", "Error getting documents: $exception")
             }
+
+        adapter.setOnItemClickListener { position: Int ->
+            val selectedResume = itemList[position]
+
+            val intent = Intent(requireContext(), ResumeShowActivity::class.java)
+            intent.putExtra("title", selectedResume.title) // 이력서 제목
+            intent.putExtra("career", selectedResume.career) // 경력
+            intent.putExtra("introduce", selectedResume.introduce) // 자기소개서
+            intent.putExtra("resume_id", selectedResume.resume_id) // 이력서 ID
+            intent.putExtra("userName", userInfoTextView1.text.toString()) // 이름
+            intent.putExtra("userSex", userInfoTextView2.text.toString()) // 성별
+            intent.putExtra("userAge", userInfoTextView3.text.toString()) // 나이
+            intent.putExtra("userNation", userInfoTextView4.text.toString()) // 국적
+
+            startActivity(intent)
+        }
     }
 
 
