@@ -8,6 +8,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.firestore.Query
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -157,7 +158,29 @@ class MyPageForUserFragment : Fragment() {
 //                    Log.d("MyPageForUserFragment", "resume_id: $resumeId") // resume_id 값 로그로 출력
                 }
                 adapter.notifyDataSetChanged()
+
+                // 이력서 개수에 따라 버튼 상태 설정
+                val hasResume = itemList.isNotEmpty()
+                val uploadBtn: Button = view.findViewById(R.id.resume_upload_btn)
+                uploadBtn.isEnabled = !hasResume
+                if (hasResume) {
+                    uploadBtn.setOnClickListener {
+                        Toast.makeText(activity, "이미 이력서가 있습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    uploadBtn.setOnClickListener {
+                        val intent = Intent(activity, ResumeUploadActivity::class.java)
+                        intent.putExtra("userName", userInfoTextView1.text.toString())
+                        intent.putExtra("userSex", userInfoTextView2.text.toString())
+                        intent.putExtra("userAge", userInfoTextView3.text.toString())
+                        intent.putExtra("userNation", userInfoTextView4.text.toString())
+                        startActivity(intent)
+                    }
+                }
+
+
             }
+
             .addOnFailureListener { exception ->
                 Log.w("MyPageForUserFragment", "Error getting documents: $exception")
             }
