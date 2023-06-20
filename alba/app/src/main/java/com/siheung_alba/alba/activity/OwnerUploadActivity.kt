@@ -43,30 +43,6 @@ class OwnerUploadActivity : AppCompatActivity() {
         val btnPostJob: Button = findViewById(R.id.btnPostJob)
 
 
-        // 수정 받아오기
-
-        val  titleEdit = intent.getStringExtra("titleEdit") // 매장
-        val  jobAddtextEdit = intent.getStringExtra("jobAddtextEdit") // 제목
-        val  jobTermEdit = intent.getStringExtra("jobTermEdit") // 근무기간
-        val  jobMoneyEdit = intent.getStringExtra("jobMoneyEdit") // 시급
-        val  jobAgeEdit = intent.getStringExtra("jobAgeEdit")  // 나이
-        val  jobSexEdit = intent.getStringExtra("jobSexEdit") // 성별
-        val  jobNationEdit = intent.getStringExtra("jobNationEdit") // 국적
-        val  jobExtratextEdit = intent.getStringExtra("jobExtratextEdit") //추가 내용
-
-
-
-        storeTitle.setText(titleEdit)
-        addText.setText(jobAddtextEdit)
-        term.setText(jobTermEdit)
-        money.setText(jobMoneyEdit)
-        age.setText(jobAgeEdit)
-        sex.setText(jobSexEdit)
-        nation.setText(jobNationEdit)
-        detail.setText(jobExtratextEdit)
-
-
-
 
 
 

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.activity.OwnerResumeHomeActivity
 import com.siheung_alba.alba.activity.OwnerUploadActivity
 import com.siheung_alba.alba.model.JobModel
 
@@ -43,7 +44,7 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
 
         holder.ownereditbtn.setOnClickListener {
             // 클릭 시
-            val intent = Intent(holder.ownereditbtn.context, OwnerUploadActivity::class.java)
+            val intent = Intent(holder.ownereditbtn.context, OwnerResumeHomeActivity::class.java)
 
             intent.putExtra("titleEdit",itemList[position].jobTitle)  // 매장
             intent.putExtra("jobAddtextEdit",itemList[position].jobAddtext)  // 제목
