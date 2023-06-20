@@ -27,14 +27,15 @@ class ResumeModel(
         email: String?,
         title: String?,
         career: String?,
+        resume_id: String?,
         introduce: String?,
         updated_at: String?
     ) : this(
         email,
         title,
         career,
+        resume_id,
         getCurrentDate(),
-        generateResumeId(),
         introduce,
         updated_at
     )
@@ -66,10 +67,5 @@ class ResumeModel(
             return "$month/$day/$year"
         }
 
-        private fun generateResumeId(): String {
-            // 랜덤한 resume_id 생성 로직을 구현해야 함
-            // 예시로 UUID를 사용하여 랜덤한 문자열 생성
-            return UUID.randomUUID().toString()
-        }
     }
 }
