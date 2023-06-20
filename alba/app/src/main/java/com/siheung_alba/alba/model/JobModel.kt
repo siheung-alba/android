@@ -12,4 +12,10 @@ class JobModel(
     var jobExtratext:String?,
     var job_id:String?,
     var email:String?,
+    var workDay:String,
+    var workTime:String,
+    var preference:String,
+    var education:String,
+    var ownerName:String,
+    var ownerPhone:String
 )

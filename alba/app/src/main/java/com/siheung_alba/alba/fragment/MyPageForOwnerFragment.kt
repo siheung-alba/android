@@ -87,8 +87,14 @@ class MyPageForOwnerFragment : Fragment() {
                             document.data["updated_at"].toString(),
                             document.data["age"].toString(),
                             document.data["extra_text"].toString(),
+                            document.data["job_id"].toString(),
                             document.data["email"].toString(),
-                            document.data["job_id"].toString()
+                            document.data["work_day"].toString(),
+                            document.data["work_time"].toString(),
+                            document.data["preference"].toString(),
+                            document.data["education"].toString(),
+                            document.data["owner_name"].toString(),
+                            document.data["owner_phone"].toString()
                         )
                         itemList.add(item)
                     }

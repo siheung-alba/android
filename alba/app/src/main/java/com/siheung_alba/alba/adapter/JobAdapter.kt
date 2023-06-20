@@ -14,6 +14,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.model.JobModel
 import com.siheung_alba.alba.model.ResumeModel
+import org.w3c.dom.Text
 
 
 class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
@@ -37,6 +38,12 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         holder.update.text = itemList[position].updatedAt
         holder.age.text = itemList[position].jobAge
         holder.extra_text.text = itemList[position].jobExtratext
+        holder.work_day.text = itemList[position].workDay
+        holder.work_time.text = itemList[position].workTime
+        holder.preference.text = itemList[position].preference
+        holder.education.text = itemList[position].education
+        holder.owner_name.text = itemList[position].ownerName
+        holder.owner_phone.text = itemList[position].ownerPhone
 
         holder.showButton.setOnClickListener {
             showButtonClickListener?.onShowButtonClick(itemList[position])
@@ -109,6 +116,12 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         var update: TextView = itemView.findViewById(R.id.create_at)
         var age: TextView = itemView.findViewById(R.id.ageCondition)
         var extra_text: TextView = itemView.findViewById(R.id.extra_text)
+        var work_day: TextView = itemView.findViewById(R.id.work_day)
+        var work_time: TextView = itemView.findViewById(R.id.work_time)
+        var preference: TextView = itemView.findViewById(R.id.preference)
+        var education: TextView = itemView.findViewById(R.id.education)
+        var owner_name: TextView = itemView.findViewById(R.id.owner_name)
+        var owner_phone: TextView = itemView.findViewById(R.id.owner_phone)
 
         val showButton: Button = itemView.findViewById(R.id.showbtn)
         val applyButton: Button = itemView.findViewById(R.id.applyToBtn)

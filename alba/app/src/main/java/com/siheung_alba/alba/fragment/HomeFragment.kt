@@ -1,5 +1,6 @@
 package com.siheung_alba.alba.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -75,7 +76,13 @@ class HomeFragment : Fragment() {
                         document.data["age"].toString(),
                         document.data["extra_text"].toString(),
                         document.data["job_id"].toString(),
-                        document.data["email"].toString()
+                        document.data["email"].toString(),
+                        document.data["work_day"].toString(),
+                        document.data["work_time"].toString(),
+                        document.data["preference"].toString(),
+                        document.data["education"].toString(),
+                        document.data["owner_name"].toString(),
+                        document.data["owner_phone"].toString()
                     )
                     itemList.add(item)
 
@@ -99,6 +106,12 @@ class HomeFragment : Fragment() {
                 intent.putExtra("update", item.updatedAt)
                 intent.putExtra("age", item.jobAge)
                 intent.putExtra("extratext", item.jobExtratext)
+                intent.putExtra("workday", item.workDay)
+                intent.putExtra("worktime", item.workTime)
+                intent.putExtra("preference", item.preference)
+                intent.putExtra("education", item.education)
+                intent.putExtra("ownername", item.ownerName)
+                intent.putExtra("ownerphone", item.ownerPhone)
                 context.startActivity(intent)
             }
         })
@@ -125,34 +138,12 @@ class HomeFragment : Fragment() {
                 intent.putExtra("jobEmail", jobEmail)*/
 
                 content.startActivity(intent)
-            }
-        })
 /*
+                startActivityForResult(intent, REQUEST_CODE_DETAIL)
+*/
 
-        resumeadapter.setOnChoiceButtonClickListener(object : ResumeAdapter.OnChoiceButtonClickListener{
-            override fun onChoiceButtonClick(
-                resumeId: String?
-            ) {
-
-                val intent = intent
-                val title = intent.getStringExtra("title")
-                val email = intent.getStringExtra("email")
-                val jobId = intent.getStringExtra("jobId")
-                val jobEmail = intent.getStringExtra("jobEmail")
-
-                saveApplyData(resumeId, email, jobEmail, jobId)
-
-                val content = requireContext()
-                val intent = Intent(context, PopupActivity::class.java)
-                intent.putExtra("title", item.jobTitle)
-                intent.putExtra("email", email)
-                intent.putExtra("jobId", jobId)
-                intent.putExtra("jobEmail", jobEmail)
-
-                content.startActivity(intent)
             }
         })
-*/
 
         // 로그아웃 처리
         auth = Firebase.auth
@@ -170,6 +161,24 @@ class HomeFragment : Fragment() {
         }
         setHasOptionsMenu(true)
     }
+  /*  companion object {
+        const val REQUEST_CODE_DETAIL = 1
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_DETAIL && resultCode == Activity.RESULT_OK) {
+            // apply 버튼이 눌렸을 때의 처리를 여기에 구현
+            // HomeFragment 내부의 applyButton에 대한 동작 수행
+
+            val resumeId = data?.getStringExtra("resumeId")
+            val email = data?.getStringExtra("email")
+            val jobEmail = data?.getStringExtra("jobEmail")
+            val jobId = data?.getStringExtra("jobId")
+
+            saveApplyData(resumeId, email, jobEmail, jobId)
+        }
+    }*/
 
     private fun saveApplyData(
         resumeId: String?,
