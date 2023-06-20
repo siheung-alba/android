@@ -122,21 +122,24 @@ class MyPageForUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // RecyclerView 설정
         val resumeList = view.findViewById<RecyclerView>(R.id.resume_list)
         resumeList.layoutManager = LinearLayoutManager(requireContext())
         resumeList.adapter = adapter
 
+        // 사용자 정보 초기화
         val userInfoTextView1: TextView = view.findViewById(R.id.mypage_info_text1) // 이름
         val userInfoTextView2: TextView = view.findViewById(R.id.mypage_info_text2) // 성별
         val userInfoTextView3: TextView = view.findViewById(R.id.mypage_info_text3) // 나이
         val userInfoTextView4: TextView = view.findViewById(R.id.mypage_info_text4) // 국적
 
+        // Firestore에서 이력서 목록 가져오기
         colResumeRef
             .whereEqualTo("email", userEmail)
             .orderBy("updated_at", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                itemList.clear()
+                itemList.clear()  // 이력서 목록 초기화
                 for (document in result) {
                     val item = ResumeModel(
                         document.data["email"] as? String?,
@@ -146,7 +149,7 @@ class MyPageForUserFragment : Fragment() {
                         document.data["resume_id"] as? String?,
                         document.data["updated_at"] as? String?
                     )
-                    itemList.add(item)
+                    itemList.add(item)  // 이력서 목록에 추가
                 }
                 adapter.notifyDataSetChanged()
             }
@@ -157,6 +160,7 @@ class MyPageForUserFragment : Fragment() {
         adapter.setOnItemClickListener { position: Int ->
             val selectedResume = itemList[position]
 
+            // 이력서 보여주는 이동하는 인텐트 생성
             val intent = Intent(requireContext(), ResumeShowActivity::class.java)
             intent.putExtra("title", selectedResume.title) // 이력서 제목
             intent.putExtra("career", selectedResume.career) // 경력

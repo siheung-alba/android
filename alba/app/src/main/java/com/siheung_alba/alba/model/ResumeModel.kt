@@ -7,9 +7,9 @@ class ResumeModel(
     val email: String?,
     val title: String?,
     val career: String?,
+    val introduce: String?,
     val created_at : String?,
     val resume_id : String?,
-    val introduce: String?,
     val updated_at: String?
 ) : Parcelable {
 
@@ -27,16 +27,16 @@ class ResumeModel(
         email: String?,
         title: String?,
         career: String?,
-        resume_id: String?,
         introduce: String?,
+        resume_id: String?,
         updated_at: String?
     ) : this(
         email,
         title,
         career,
+        introduce,
         resume_id,
         getCurrentDate(),
-        introduce,
         updated_at
     )
 
