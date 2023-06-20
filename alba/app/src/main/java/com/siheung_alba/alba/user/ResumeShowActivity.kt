@@ -44,6 +44,7 @@ class ResumeShowActivity : AppCompatActivity() {
         val intent = intent
 
         val changeBtn: Button = findViewById(R.id.change_resume)
+        val deleteBtn : Button = findViewById(R.id.delete_resume)
 
         // 이력서 정보를 받아오기 위해 인텐트에서 데이터 추출
         val resumeId = intent.getStringExtra("resume_id")
@@ -120,7 +121,27 @@ class ResumeShowActivity : AppCompatActivity() {
         }
 
 
-        // 삭제 버튼 클릭 시 이력서 삭제 로직 구현
         // TODO: 삭제 버튼 클릭 시 이력서 삭제 로직 작성
+        deleteBtn.setOnClickListener {
+
+            // Firestore에서 해당 이력서 ID에 해당하는 문서 삭제
+            db.collection("resume")
+                .document(resumeId!!)
+                .delete()
+                .addOnSuccessListener {
+                    // 삭제 성공
+                    Toast.makeText(this, "이력서가 삭제되었습니다.", Toast.LENGTH_SHORT).show()
+                    finish() // Activity 종료
+                }
+                .addOnFailureListener { e ->
+                    // 삭제 실패
+                    Toast.makeText(this, "이력서 삭제에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    Log.e("ResumeShowActivity", "Failed to delete resume: $e")
+                }
+        }
+
+
+
+
     }
 }

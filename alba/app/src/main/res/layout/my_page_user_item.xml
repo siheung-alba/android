@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     app:cardBackgroundColor="#F3F1F1"
     android:layout_marginTop="10dp"
     app:cardUseCompatPadding="true"
@@ -12,15 +12,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAlignedChildIndex="0"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -29,8 +30,8 @@
                 android:layout_height="wrap_content"
                 android:text="이력서 제목"
                 android:maxWidth="250dp"
-                android:maxLines="1"
-                android:textSize="18dp"
+                android:maxLines="2"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#000000"/>
 
@@ -43,7 +44,7 @@
                 android:id="@+id/resume_list_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:text="when"
                 android:textColor="#000000"
                 android:textSize="16dp" />
@@ -59,10 +60,9 @@
             <TextView
                 android:id="@+id/resume_list_text"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="자기소개 내용"
-                android:maxLines="2"
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textColor="#000000"/>
 
         </LinearLayout>
