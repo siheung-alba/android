@@ -54,6 +54,8 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
             intent.putExtra("jobNationEdit",itemList[position].jobNation) // 국적
             intent.putExtra("jobExtratextEdit",itemList[position].jobExtratext) // 추가 내용
 
+
+
             holder.ownereditbtn.context.startActivity(intent)
             }
 

@@ -54,6 +54,8 @@ class OwnerUploadActivity : AppCompatActivity() {
         val  jobNationEdit = intent.getStringExtra("jobNationEdit") // 국적
         val  jobExtratextEdit = intent.getStringExtra("jobExtratextEdit") //추가 내용
 
+
+
         storeTitle.setText(titleEdit)
         addText.setText(jobAddtextEdit)
         term.setText(jobTermEdit)
@@ -62,6 +64,10 @@ class OwnerUploadActivity : AppCompatActivity() {
         sex.setText(jobSexEdit)
         nation.setText(jobNationEdit)
         detail.setText(jobExtratextEdit)
+
+
+
+
 
 
         btnPostJob.setOnClickListener {
