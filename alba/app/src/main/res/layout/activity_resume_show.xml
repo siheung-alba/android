@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ResumeShowActivity">
+    tools:context=".user.ResumeShowActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/resumeShowToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/resumeShowToolbar"
@@ -42,13 +50,13 @@
                     android:id="@+id/resume_show_text1"
                     android:layout_height="match_parent"
                     android:text="text1"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/resume_show_text2"
                     android:text="text2"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
             </TableRow>
@@ -57,12 +65,12 @@
                 <TextView
                     android:id="@+id/resume_show_text3"
                     android:text="text3"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/resume_show_text4"
                     android:text="text4"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
             </TableRow>
 
@@ -105,7 +113,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="경력"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -126,7 +134,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="자기소개서"
             android:textSize="18dp"
             android:textStyle="bold" />
