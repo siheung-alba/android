@@ -85,6 +85,7 @@ class HomeFragment : Fragment() {
                 intent.putExtra("update", item.updatedAt)
                 intent.putExtra("age", item.jobAge)
                 intent.putExtra("extratext", item.jobExtratext)
+                intent.putExtra("job_id", item.job_id)
                 context.startActivity(intent)
             }
         })

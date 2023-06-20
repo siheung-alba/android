@@ -53,7 +53,7 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
 
 
 
-        val jobId = intent.getStringExtra("job_id")
+
         /*Log.d("ResumeShowActivity", "resume_id: $resumeId")*/
         // 수정 받아오고 출력
         val  titleEdit = intent.getStringExtra("titleEdit") // 매장
@@ -64,7 +64,7 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
         val  jobSexEdit = intent.getStringExtra("jobSexEdit") // 성별
         val  jobNationEdit = intent.getStringExtra("jobNationEdit") // 국적
         val  jobExtratextEdit = intent.getStringExtra("jobExtratextEdit") //추가 내용
-
+        val jobId = intent.getStringExtra("job_id")
 
 
         storeTitle.setText(titleEdit)
@@ -100,21 +100,22 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
                 "add_text" to editedAddtext,
                 "extra_text" to editedDetail,
                 /*"email" to userEmail,*/
-                /*"job_id" to Math.random(),*/
                 "created_at" to formatted,
                 "updated_at" to formatted
             )
 
             val collectionRef = db.collection("job")
-            val query = collectionRef.whereEqualTo("title", editedStoreTitle)
+            val query = collectionRef.whereEqualTo("job_id", jobId)
 
 
-            query.get()
+
+            /*query.get()
                 .addOnSuccessListener { querySnapshot ->
                     for (document in querySnapshot.documents) {
                         val documentId = document.id
                         // 문서 ID를 이용하여 필요한 작업 수행
                         // ...
+
                         db.collection("job")
                             .document(documentId!!)
                             .update(OwnerData)
@@ -127,7 +128,19 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.e("OwnerResumeActivity", "Error updating resume: $exception")
                     Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
+                }*/
+
+            collectionRef.document(jobId!!)
+                .update(OwnerData)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
+                    finish()
                 }
+                .addOnFailureListener { exception ->
+                    Log.e("OwnerResumeActivity", "Error updating resume: $exception")
+                    Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
+                }
+
 
 
 
