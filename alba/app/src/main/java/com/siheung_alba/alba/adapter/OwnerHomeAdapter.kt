@@ -22,11 +22,11 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<OwnerHomeAdapter.OwnerHomeViewHolder>() {
-    private val db = Firebase.firestore
+    /*private val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth
     private val colResumeOwnerRef = db.collection("job")
     private val adapter = OwnerHomeAdapter(itemList)
-
+*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OwnerHomeAdapter.OwnerHomeViewHolder {
 
@@ -55,11 +55,11 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
         holder.update.text = itemList[position].updatedAt // 업데이트
 
         holder.ownereditbtn.setOnClickListener {
-            auth = FirebaseAuth.getInstance()
-            val user = auth.currentUser
+            /*auth = FirebaseAuth.getInstance()
+            val user = auth.currentUser*/
 
-
-            val userEmail = user?.email
+/*
+            val userEmail = user?.email*/
 
             // 클릭 시
             val intent = Intent(holder.ownereditbtn.context, OwnerResumeHomeActivity::class.java)
@@ -74,10 +74,13 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
             intent.putExtra("jobExtratextEdit",itemList[position].jobExtratext) // 추가 내용
             intent.putExtra("job_id",itemList[position].job_id) // 추가 내용
 
-            
 
 
-            // Firestore에서 이력서 목록 가져오기
+
+
+
+
+            /*// Firestore에서 이력서 목록 가져오기
             colResumeOwnerRef
                 .whereEqualTo("email", userEmail)
                 .orderBy("updated_at", Query.Direction.DESCENDING)
@@ -103,7 +106,7 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
                 }
                 .addOnFailureListener { exception ->
                     Log.w("MyPageForUserFragment", "Error getting documents: $exception")
-                }
+                }*/
 
 
             holder.ownereditbtn.context.startActivity(intent)

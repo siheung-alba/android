@@ -25,7 +25,6 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
-    private val colResumeOwnerRef = db.collection("job")
 
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ofPattern("M/d")
@@ -106,11 +105,35 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
                 "updated_at" to formatted
             )
 
+            val collectionRef = db.collection("job")
+            val query = collectionRef.whereEqualTo("title", editedStoreTitle)
+
+
+            query.get()
+                .addOnSuccessListener { querySnapshot ->
+                    for (document in querySnapshot.documents) {
+                        val documentId = document.id
+                        // 문서 ID를 이용하여 필요한 작업 수행
+                        // ...
+                        db.collection("job")
+                            .document(documentId!!)
+                            .update(OwnerData)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("OwnerResumeActivity", "Error updating resume: $exception")
+                    Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
+                }
 
 
 
 
-            db.collection("job")
+
+            /*db.collection("job")
                 .document(jobId!!)
                 .update(OwnerData)
                 .addOnSuccessListener {
@@ -120,7 +143,7 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.e("OwnerResumeActivity", "Error updating resume: $exception")
                     Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
-                }
+                }*/
         }
 
 
