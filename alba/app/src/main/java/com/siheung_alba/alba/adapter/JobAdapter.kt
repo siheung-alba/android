@@ -70,12 +70,6 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
                 Log.e("check", "Unable to get logged-in email")
 
             }
-          /*  applyButtonClickListener?.onApplyButtonClick(
-                loggedInEmail,
-                itemList[position].email,
-                itemList[position].job_id,
-                itemList[position]
-            )*/
         }
     }
 

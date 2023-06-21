@@ -103,15 +103,11 @@
             android:name=".activity.PopupActivity"
             android:screenOrientation="portrait"
             android:exported="false"
-<<<<<<< HEAD
             android:theme="@style/AppTheme.Popup" />
-=======
-            android:theme="@style/AppTheme.Popup"/>
         <activity android:name=".user.ResumeShowActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".user.MyPageForUserFragment"/>
->>>>>>> main
     </application>
 
 </manifest>
