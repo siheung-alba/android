@@ -1,6 +1,7 @@
 package com.siheung_alba.alba.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -39,10 +40,11 @@ class OwnerUploadActivity : AppCompatActivity() {
     private lateinit var preference : String // 우대조건
     private lateinit var nation : String
 
+    private lateinit var ownerName : String // 채용자 이름
+    private lateinit var ownerPhone : String // 채용자 전화번호
 
-    private lateinit var ownerName : String
-    private lateinit var ownerPhone : String
-
+    private lateinit var latitude : String
+    private lateinit var longitude : String
 
     var noBlank = true
 
@@ -175,7 +177,35 @@ class OwnerUploadActivity : AppCompatActivity() {
                     }
                     .addOnFailureListener { exception ->
                         // 실패할 경우
-                        android.util.Log.w("OwnerUploadActivity", "Error getting documents: $exception")
+                        Log.w("OwnerUploadActivity", "Error getting documents: $exception")
+                    }
+
+                // 위치 데이터 삽입
+                db.collection("owner")
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for(document in documents) {
+                            if(userEmail == document.data["ownerEmail"].toString()) {
+                                latitude = document.data["latitude"].toString()
+                                longitude = document.data["longitude"].toString()
+
+                                val positionData = hashMapOf(
+                                    "email" to userEmail,
+                                    "latitude" to latitude,
+                                    "longitude" to longitude,
+                                    "name" to title,
+                                )
+
+                                db.collection("store")
+                                    .add(positionData)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "지도에 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.w("OwnerUploadActivity", "Error getting documents: $exception")
+                                    }
+                            }
+                        }
                     }
 
                 finish()

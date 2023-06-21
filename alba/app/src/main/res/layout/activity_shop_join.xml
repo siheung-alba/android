@@ -27,6 +27,19 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/editOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_border"
+                android:ems="10"
+                android:hint="이름"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:text="" />
+
 
             <EditText
                 android:id="@+id/editshopName"
@@ -36,7 +49,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/input_border"
                 android:ems="10"
-                android:hint="이름"
+                android:hint="매장 이름"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
                 android:text="" />
@@ -72,7 +85,16 @@
                     android:layout_marginBottom="2dp"
                     android:text="중복 확인"
                     android:background="@drawable/check_exist_email_btn"/>
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/checkText"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#696969"/>
 
             <EditText
                 android:id="@+id/editshopPassword"
@@ -83,7 +105,7 @@
                 android:background="@drawable/input_border"
                 android:ems="10"
                 android:hint="비밀번호"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:text="" />
 
@@ -96,17 +118,9 @@
                 android:background="@drawable/input_border"
                 android:ems="10"
                 android:hint="비밀번호 재입력"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:text="" />
-
-            <TextView
-                android:id="@+id/checkText"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center"
-                android:text=""
-                android:textColor="#696969"/>
 
             <EditText
                 android:id="@+id/editshopNum"
@@ -117,7 +131,7 @@
                 android:background="@drawable/input_border"
                 android:ems="10"
                 android:hint="사업자 번호"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingLeft="20dp"
                 android:text="" />
 
@@ -130,7 +144,7 @@
                 android:background="@drawable/input_border"
                 android:ems="11"
                 android:hint="전화번호"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingLeft="20dp"
                 android:text="" />
 
@@ -145,7 +159,7 @@
                 android:background="@drawable/input_border"
                 android:ems="10"
                 android:hint="주소 입력"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingLeft="20dp"
                 android:text="" />
 

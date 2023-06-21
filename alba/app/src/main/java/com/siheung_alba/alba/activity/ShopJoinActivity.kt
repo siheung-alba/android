@@ -29,6 +29,7 @@ class ShopJoinActivity : AppCompatActivity() {
     private val formatted = current.format(formatter)
     private val binding by lazy { ActivityShopJoinBinding.inflate(layoutInflater) }
 
+    private lateinit var ownerName : String
     private lateinit var shopName : String
     private lateinit var shopEmail : String
     private lateinit var shopNumber : String
@@ -36,6 +37,8 @@ class ShopJoinActivity : AppCompatActivity() {
     private lateinit var shopPwd : String
     private lateinit var shopPwdRe : String
     private lateinit var shopAddress : String
+    private lateinit var latitude : String
+    private lateinit var longitude : String
 
     var noBlank = true
     var push = false
@@ -69,6 +72,7 @@ class ShopJoinActivity : AppCompatActivity() {
         binding.startButton.setOnClickListener {
 
             // 가입
+            ownerName = binding.editOwnerName.text.toString()
             shopName = binding.editshopName.text.toString()
             shopEmail = binding.editshopEmail.text.toString()
             shopNumber = binding.editshopNum.text.toString()
@@ -82,12 +86,15 @@ class ShopJoinActivity : AppCompatActivity() {
 
             if (noBlank) {
                 val data = hashMapOf(
-                    "ownerName" to shopName, // 매장 이름
+                    "ownerName" to ownerName, // 사장님 이름
+                    "shopName" to shopName, // 매장 이름
                     "ownerEmail" to shopEmail, // 사장님 이메일
                     "ownerPhone" to shopPhone, // 사장님 전화번호
                     "ownerPwd" to shopPwd, // 비밀번호
                     "ownerAddress" to shopAddress, // 매장 주소
                     "ownerNumber" to shopNumber, // 사업자 번호
+                    "latitude" to latitude,
+                    "longitude" to longitude,
                     "created_at" to formatted,
                     "updated_at" to formatted
                 )
@@ -102,10 +109,11 @@ class ShopJoinActivity : AppCompatActivity() {
 
             if (data != null) {
                 val resultData = data.getStringExtra("data")
-                val resultLat = data.getStringExtra("latitude") // 위도값
-                val resultLng = data.getStringExtra("longitude") // 경도값
+                latitude = data.getStringExtra("latitude").toString() // 위도값
+                longitude = data.getStringExtra("longitude").toString() // 경도값
+
                 binding.editshopAddress.setText(resultData)
-                Log.i("위도 경도 : ", "$resultLat, $resultLng")
+
             }
         }
     }
