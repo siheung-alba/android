@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
         <activity
-            android:name=".activity.OwnerResumeHomeActivity"
+            android:name=".activity.OwnerResumePageActivity"
             android:exported="false" />
         <activity
             android:name=".activity.CheckPageActivity"
@@ -91,7 +91,7 @@
             android:name=".activity.OwnerResumeActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OwnerResumeHomeActivity"
+            android:name=".activity.OwnerResumePageActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ShopEditActivity"

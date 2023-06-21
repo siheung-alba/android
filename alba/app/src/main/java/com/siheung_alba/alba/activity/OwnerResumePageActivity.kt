@@ -1,27 +1,21 @@
 package com.siheung_alba.alba.activity
 
-import android.app.DownloadManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
-import com.siheung_alba.alba.adapter.OwnerHomeAdapter
-import com.siheung_alba.alba.model.JobModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
 // 공고 수정, 삭제하기
-class OwnerResumeHomeActivity : AppCompatActivity() {
+class OwnerResumePageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
@@ -53,8 +47,6 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
 
 
 
-
-        /*Log.d("ResumeShowActivity", "resume_id: $resumeId")*/
         // 수정 받아오고 출력
         val  titleEdit = intent.getStringExtra("titleEdit") // 매장
         val  jobAddtextEdit = intent.getStringExtra("jobAddtextEdit") // 제목
@@ -100,7 +92,6 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
                 "nation" to editedNation,
                 "add_text" to editedAddtext,
                 "extra_text" to editedDetail,
-                /*"email" to userEmail,*/
                 "created_at" to formatted,
                 "updated_at" to formatted
             )
@@ -147,17 +138,7 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
 
 
 
-            /*db.collection("job")
-                .document(jobId!!)
-                .update(OwnerData)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-                .addOnFailureListener { exception ->
-                    Log.e("OwnerResumeActivity", "Error updating resume: $exception")
-                    Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
-                }*/
+
         }
 
         // 삭제버튼 클릭시
@@ -181,18 +162,6 @@ class OwnerResumeHomeActivity : AppCompatActivity() {
 
 
 
-
-            /*db.collection("job")
-                .document(jobId!!)
-                .update(OwnerData)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-                .addOnFailureListener { exception ->
-                    Log.e("OwnerResumeActivity", "Error updating resume: $exception")
-                    Toast.makeText(this, "이력서 업데이트에 실패했습니다", Toast.LENGTH_SHORT).show()
-                }*/
         }
 
 
