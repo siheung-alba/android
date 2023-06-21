@@ -6,15 +6,14 @@ import android.os.Bundle
 import android.content.Intent
 import android.util.Log
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.siheung_alba.alba.R
 import com.siheung_alba.alba.databinding.ActivityShopJoinBinding
+import com.siheung_alba.alba.kakao_api_address.AddressApiActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -30,6 +29,7 @@ class ShopJoinActivity : AppCompatActivity() {
     private val formatted = current.format(formatter)
     private val binding by lazy { ActivityShopJoinBinding.inflate(layoutInflater) }
 
+    private lateinit var ownerName : String
     private lateinit var shopName : String
     private lateinit var shopEmail : String
     private lateinit var shopNumber : String
@@ -37,6 +37,8 @@ class ShopJoinActivity : AppCompatActivity() {
     private lateinit var shopPwd : String
     private lateinit var shopPwdRe : String
     private lateinit var shopAddress : String
+    private lateinit var latitude : String
+    private lateinit var longitude : String
 
     var noBlank = true
     var push = false
@@ -53,10 +55,15 @@ class ShopJoinActivity : AppCompatActivity() {
             isChecked()
         }
 
+        binding.editshopAddress.isFocusable = false
         //이용약관 버튼
         binding.check.setOnClickListener{
             val intent = Intent(this, CheckPageActivity::class.java)
             startActivity(intent)
+        binding.editshopAddress.setOnClickListener {
+            val intent = Intent(this, AddressApiActivity::class.java)
+            getSearchResult.launch(intent)
+        }
 
 
         }
@@ -65,6 +72,7 @@ class ShopJoinActivity : AppCompatActivity() {
         binding.startButton.setOnClickListener {
 
             // 가입
+            ownerName = binding.editOwnerName.text.toString()
             shopName = binding.editshopName.text.toString()
             shopEmail = binding.editshopEmail.text.toString()
             shopNumber = binding.editshopNum.text.toString()
@@ -76,18 +84,36 @@ class ShopJoinActivity : AppCompatActivity() {
             // 값이 비어있는지 확인
             checkValue()
 
-            if(noBlank) {
+            if (noBlank) {
                 val data = hashMapOf(
-                    "owmerName" to shopName, // 매장 이름
+                    "ownerName" to ownerName, // 사장님 이름
+                    "shopName" to shopName, // 매장 이름
                     "ownerEmail" to shopEmail, // 사장님 이메일
                     "ownerPhone" to shopPhone, // 사장님 전화번호
                     "ownerPwd" to shopPwd, // 비밀번호
                     "ownerAddress" to shopAddress, // 매장 주소
                     "ownerNumber" to shopNumber, // 사업자 번호
+                    "latitude" to latitude,
+                    "longitude" to longitude,
                     "created_at" to formatted,
                     "updated_at" to formatted
                 )
                 makeAccount(data)
+            }
+        }
+    }
+
+    private val getSearchResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+
+            if (data != null) {
+                val resultData = data.getStringExtra("data")
+                latitude = data.getStringExtra("latitude").toString() // 위도값
+                longitude = data.getStringExtra("longitude").toString() // 경도값
+
+                binding.editshopAddress.setText(resultData)
+
             }
         }
     }

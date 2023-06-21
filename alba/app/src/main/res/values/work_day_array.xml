@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="work_day_array">
+        <item>선택해주세요.</item>
+        <item>평일</item>
+        <item>주말</item>
+        <item>주1회</item>
+        <item>주2회</item>
+        <item>주3회</item>
+        <item>주4회</item>
+        <item>주5회</item>
+        <item>주6회</item>
+        <item>주7회</item>
+        <item>협의가능</item>
+    </string-array>
+</resources>

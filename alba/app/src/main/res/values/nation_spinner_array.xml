@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nation_array">
+
+        <item>선택해주세요.</item>
+        <item>국적 무관</item>
+        <item>한국인 우대</item>
+        <item>외국인 우대</item>
+    </string-array>
+</resources>

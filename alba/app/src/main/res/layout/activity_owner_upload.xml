@@ -12,119 +12,250 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="25"
-        android:fillViewport="true">
+    <Button
+        android:id="@+id/btnPostJob"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/finish_button"
+        android:text="공고 업로드"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="bottom"
+        android:gravity="center"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginLeft="20dp">
 
-
-        <EditText
-            android:id="@+id/edt_store"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  매장을 선택해주세요"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/edt_add_text"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  제목(00알바 구합니다)"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtTerm"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  근무기간"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/edtStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"
+                    android:gravity="center_vertical"
+                    android:hint="매장을 선택해주세요"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edtMoney"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  시급"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/edtAddText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"
+                    android:gravity="center_vertical"
+                    android:hint="제목(00알바 구합니다)"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edtAge"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  나이"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/edtMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"
+                    android:gravity="center_vertical"
+                    android:hint="시급 (최저시급 : 9620원)"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/edtSex"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  성별"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="근무기간"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/workTermSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="근무요일"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/workDaySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"/>
 
 
-        <EditText
-            android:id="@+id/edtNation"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  국적"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="근무시간"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edt_detail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/black"
-            android:gravity="center_vertical"
-            android:hint="  추가하고 싶은 내용"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/btnPostJob"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/finish_button"
-            android:text="공고 업로드"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+                    <TableRow>
+
+                        <Spinner
+                            android:id="@+id/startTimeSpinner"
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/black"
+                            android:layout_marginBottom="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=" ~"
+                            android:textStyle="bold"/>
+
+                        <Spinner
+                            android:id="@+id/endTimeSpinner"
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/black"
+                            android:layout_marginBottom="10dp"/>
+
+                    </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="성별"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/sexSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="연령"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <TableRow>
+
+                        <Spinner
+                            android:id="@+id/minAgeSpinner"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/black"
+                            android:layout_marginBottom="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="  세 이상 "
+                            android:textStyle="bold"/>
+
+                    </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="학력"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/educationSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="우대조건"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/preferenceSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="국적"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/nationSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"
+                    android:gravity="center_vertical"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/edt_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/black"
+                    android:gravity="center_vertical"
+                    android:hint="추가하고 싶은 내용"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
 
     </LinearLayout>
     </ScrollView>

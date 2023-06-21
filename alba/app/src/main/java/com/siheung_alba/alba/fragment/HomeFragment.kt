@@ -20,6 +20,7 @@ import com.siheung_alba.alba.activity.DetailActivity
 import com.siheung_alba.alba.activity.LoginActivity
 import com.siheung_alba.alba.activity.PopupActivity
 import com.siheung_alba.alba.activity.ResumePopupActivity
+import com.siheung_alba.alba.activity.ShowDetailActivity
 import com.siheung_alba.alba.adapter.JobAdapter
 import com.siheung_alba.alba.adapter.ResumeAdapter
 import com.siheung_alba.alba.model.JobModel
@@ -125,6 +126,13 @@ class HomeFragment : Fragment() {
                     jobId: String?,
                     item: JobModel
                 ) {
+        adapter.setOnMoveButtonClickListener(object : JobAdapter.OnMoveButtonClickListener {
+            override fun onMoveButtonClick(item: JobModel) {
+                val context = requireContext()
+                val intent = Intent(context, ShowDetailActivity::class.java)
+
+            }
+        })
 
                     Log.e("check", "확인111111111111111111111111111111111111111111111")
 
