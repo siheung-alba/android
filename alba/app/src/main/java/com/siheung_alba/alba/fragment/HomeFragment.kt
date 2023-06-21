@@ -11,13 +11,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+<<<<<<< HEAD
 import com.siheung_alba.alba.activity.DetailActivity
 import com.siheung_alba.alba.activity.LoginActivity
+=======
+>>>>>>> main
 import com.siheung_alba.alba.activity.PopupActivity
 import com.siheung_alba.alba.activity.ResumePopupActivity
 import com.siheung_alba.alba.adapter.JobAdapter
@@ -37,6 +38,7 @@ class HomeFragment : Fragment() {
     private val reitemList = arrayListOf<ResumeModel>()
     private val resumeadapter = ResumeAdapter(reitemList)
 
+<<<<<<< HEAD
     private lateinit var auth: FirebaseAuth // 파이어베이스
 
     override fun onCreateView(
@@ -44,6 +46,9 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+=======
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+>>>>>>> main
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         return view
     }
@@ -53,7 +58,6 @@ class HomeFragment : Fragment() {
 
         val toolbar: Toolbar = view.findViewById(R.id.homeToolbar)
         toolbar.title = "채용공고"
-        toolbar.inflateMenu(R.menu.home_menu)
 
         val jobList = view?.findViewById<RecyclerView>(R.id.job_list)
         jobList?.layoutManager =
@@ -115,6 +119,7 @@ class HomeFragment : Fragment() {
                 context.startActivity(intent)
             }
         })
+<<<<<<< HEAD
 
         jobadapter.setOnApplyButtonClickListener(object : JobAdapter.OnApplyButtonClickListener {
             override fun onApplyButtonClick(
@@ -160,6 +165,8 @@ class HomeFragment : Fragment() {
             }
         }
         setHasOptionsMenu(true)
+=======
+>>>>>>> main
     }
   /*  companion object {
         const val REQUEST_CODE_DETAIL = 1

@@ -10,8 +10,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/ic_logo"
+        android:label="시흥알바"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
@@ -83,13 +83,16 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.OwnerUploadActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".fragment.MyPageForOwnerFragment" />
         <activity
             android:name=".activity.OwnerModifyActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.OwnerResumeActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".user.MyPageForUserFragment"
@@ -98,8 +101,17 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PopupActivity"
+            android:screenOrientation="portrait"
             android:exported="false"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.Popup" />
+=======
+            android:theme="@style/AppTheme.Popup"/>
+        <activity android:name=".user.ResumeShowActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:parentActivityName=".user.MyPageForUserFragment"/>
+>>>>>>> main
     </application>
 
 </manifest>

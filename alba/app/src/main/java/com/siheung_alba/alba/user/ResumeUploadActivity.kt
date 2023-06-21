@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -80,7 +77,11 @@ class ResumeUploadActivity : AppCompatActivity() {
             if (user != null) {
                 val email = user.email
 
+                // 7자리의 랜덤 숫자 생성
+                val resumeId = generateRandomNumber()
+
                 val data = hashMapOf(
+                    "resume_id" to resumeId,
                     "title" to title.text.toString(),
                     "career" to career.text.toString(),
                     "introduce" to intro.text.toString(),
@@ -94,10 +95,7 @@ class ResumeUploadActivity : AppCompatActivity() {
                     .addOnSuccessListener {
                         Toast.makeText(this, "이력서 작성이 완료되었습니다", Toast.LENGTH_SHORT).show()
 
-//                        // 이력서 작성이 완료되면 유저 마이페이지 액티비티로 돌아가기 위해 Intent를 생성하여 전환
-//                        val intent = Intent(this, MyPageForUserFragment::class.java)
-//                        startActivity(intent)
-                        finish() // 현재 액티비티 종료
+                        finish()
                     }
                     .addOnFailureListener { exception ->
                         // 실패할 경우
@@ -110,6 +108,17 @@ class ResumeUploadActivity : AppCompatActivity() {
             }
         }
 
+
+    }
+
+    private fun generateRandomNumber(): String? {
+        val random = Random()
+        val randomNumber = StringBuilder(10)
+        for (i in 0 until 10) {
+            val digit = random.nextInt(10)
+            randomNumber.append(digit)
+        }
+        return randomNumber.toString()
 
     }
 
