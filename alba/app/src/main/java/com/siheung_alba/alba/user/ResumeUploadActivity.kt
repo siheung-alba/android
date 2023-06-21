@@ -12,12 +12,16 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.translation.Translator
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.mlkit.nl.translate.Translator
+//import com.google.mlkit.nl.translate.Translator
 import com.siheung_alba.alba.R
 //import com.siheung_alba.alba.databinding.ActivityResumeUploadBinding
 import java.time.LocalDateTime
@@ -34,9 +38,11 @@ class ResumeUploadActivity : AppCompatActivity() {
     private val formatter = DateTimeFormatter.ofPattern("M/d")
     private val formatted = current.format(formatter)
 
-    private lateinit var translator: Translator
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        FirebaseApp.initializeApp(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resume_upload)
 
@@ -117,19 +123,29 @@ class ResumeUploadActivity : AppCompatActivity() {
 
 
         // 국적을 언어 코드로 변환
-        val userLanguageCode = if (receivedUserNation != null) {
+        val targetLanguageCode = "ko"
+        val sourceLanguageCode = if (receivedUserNation != null) {
             getLanguageCodeFromNation(receivedUserNation)
         } else {
             "ko" // 기본값으로 한국어 설정
         }
 
-        // 번역여부 활성화 여부
-        trans_btn.isEnabled = userLanguageCode != "ko"
+        // 번역여부 활성화 여부 한국이면 활성화 안하게
+        trans_btn.isEnabled = sourceLanguageCode != "ko"
+        var isTranslationDone: Boolean = false
 
-        // 번역하기 { 사용자의 국적 -> 한국어 }
+
+        // 번역 객체 초기화
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH) // 번역할 언어 코드 (영어)
+            .setTargetLanguage(TranslateLanguage.KOREAN) // 번역될 언어 코드 (한국어)
+            .build()
+        val translator = Translation.getClient(options)
+
+        // 번역하기 버튼 클릭시  { 사용자의 국적 -> 한국어 }
         trans_btn.setOnClickListener {
-            val sourceLanguageCode = "ko"
-            val targetLanguageCode = getLanguageCodeFromNation(userLanguageCode)
+            val sourceLanguageCode = TranslateLanguage.ENGLISH
+            val targetLanguageCode = TranslateLanguage.KOREAN
 
             translateText(title.text.toString(), sourceLanguageCode, targetLanguageCode) { translatedText ->
                 title.setText(translatedText)
@@ -141,18 +157,33 @@ class ResumeUploadActivity : AppCompatActivity() {
 
             translateText(intro.text.toString(), sourceLanguageCode, targetLanguageCode) { translatedText ->
                 intro.setText(translatedText)
+                trans_btn.isEnabled = false // Disable the translation button after translation is done
+                isTranslationDone = true //
             }
         }
 
+        translateText(intro.text.toString(), sourceLanguageCode, targetLanguageCode) { translatedText ->
+            intro.setText(translatedText)
+            trans_btn.isEnabled = sourceLanguageCode != "ko"
+        }
 
-        // 다운로드 조건 설정
-        val conditions = DownloadConditions.Builder()
+
+        var conditions = DownloadConditions.Builder()
             .requireWifi()
             .build()
-
-        val targetLanguageCode = userLanguageCode
-
-
+        translator.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                // Model downloaded successfully. Okay to start translating.
+                // (Set a flag, unhide the translation UI, etc.)
+            }
+            .addOnFailureListener { exception ->
+                android.util.Log.w(
+                    "ResumeUploadActivity",
+                    "Error Model couldn’t be downloaded or other internal error.: $exception"
+                )
+                // Model couldn’t be downloaded or other internal error.
+                // ...
+            }
 
 
 
@@ -186,19 +217,35 @@ class ResumeUploadActivity : AppCompatActivity() {
             .build()
         val translator = Translation.getClient(options)
 
+//        Log.d("ResumeUploadActivity", "번역 시작: $text")
+
         translator.translate(text)
             .addOnSuccessListener { translatedText ->
+//                Log.d("ResumeUploadActivity", "번역 성공: $translatedText")
                 // 번역된 텍스트 반환
                 completion(translatedText)
             }
             .addOnFailureListener { exception ->
+//                Log.e("ResumeUploadActivity", "번역 실패: $exception")
                 // 번역 실패 처리
-                Log.e("ResumeUploadActivity", "Translation failed: $exception")
+                completion(text)
             }
     }
 
 
 
+
+
+
+
+    // 국적을 언어코드로 변환하는 함수
+    private fun getLanguageCodeFromNation(nation: String): String {
+        return when (nation) {
+            "국적 : 대한민국" -> "ko"
+            "국적 : 미국" -> "en"
+            else -> "ko" // 기본값으로 한국어 설정
+        }
+    }
 
     // 국적을 언어 코드로 변환하는 함수
 //    private fun getLanguageCodeFromNation(nation: String): String {
@@ -215,15 +262,5 @@ class ResumeUploadActivity : AppCompatActivity() {
 //            else -> "ko" // 기본값으로 한국어 설정
 //        }
 //    }
-
-    // 국적을 언어코드로 변환하는 함수
-    private fun getLanguageCodeFromNation(nation: String): String {
-        return when (nation) {
-            "대한민국" -> "ko"
-            "미국" -> "en"
-            else -> "ko" // 기본값으로 한국어 설정
-        }
-    }
-
 
 }

@@ -48,19 +48,18 @@ class ResumeShowActivity : AppCompatActivity() {
 
         // 이력서 정보를 받아오기 위해 인텐트에서 데이터 추출
         val resumeId = intent.getStringExtra("resume_id")
-        Log.d("ResumeShowActivity", "resume_id: $resumeId")
+//        Log.d("ResumeShowActivity", "resume_id: $resumeId")
 
         val resumeTitle = intent.getStringExtra("title")
-        Log.d("ResumeShowActivity", "title: $resumeTitle")
+//        Log.d("ResumeShowActivity", "title: $resumeTitle")
 
         val resumeCareer = intent.getStringExtra("career")
-        Log.d("ResumeShowActivity", "career: $resumeCareer")
+//        Log.d("ResumeShowActivity", "career: $resumeCareer")
 
         val resumeIntroduce = intent.getStringExtra("introduce")
-        Log.d("ResumeShowActivity", "introduce: $resumeIntroduce")
 
         val receivedUserName = intent.getStringExtra("userName")
-        Log.d("ResumeShowActivity", "userName: $receivedUserName")
+//        Log.d("ResumeShowActivity", "userName: $receivedUserName")
 
         val receivedUserSex = intent.getStringExtra("userSex")
         val receivedUserAge = intent.getStringExtra("userAge")
@@ -107,11 +106,6 @@ class ResumeShowActivity : AppCompatActivity() {
                 .update(resumeData)
                 .addOnSuccessListener {
                     Toast.makeText(this, "이력서가 성공적으로 업데이트되었습니다", Toast.LENGTH_SHORT).show()
-//                    val resultIntent = Intent()
-//                    resultIntent.putExtra("editedTitle", editedTitle)
-//                    resultIntent.putExtra("editedCareer", editedCareer)
-//                    resultIntent.putExtra("editedIntroduce", editedIntroduce)
-//                    setResult(Activity.RESULT_OK, resultIntent)
                     finish()
                 }
                 .addOnFailureListener { exception ->
