@@ -126,13 +126,7 @@ class HomeFragment : Fragment() {
                     jobId: String?,
                     item: JobModel
                 ) {
-        adapter.setOnMoveButtonClickListener(object : JobAdapter.OnMoveButtonClickListener {
-            override fun onMoveButtonClick(item: JobModel) {
-                val context = requireContext()
-                val intent = Intent(context, ShowDetailActivity::class.java)
 
-            }
-        })
 
                     Log.e("check", "확인111111111111111111111111111111111111111111111")
 

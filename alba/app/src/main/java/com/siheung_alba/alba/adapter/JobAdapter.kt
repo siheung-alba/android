@@ -52,7 +52,7 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         holder.showButton.setOnClickListener {
             showButtonClickListener?.onShowButtonClick(itemList[position])
         }
-        holder.applyButton.setOnClickListener {
+        holder.applyBtn.setOnClickListener {
             val loggedInEmail = getCurrentLoggedInEmail()
 
             if(loggedInEmail != null){

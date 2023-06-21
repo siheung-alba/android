@@ -82,11 +82,6 @@ class UserJoinActivity : AppCompatActivity() {
 
         }
 
-
-
-
-
-
         // 이메일 중복확인
         binding.checkEmailBtn.setOnClickListener {
             isChecked()

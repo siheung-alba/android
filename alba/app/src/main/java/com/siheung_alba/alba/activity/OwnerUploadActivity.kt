@@ -60,21 +60,12 @@ class OwnerUploadActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
 
         val userEmail = user?.email
-        val storeTitle : EditText = findViewById(R.id.edt_store)
-        val term : EditText = findViewById(R.id.edtTerm)
-        val money : EditText = findViewById(R.id.edtMoney)
-        val age : EditText = findViewById(R.id.edtAge)
-        val sex : EditText = findViewById(R.id.edtSex)
-        val nation : EditText = findViewById(R.id.edtNation)
-        val addText : EditText = findViewById(R.id.edt_add_text)
-        val detail : EditText = findViewById(R.id.edt_detail)
-        val btnPostJob: Button = findViewById(R.id.btnPostJob)
 
         // 근무 기간 스피너
         var workTermData = resources.getStringArray(R.array.work_term_array)
         var workTermAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, workTermData)
         binding.workTermSpinner.adapter = workTermAdapter
-                "job_id" to Math.random(),
+
 
         // 근무 시간 스피너
         var startTimeData = resources.getStringArray(R.array.start_time_array)
@@ -163,6 +154,7 @@ class OwnerUploadActivity : AppCompatActivity() {
                     "add_text" to addText,
                     "extra_text" to extraText,
                     "email" to userEmail,
+                    "job_id" to Math.random(),
                     "owner_name" to ownerName,
                     "owner_phone" to ownerPhone,
                     "created_at" to formatted,

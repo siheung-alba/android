@@ -208,6 +208,32 @@
 
             </RadioGroup>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"/>
+
+
+                <Button
+                    android:id="@+id/check"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="#00ff0000"
+                    android:text="이용 약관"
+                    />
+            </LinearLayout>
+
+
             <Button
                 android:id="@+id/startJoinButton"
                 android:layout_width="match_parent"
