@@ -16,10 +16,16 @@
         android:theme="@style/Theme.Alba"
         tools:targetApi="31">
         <activity
-            android:name=".activity.OwnerResumeShowActivity"
+            android:name=".activity.OwnerResumePageActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.CheckPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OwnerResumeShowActivity"
+            android:exported="false" />
             android:name=".activity.ResumePopupActivity"
+        <activity
             android:exported="false"
             android:theme="@style/AppTheme.Popup" />
         <activity
@@ -93,6 +99,12 @@
         <activity
             android:name=".activity.OwnerResumeActivity"
             android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OwnerResumePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ShopEditActivity"
             android:exported="false" />
         <activity
             android:name=".user.MyPageForUserFragment"

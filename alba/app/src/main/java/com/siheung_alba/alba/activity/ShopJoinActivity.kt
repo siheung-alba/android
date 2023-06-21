@@ -53,6 +53,14 @@ class ShopJoinActivity : AppCompatActivity() {
             isChecked()
         }
 
+        //이용약관 버튼
+        binding.check.setOnClickListener{
+            val intent = Intent(this, CheckPageActivity::class.java)
+            startActivity(intent)
+
+
+        }
+
 
         binding.startButton.setOnClickListener {
 
@@ -95,31 +103,31 @@ class ShopJoinActivity : AppCompatActivity() {
         }
 
         if(shopEmail.isEmpty()) {
-            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
-        }
-
-        if(shopNumber.isEmpty()) {
-            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
-            noBlank = false
-        } else if (!isValidEmail(shopNumber)) {
+        } else if (!isValidEmail(shopEmail)) {
             Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
         }
 
+        if(shopNumber.isEmpty()) {
+            Toast.makeText(this, "사업자 번호를 입력해주세요.", Toast.LENGTH_LONG).show()
+            noBlank = false
+        }
+
         if(shopPhone.isEmpty()) {
-            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "전화번호를 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
         }
 
         if(shopPwd.isEmpty()) {
-            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
         } else if (shopPwd.length <= 5) {
-            Toast.makeText(this, "6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "비밀번호 6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
         }
 
         if(shopPwdRe.isEmpty()) {
-            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "비밀번호 재입력을 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
         }
 
@@ -129,8 +137,12 @@ class ShopJoinActivity : AppCompatActivity() {
         }
 
         if(shopAddress.isEmpty()) {
-            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "매장주소를 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
+        }
+
+        if(!binding.checkBtn.isChecked) {
+            Toast.makeText(this, "이용약관 승인이 안되었습니다.", Toast.LENGTH_LONG).show()
         }
     }
     private fun isChecked() {

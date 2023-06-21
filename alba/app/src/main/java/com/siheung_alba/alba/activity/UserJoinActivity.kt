@@ -44,6 +44,8 @@ class UserJoinActivity : AppCompatActivity() {
     var selectedGender = ""
     var noBlank = true
     var push = false
+    var checkBtnNUM = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         auth = Firebase.auth
@@ -71,6 +73,19 @@ class UserJoinActivity : AppCompatActivity() {
             }
         }
 
+        //이용약관 버튼
+        binding.check.setOnClickListener{
+            val intent = Intent(this, CheckPageActivity::class.java)
+            startActivity(intent)
+
+
+        }
+
+
+
+
+
+
         // 이메일 중복확인
         binding.checkEmailBtn.setOnClickListener {
             isChecked()
@@ -84,6 +99,7 @@ class UserJoinActivity : AppCompatActivity() {
             password = binding.editPassword.text.toString() // 비밀번호
             checkPassword = binding.editPassword2.text.toString() // 비밀번호 확인
             nation = binding.nationSpinner.selectedItem.toString(); // 국적
+
 
             // 값이 비어있는지 확인
             checkValue()
@@ -124,7 +140,7 @@ class UserJoinActivity : AppCompatActivity() {
             Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show()
             noBlank = false
         } else if (password.length <= 5) {
-            Toast.makeText(this, "6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "비밀번호 6자리 이상 입력해주세요.", Toast.LENGTH_SHORT).show()
         }
         if(checkPassword.isEmpty()) {
             Toast.makeText(this, "비밀번호 재입력을 입력해주세요.", Toast.LENGTH_LONG).show()
@@ -151,6 +167,9 @@ class UserJoinActivity : AppCompatActivity() {
             noBlank = false
         }
 
+        if(!binding.checkBtn.isChecked) {
+            Toast.makeText(this, "이용약관 승인이 안되었습니다.", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun isChecked() {

@@ -32,15 +32,19 @@ class OwnerUploadActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
 
         val userEmail = user?.email
-        val storeTitle : EditText = findViewById(R.id.edt_store)
-        val term : EditText = findViewById(R.id.edtTerm)
-        val money : EditText = findViewById(R.id.edtMoney)
-        val age : EditText = findViewById(R.id.edtAge)
-        val sex : EditText = findViewById(R.id.edtSex)
-        val nation : EditText = findViewById(R.id.edtNation)
-        val addText : EditText = findViewById(R.id.edt_add_text)
-        val detail : EditText = findViewById(R.id.edt_detail)
+        val storeTitle : EditText = findViewById(R.id.edt_store)  // 매장
+        val term : EditText = findViewById(R.id.edtTerm)  // 근무기간
+        val money : EditText = findViewById(R.id.edtMoney) // 시급
+        val age : EditText = findViewById(R.id.edtAge) // 나이
+        val sex : EditText = findViewById(R.id.edtSex) // 성별
+        val nation : EditText = findViewById(R.id.edtNation) // 국적
+        val addText : EditText = findViewById(R.id.edt_add_text) // 제목
+        val detail : EditText = findViewById(R.id.edt_detail) // 추가내용
         val btnPostJob: Button = findViewById(R.id.btnPostJob)
+
+
+
+
 
         btnPostJob.setOnClickListener {
             val data = hashMapOf(
@@ -51,11 +55,15 @@ class OwnerUploadActivity : AppCompatActivity() {
                 "sex" to sex.text.toString(),
                 "nation" to nation.text.toString(),
                 "add_text" to addText.text.toString(),
+                "extra_text" to detail.text.toString(),
                 "email" to userEmail,
+                "job_id" to Math.random(),
                 "created_at" to formatted,
                 "updated_at" to formatted
 
             )
+
+
             db.collection("job")
                 .add(data)
                 .addOnSuccessListener {
