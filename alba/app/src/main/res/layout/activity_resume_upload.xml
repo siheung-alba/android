@@ -25,17 +25,18 @@
 
         <ImageButton
             android:id="@+id/resume_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="115dp"
             android:src="@drawable/icon_user_profile_24" />
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:stretchColumns="*"
-            android:layout_margin="10dp">
+            android:layout_margin="5dp">
 
-            <TableRow>
+            <TableRow
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/resume_upload_text1"
@@ -56,6 +57,7 @@
                 <TextView
                     android:id="@+id/resume_upload_text3"
                     android:text="text3"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18dp"
                     android:textStyle="bold"/>
                 <TextView
@@ -65,13 +67,21 @@
                     android:textStyle="bold"/>
             </TableRow>
 
-            <TableRow>
-                <TextView
-                    android:text="text5"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
-            </TableRow>
+            <Button
+                android:id="@+id/resume_trans"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_20_yellow2"
+                android:textSize="18dp"
+                android:layout_margin="4dp"
+                android:layout_gravity="center"
+                android:text="번역하기"
+                android:textStyle="bold" />
+
+
+
         </TableLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +102,7 @@
         <EditText
             android:id="@+id/resume_title"
             android:layout_width="match_parent"
-            android:padding="8dp"
+            android:padding="10dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_button_grey"
@@ -116,7 +126,8 @@
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
+            android:padding="10dp"
+            android:gravity="top|start"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:hint="  경력을 입력하세요"
@@ -137,7 +148,8 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
+            android:padding="10dp"
+            android:gravity="top|start"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:hint="  자신을 소개해보세요."
