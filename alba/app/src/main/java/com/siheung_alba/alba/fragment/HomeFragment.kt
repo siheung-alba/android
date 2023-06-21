@@ -83,7 +83,9 @@ class HomeFragment : Fragment() {
                         document.data["preference"].toString(),
                         document.data["education"].toString(),
                         document.data["owner_name"].toString(),
-                        document.data["owner_phone"].toString()
+                        document.data["owner_phone"].toString(),
+                        document.data["workTimeStart"].toString(),
+                        document.data["workTimeEnd"].toString()
                     )
                     itemList.add(item)
 
@@ -113,6 +115,8 @@ class HomeFragment : Fragment() {
                 intent.putExtra("education", item.education)
                 intent.putExtra("ownername", item.ownerName)
                 intent.putExtra("ownerphone", item.ownerPhone)
+                intent.putExtra("workTimeStart", item.workTimeStart)
+                intent.putExtra("workTimeEnd", item.workTimeEnd)
                 context.startActivity(intent)
             }
         })
