@@ -4,7 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
@@ -12,6 +17,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.mlkit.nl.translate.Translator
 import com.siheung_alba.alba.R
 //import com.siheung_alba.alba.databinding.ActivityResumeUploadBinding
 import java.time.LocalDateTime
@@ -28,6 +34,8 @@ class ResumeUploadActivity : AppCompatActivity() {
     private val formatter = DateTimeFormatter.ofPattern("M/d")
     private val formatted = current.format(formatter)
 
+    private lateinit var translator: Translator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resume_upload)
@@ -40,12 +48,13 @@ class ResumeUploadActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-
 //        val userImg : ImgButton = findViewById(R.id.resume_img)  // 유저 이미지 업로드 버튼
         val title : EditText = findViewById(R.id.resume_title)  // 이력서 제목
         val career : EditText = findViewById(R.id.resume_career) // 경력
         val intro : EditText = findViewById(R.id.resume_introduce) // 자기소개서
+
         val done_btn: Button = findViewById(R.id.resume_done_btn)
+        val trans_btn : Button = findViewById(R.id.resume_trans)
 
         val userNameTextView : TextView = findViewById(R.id.resume_upload_text1) // 이름
         val userName : String = userNameTextView.text.toString()
@@ -68,7 +77,7 @@ class ResumeUploadActivity : AppCompatActivity() {
         userNationTextView.text = receivedUserNation
 
 
-
+        // 이력서 작성 완료하기 버튼
         done_btn.setOnClickListener {
 
             // 현재 로그인한 사용자의 정보 가져오기
@@ -76,7 +85,6 @@ class ResumeUploadActivity : AppCompatActivity() {
 
             if (user != null) {
                 val email = user.email
-
                 // 7자리의 랜덤 숫자 생성
                 val resumeId = generateRandomNumber()
 
@@ -94,7 +102,6 @@ class ResumeUploadActivity : AppCompatActivity() {
                     .add(data)
                     .addOnSuccessListener {
                         Toast.makeText(this, "이력서 작성이 완료되었습니다", Toast.LENGTH_SHORT).show()
-
                         finish()
                     }
                     .addOnFailureListener { exception ->
@@ -109,8 +116,52 @@ class ResumeUploadActivity : AppCompatActivity() {
         }
 
 
+        // 국적을 언어 코드로 변환
+        val userLanguageCode = if (receivedUserNation != null) {
+            getLanguageCodeFromNation(receivedUserNation)
+        } else {
+            "ko" // 기본값으로 한국어 설정
+        }
+
+        // 번역여부 활성화 여부
+        trans_btn.isEnabled = userLanguageCode != "ko"
+
+        // 번역하기 { 사용자의 국적 -> 한국어 }
+        trans_btn.setOnClickListener {
+            val sourceLanguageCode = "ko"
+            val targetLanguageCode = getLanguageCodeFromNation(userLanguageCode)
+
+            translateText(title.text.toString(), sourceLanguageCode, targetLanguageCode) { translatedText ->
+                title.setText(translatedText)
+            }
+
+            translateText(career.text.toString(), sourceLanguageCode, targetLanguageCode) { translatedText ->
+                career.setText(translatedText)
+            }
+
+            translateText(intro.text.toString(), sourceLanguageCode, targetLanguageCode) { translatedText ->
+                intro.setText(translatedText)
+            }
+        }
+
+
+        // 다운로드 조건 설정
+        val conditions = DownloadConditions.Builder()
+            .requireWifi()
+            .build()
+
+        val targetLanguageCode = userLanguageCode
+
+
+
+
+
+
     }
 
+
+
+    // 이력서id 랜덤 생성
     private fun generateRandomNumber(): String? {
         val random = Random()
         val randomNumber = StringBuilder(10)
@@ -119,7 +170,60 @@ class ResumeUploadActivity : AppCompatActivity() {
             randomNumber.append(digit)
         }
         return randomNumber.toString()
-
     }
+
+
+    // 번역 함수
+    private fun translateText(
+        text: String,
+        sourceLanguageCode: String,
+        targetLanguageCode: String,
+        completion: (String) -> Unit
+    ) {
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(sourceLanguageCode)
+            .setTargetLanguage(targetLanguageCode)
+            .build()
+        val translator = Translation.getClient(options)
+
+        translator.translate(text)
+            .addOnSuccessListener { translatedText ->
+                // 번역된 텍스트 반환
+                completion(translatedText)
+            }
+            .addOnFailureListener { exception ->
+                // 번역 실패 처리
+                Log.e("ResumeUploadActivity", "Translation failed: $exception")
+            }
+    }
+
+
+
+
+    // 국적을 언어 코드로 변환하는 함수
+//    private fun getLanguageCodeFromNation(nation: String): String {
+//        return when (nation) {
+//            "대한민국" -> "ko"
+//            "미국" -> "en"
+//            "중국" -> "zh"
+//            "베트남" -> "vi"
+//            "인도네시아" -> "id"
+//            "필리핀" -> "fil"
+//            "캄보디아" -> "km"
+//            "네팔" -> "ne"
+//            "우즈베키스탄" -> "uz"
+//            else -> "ko" // 기본값으로 한국어 설정
+//        }
+//    }
+
+    // 국적을 언어코드로 변환하는 함수
+    private fun getLanguageCodeFromNation(nation: String): String {
+        return when (nation) {
+            "대한민국" -> "ko"
+            "미국" -> "en"
+            else -> "ko" // 기본값으로 한국어 설정
+        }
+    }
+
 
 }

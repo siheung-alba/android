@@ -63,6 +63,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
+    // 번역
+    implementation 'com.google.mlkit:translate:17.0.1'
+
     //kakao map
     implementation files('libs/libDaumMapAndroid.jar')
     implementation 'androidx.compose.ui:ui:1.1.0-alpha05'

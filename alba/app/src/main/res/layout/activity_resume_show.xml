@@ -66,12 +66,12 @@
                     android:textStyle="bold"/>
             </TableRow>
 
-            <TableRow>
-                <TextView
-                    android:text="text5"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
-            </TableRow>
+<!--            <TableRow>-->
+<!--                <TextView-->
+<!--                    android:text="text5"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textStyle="bold"/>-->
+<!--            </TableRow>-->
         </TableLayout>
     </LinearLayout>
 
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
+            android:padding="10dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:maxLines="2"
@@ -115,11 +115,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
+            android:padding="10dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
             android:minLines="3"
             android:maxLines="5"
+            android:gravity="top|start"
             android:scrollbars="vertical"
             android:maxHeight="100dp"/>
 
@@ -135,12 +136,13 @@
             android:id="@+id/resume_show_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:padding="8dp"
             android:background="@drawable/rectangle_button_grey"
             android:inputType="textMultiLine"
-            android:minLines="3"
-            android:maxLines="9"
+            android:minLines="6"
+            android:gravity="top|start"
+            android:maxLines="10"
             android:scrollbars="vertical"
             android:maxHeight="100dp"/>
 
