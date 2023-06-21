@@ -87,7 +87,7 @@ class MyPageForOwnerFragment : Fragment() {
                             document.data["updated_at"].toString(),
                             document.data["age"].toString(),
                             document.data["extra_text"].toString(),
-                            document.id
+                            document.id,
                             document.data["email"].toString(),
                             document.data["work_day"].toString(),
                             document.data["work_time"].toString(),

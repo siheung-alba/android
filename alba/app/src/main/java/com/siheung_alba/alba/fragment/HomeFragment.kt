@@ -53,6 +53,7 @@ class HomeFragment : Fragment() {
 
             val toolbar: Toolbar = view.findViewById(R.id.homeToolbar)
             toolbar.title = "채용공고"
+            toolbar.inflateMenu(R.menu.home_menu)
 
             val jobList = view?.findViewById<RecyclerView>(R.id.job_list)
             jobList?.layoutManager =

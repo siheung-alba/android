@@ -24,8 +24,9 @@
         <activity
             android:name=".activity.OwnerResumeShowActivity"
             android:exported="false" />
-            android:name=".activity.ResumePopupActivity"
+
         <activity
+            android:name=".activity.ResumePopupActivity"
             android:exported="false"
             android:theme="@style/AppTheme.Popup" />
         <activity
@@ -100,12 +101,8 @@
             android:name=".activity.OwnerResumeActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
-        <activity
-            android:name=".activity.OwnerResumePageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ShopEditActivity"
-            android:exported="false" />
+
+
         <activity
             android:name=".user.MyPageForUserFragment"
             android:exported="true"
