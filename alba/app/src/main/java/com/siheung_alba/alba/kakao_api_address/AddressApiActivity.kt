@@ -1,4 +1,4 @@
-package com.siheung_alba.alba.address
+package com.siheung_alba.alba.kakao_api_address
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,10 +15,13 @@ class AddressApiActivity : AppCompatActivity() {
     inner class MyJavaScriptInterface {
         @JavascriptInterface
         @SuppressWarnings("unused")
-        fun processDATA(data: String) {
+        fun processDATA(data: String, latitude: String, longitude:String) {
             val extra = Bundle()
             val intent = Intent()
+            print(latitude)
             extra.putString("data", data)
+            extra.putString("latitude", latitude)
+            extra.putString("longitude", longitude)
             intent.putExtras(extra)
             setResult(RESULT_OK, intent)
             finish()

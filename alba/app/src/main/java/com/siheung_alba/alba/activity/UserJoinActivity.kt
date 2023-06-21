@@ -33,7 +33,7 @@ class UserJoinActivity : AppCompatActivity() {
     private val formatted = current.format(formatter)
     private var dateString = ""
 
-    private val binding by lazy { ActivityJoinBinding.inflate(layoutInflater) }
+        private val binding by lazy { ActivityJoinBinding.inflate(layoutInflater) }
 
     private lateinit var name : String
     private lateinit var email : String
@@ -61,6 +61,7 @@ class UserJoinActivity : AppCompatActivity() {
             }
             DatePickerDialog(this, dateSetListener, cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
+
         var nationData = resources.getStringArray(R.array.nationality_array)
         var adapterNation = ArrayAdapter(this, android.R.layout.simple_spinner_item, nationData)
 

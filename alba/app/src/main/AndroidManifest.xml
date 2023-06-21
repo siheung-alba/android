@@ -28,11 +28,6 @@
         <activity
             android:name=".ShowDetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".ShowDetail"
-            android:exported="false"
-            android:label="@string/title_activity_show_detail"
-            android:theme="@style/Theme.Alba.NoActionBar" />
 
         <activity
             android:name=".activity.ResumePopupActivity"
@@ -50,7 +45,7 @@
             android:value="af80c44eaf5a956fd07fcf76b0b627c1" />
 
         <activity
-            android:name=".address.AddressApiActivity"
+            android:name=".kakao_api_address.AddressApiActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainForOwnerActivity"

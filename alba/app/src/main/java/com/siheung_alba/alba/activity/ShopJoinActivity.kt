@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.databinding.ActivityShopJoinBinding
-import com.siheung_alba.alba.address.AddressApiActivity
+import com.siheung_alba.alba.kakao_api_address.AddressApiActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -82,7 +82,7 @@ class ShopJoinActivity : AppCompatActivity() {
 
             if (noBlank) {
                 val data = hashMapOf(
-                    "owmerName" to shopName, // 매장 이름
+                    "ownerName" to shopName, // 매장 이름
                     "ownerEmail" to shopEmail, // 사장님 이메일
                     "ownerPhone" to shopPhone, // 사장님 전화번호
                     "ownerPwd" to shopPwd, // 비밀번호
@@ -99,9 +99,13 @@ class ShopJoinActivity : AppCompatActivity() {
     private val getSearchResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val data = result.data
+
             if (data != null) {
                 val resultData = data.getStringExtra("data")
+                val resultLat = data.getStringExtra("latitude") // 위도값
+                val resultLng = data.getStringExtra("longitude") // 경도값
                 binding.editshopAddress.setText(resultData)
+                Log.i("위도 경도 : ", "$resultLat, $resultLng")
             }
         }
     }

@@ -19,4 +19,13 @@
         <item name="windowNoTitle">true</item>
 
     </style>
+
+    <style name="Theme.Alba.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Alba.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Alba.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
