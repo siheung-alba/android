@@ -38,15 +38,15 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.2" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/showbtn"
-                android:layout_width="100dp"
-                android:layout_height="32dp"
-                android:background="#F3F1F1"
-                android:layout_gravity="bottom"
-                android:text="상세보기"
-                android:textSize="13dp"
-                android:textColor="#DFA700"/>
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/showbtn"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:background="#F3F1F1"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:text="상세보기"-->
+<!--                android:textSize="13dp"-->
+<!--                android:textColor="#DFA700"/>-->
 
 
             <View

@@ -41,36 +41,9 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         holder.owner_name.text = itemList[position].ownerName
         holder.owner_phone.text = itemList[position].ownerPhone
 
-        holder.showButton.setOnClickListener {
-            showButtonClickListener?.onShowButtonClick(itemList[position])
-        }
-
-        /*
-        holder.applyBtn.setOnClickListener {
-            val loggedInEmail = getCurrentLoggedInEmail()
-
-            if(loggedInEmail != null){
-                getOtherInfoByEmail(loggedInEmail){resumeId ->
-                    if(resumeId != null){
-                        applyButtonClickListener?.onApplyButtonClick(
-                            resumeId,
-                            loggedInEmail,
-                            itemList[position].email,
-                            itemList[position].job_id,
-                            itemList[position]
-                        )
-
-                    }else{
-                        Log.e("check", "Unable to get resume ID")
-                    }
-                }
-            }else{
-                Log.e("check", "Unable to get logged-in email")
-
-            }
-        }
-
-         */
+//        holder.showButton.setOnClickListener {
+//            showButtonClickListener?.onShowButtonClick(itemList[position])
+//        }
 
         holder.applyBtn.setOnClickListener {
             applyButtonClickListener?.onApplyButtonClick(itemList[position])
@@ -117,7 +90,7 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         var owner_phone: TextView = itemView.findViewById(R.id.owner_phone)
 
         // 상세보기 버튼
-        val showButton: Button = itemView.findViewById(R.id.showbtn)
+//        val showButton: Button = itemView.findViewById(R.id.showbtn)
 
         // 지원하기 버튼
         val applyBtn: Button = itemView.findViewById(R.id.applyToBtn) // 지원하기 버튼
