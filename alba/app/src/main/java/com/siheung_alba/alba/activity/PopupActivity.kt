@@ -11,24 +11,21 @@ import android.widget.TextView
 import org.w3c.dom.Text
 
 class PopupActivity : Activity() {
-    private lateinit var titleTextView: TextView
+    private lateinit var textView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popup)
 
-
-        Log.e("check", "확인44444444444444444444444444444444444444444444444")
-
         val window = window
         window?.setGravity(Gravity.CENTER)
 
-        titleTextView = findViewById(R.id.Title)
+        textView = findViewById(R.id.text)
 
         val intent = intent
-        val title = intent.getStringExtra("title")
+        val text = intent.getStringExtra("text")
 
         // 정보를 해당 TextView에 설정
-        titleTextView.text = title
+        textView.text = text
     }
 
     fun mOnClose(view: View) {

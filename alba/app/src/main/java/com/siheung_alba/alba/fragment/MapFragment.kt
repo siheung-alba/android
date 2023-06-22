@@ -2,6 +2,7 @@ package com.siheung_alba.alba.fragment
 
 import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -27,6 +28,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.activity.DetailActivity
+import com.siheung_alba.alba.adapter.JobAdapter
+import com.siheung_alba.alba.model.JobModel
 
 
 class MapFragment : Fragment() {
@@ -34,6 +38,7 @@ class MapFragment : Fragment() {
     private val db = Firebase.firestore
     private val colStoreRef = db.collection("store")
     private val colJobRef = db.collection("job" )
+
 
     private lateinit var gMap: GoogleMap
     private var mapView: SupportMapFragment? = null
@@ -87,7 +92,7 @@ class MapFragment : Fragment() {
                                     markerOptions.position(location) // 위치
                                     markerOptions.icon(
                                         BitmapDescriptorFactory.defaultMarker(
-                                            BitmapDescriptorFactory.HUE_YELLOW
+                                            BitmapDescriptorFactory.HUE_ROSE
                                         )
                                     )
 
@@ -99,7 +104,8 @@ class MapFragment : Fragment() {
                                                 jobDocument.data?.get("term").toString() + "^" + // 기간
                                                 jobDocument.data?.get("money").toString() + "^" + // 시급
                                                 jobDocument.data?.get("sex").toString() + "^" + // 성별
-                                                jobDocument.data?.get("nation").toString()  // 국적
+                                                jobDocument.data?.get("nation").toString() + "^" +  // 국적
+                                                jobDocument.data?.get("email").toString() // 채용자 이메일
                                     Log.d(
                                         ContentValues.TAG,
                                         "${storeDocument.id} => ${storeDocument.data}"
@@ -146,12 +152,40 @@ class MapFragment : Fragment() {
                 money.text = arr[3]
                 sex.text = arr[4]
                 nation.text = arr[5]
+                val ownerEmail : String = arr[6]
 
                 applyToBtn?.setOnClickListener {
-                    val builder = AlertDialog.Builder(requireContext())
-                    builder.setTitle("지원이 완료되었습니다.")
-                        .setMessage("사장님이 이력서 열람 후 회원님 전화번호로 연락이 갈 예정입니다. ")
-                    builder.show()
+
+                    db.collection("job")
+                        .whereEqualTo("email", ownerEmail)
+                        .get()
+                        .addOnSuccessListener { documents ->
+                            for(document in documents) {
+                                val context = requireContext()
+                                val intent = Intent(context, DetailActivity::class.java)
+
+                                intent.putExtra("title", document.data["title"].toString())
+                                intent.putExtra("addtext", document.data["add_text"].toString())
+                                intent.putExtra("jobTerm", document.data["term"].toString())
+                                intent.putExtra("money", document.data["money"].toString())
+                                intent.putExtra("sex", document.data["sex"].toString())
+                                intent.putExtra("nation", document.data["nation"].toString())
+                                intent.putExtra("update", document.data["updated_at"].toString())
+                                intent.putExtra("age", document.data["age"].toString())
+                                intent.putExtra("extratext", document.data["extra_text"].toString())
+                                intent.putExtra("jobId", document.data["job_id"].toString())
+                                intent.putExtra("workday", document.data["work_day"].toString())
+                                intent.putExtra("worktime", document.data["work_time"].toString())
+                                intent.putExtra("preference", document.data["preference"].toString())
+                                intent.putExtra("education", document.data["education"].toString())
+                                intent.putExtra("ownerName", document.data["owner_name"].toString())
+                                intent.putExtra("ownerPhone", document.data["owner_phone"].toString())
+                                intent.putExtra("ownerEmail", document.data["email"].toString())
+
+                                context.startActivity(intent)
+                            }
+
+                        }
                 }
 
                 return false
@@ -252,6 +286,7 @@ class MapFragment : Fragment() {
                 ActivityCompat.requestPermissions(requireActivity(), permissions, permission_request)
             }
         }
+
     }
     override fun onResume() {
         super.onResume()

@@ -1,6 +1,5 @@
 package com.siheung_alba.alba.fragment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,8 +18,6 @@ import com.siheung_alba.alba.R
 import com.siheung_alba.alba.activity.DetailActivity
 import com.siheung_alba.alba.activity.LoginActivity
 import com.siheung_alba.alba.activity.PopupActivity
-import com.siheung_alba.alba.activity.ResumePopupActivity
-import com.siheung_alba.alba.activity.ShowDetailActivity
 import com.siheung_alba.alba.adapter.JobAdapter
 import com.siheung_alba.alba.adapter.ResumeAdapter
 import com.siheung_alba.alba.model.JobModel
@@ -33,10 +30,6 @@ class HomeFragment : Fragment() {
     private val colJobRef = db.collection("job")
     private val itemList = arrayListOf<JobModel>()
     private val jobadapter = JobAdapter(itemList)
-
-    private val resumecollection = db.collection("resume")
-    private val reitemList = arrayListOf<ResumeModel>()
-    private val resumeadapter = ResumeAdapter(reitemList)
 
     private lateinit var auth: FirebaseAuth // 파이어베이스
 
@@ -83,7 +76,8 @@ class HomeFragment : Fragment() {
                             document.data["preference"].toString(),
                             document.data["education"].toString(),
                             document.data["owner_name"].toString(),
-                            document.data["owner_phone"].toString()
+                            document.data["owner_phone"].toString(),
+                            document.data["email"].toString() // 사장님 이메일
                         )
                         itemList.add(item)
 
@@ -91,60 +85,57 @@ class HomeFragment : Fragment() {
                     jobadapter.notifyDataSetChanged() // 리사이클러 뷰 갱신
                 }
                 .addOnFailureListener { exception ->
-                    android.util.Log.w("MainActivity", "Error getting documents: $exception")
+                    Log.w("MainActivity", "Error getting documents: $exception")
                 }
 
-            jobadapter.setOnShowButtonClickListener(object : JobAdapter.OnShowButtonClickListener {
-                override fun onShowButtonClick(item: JobModel) {
+            jobadapter.setOnApplyButtonClickListener(object : JobAdapter.OnApplyButtonClickListener {
+                override fun onApplyButtonClick(item: JobModel) {
                     val context = requireContext()
                     val intent = Intent(context, DetailActivity::class.java)
                     intent.putExtra("title", item.jobTitle)
                     intent.putExtra("addtext", item.jobAddtext)
+                    intent.putExtra("jobTerm", item.jobTerm)
                     intent.putExtra("money", item.jobMoney)
-                    intent.putExtra("term", item.jobTerm)
                     intent.putExtra("sex", item.jobSex)
                     intent.putExtra("nation", item.jobNation)
                     intent.putExtra("update", item.updatedAt)
                     intent.putExtra("age", item.jobAge)
                     intent.putExtra("extratext", item.jobExtratext)
+                    intent.putExtra("jobId", item.job_id)
                     intent.putExtra("workday", item.workDay)
                     intent.putExtra("worktime", item.workTime)
                     intent.putExtra("preference", item.preference)
                     intent.putExtra("education", item.education)
                     intent.putExtra("ownername", item.ownerName)
                     intent.putExtra("ownerphone", item.ownerPhone)
+                    intent.putExtra("ownerEmail", item.ownerEmail)
                     context.startActivity(intent)
                 }
             })
 
-            jobadapter.setOnApplyButtonClickListener(object :
-                JobAdapter.OnApplyButtonClickListener {
-                override fun onApplyButtonClick(
-                    resumeId: String?,
-                    email: String?,
-                    jobEmail: String?,
-                    jobId: String?,
-                    item: JobModel
-                ) {
 
+            // 상세보기 --> 없앤건가?
+            jobadapter.setOnShowButtonClickListener(object :
+                JobAdapter.OnShowButtonClickListener {
+                override fun onShowButtonClick(item: JobModel) {
 
                     Log.e("check", "확인111111111111111111111111111111111111111111111")
 
-                    saveApplyData(resumeId, email, jobEmail, jobId)
+//                    saveApplyData(resumeId, email, jobEmail, jobId)
 
                     val content = requireContext()
                     val intent = Intent(context, PopupActivity::class.java)
                     intent.putExtra("title", item.jobTitle)
 
-
                     Log.e("check", "확인2222222222222222222222222222222222222222222222222222")
 
                     content.startActivity(intent)
 
-
                     Log.e("check", "확인33333333333333333333333333333333333333333333")
                 }
             })
+
+
 
             // 로그아웃 처리
             auth = Firebase.auth
@@ -170,14 +161,15 @@ class HomeFragment : Fragment() {
         jobId: String?,
         jobEmail: String?
     ) {
-        val applyDate = hashMapOf(
+        val applyData = hashMapOf(
             "resume_id" to resumeId,
             "applicant" to email,
             "job_id" to jobId,
             "owner" to jobEmail
             )
         val applyCollection = db.collection("apply")
-        applyCollection.add(applyDate)
+        applyCollection
+            .add(applyData)
             .addOnSuccessListener { documentReference ->
                 Log.e("apply", "Apply data saved with ID: ${documentReference.id}")
             }

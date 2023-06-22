@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +28,8 @@ class MyPageForOwnerFragment : Fragment() {
     private val colJobRef = db.collection("job")
     private val itemList = arrayListOf<JobModel>()
     private val adapter = OwnerHomeAdapter(itemList)
-    private val user_id = "apple" // 유저 아이디
+
+    private val userEmail = Firebase.auth.currentUser?.email
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -37,6 +39,9 @@ class MyPageForOwnerFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_my_page_for_owner, container, false)
         val uploadBtn : Button = view.findViewById(R.id.btn_upload)
+        val ownerName : TextView = view.findViewById(R.id.tv_name)
+        val shopName : TextView = view.findViewById(R.id.shop_name)
+        val address : TextView = view.findViewById(R.id.tv_address)
         val toolbar : Toolbar = view.findViewById(R.id.ownerPageToolbar)
 
         toolbar.title = "마이페이지"
@@ -53,6 +58,18 @@ class MyPageForOwnerFragment : Fragment() {
         }
         setHasOptionsMenu(true)
 
+        db.collection("owner")
+            .whereEqualTo("ownerEmail", userEmail)
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result) {
+                    ownerName.text = document.data["ownerName"].toString()
+                    shopName.text = document.data["shopName"].toString()
+                    address.text = document.data["ownerAddress"].toString()
+                }
+            }
+
+
         uploadBtn.setOnClickListener {
             val intent = Intent(activity, OwnerUploadActivity::class.java)
             startActivity(intent)
@@ -67,9 +84,6 @@ class MyPageForOwnerFragment : Fragment() {
         jobList?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         jobList?.adapter = adapter
 
-        val user = Firebase.auth.currentUser
-
-        val userEmail = user?.email
 
         colJobRef
             .get()
@@ -94,7 +108,8 @@ class MyPageForOwnerFragment : Fragment() {
                             document.data["preference"].toString(),
                             document.data["education"].toString(),
                             document.data["owner_name"].toString(),
-                            document.data["owner_phone"].toString()
+                            document.data["owner_phone"].toString(),
+                            document.data["email"].toString()
                         )
                         itemList.add(item)
                     }

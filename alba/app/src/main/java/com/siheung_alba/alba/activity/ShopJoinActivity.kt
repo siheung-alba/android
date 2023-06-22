@@ -56,16 +56,15 @@ class ShopJoinActivity : AppCompatActivity() {
         }
 
         binding.editshopAddress.isFocusable = false
-        //이용약관 버튼
-        binding.check.setOnClickListener{
-            val intent = Intent(this, CheckPageActivity::class.java)
-            startActivity(intent)
         binding.editshopAddress.setOnClickListener {
             val intent = Intent(this, AddressApiActivity::class.java)
             getSearchResult.launch(intent)
         }
 
-
+        //이용약관 버튼
+        binding.check.setOnClickListener{
+            val intent = Intent(this, CheckPageActivity::class.java)
+            startActivity(intent)
         }
 
 

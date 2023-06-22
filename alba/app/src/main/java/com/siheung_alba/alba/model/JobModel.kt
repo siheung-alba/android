@@ -17,5 +17,6 @@ class JobModel(
     var preference:String,
     var education:String,
     var ownerName:String,
-    var ownerPhone:String
+    var ownerPhone:String,
+    var ownerEmail: String
 )
