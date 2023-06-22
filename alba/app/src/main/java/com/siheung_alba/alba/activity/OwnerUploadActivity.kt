@@ -161,7 +161,7 @@ class OwnerUploadActivity : AppCompatActivity() {
                     "add_text" to addText,
                     "extra_text" to extraText,
                     "email" to userEmail,
-                    "job_id" to Math.random(),
+                    "job_id" to Math.random()*100,
                     "owner_name" to ownerName,
                     "owner_phone" to ownerPhone,
                     "created_at" to formatted,

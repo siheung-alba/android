@@ -12,19 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-     <!--   <TextView
-            android:id="@+id/text"
-            android:text="지원된 이력서"
-            android:gravity="left"
-            android:textSize="26dp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>-->
-
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/ownerResume"
             android:layout_width="match_parent"
@@ -35,10 +22,9 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/apply_list"
+        android:id="@+id/applicantList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:listitem="@layout/owner_resume_item_layout" />
+        tools:listitem="@layout/applicant_layout" />
 
 </LinearLayout>

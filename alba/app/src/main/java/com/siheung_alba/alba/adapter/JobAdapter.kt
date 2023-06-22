@@ -1,30 +1,22 @@
 package com.siheung_alba.alba.adapter
 
-import android.util.Log
-import android.content.Context
-import android.content.Intent
 import com.siheung_alba.alba.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.siheung_alba.alba.activity.ShowDetailActivity
 import com.siheung_alba.alba.model.JobModel
-import com.siheung_alba.alba.model.ResumeModel
-import org.w3c.dom.Text
 
 
 class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
-    public var showButtonClickListener: OnShowButtonClickListener? = null
-    public var moveButtonClickListener: OnMoveButtonClickListener? = null
-    public var applyButtonClickListener:OnApplyButtonClickListener? = null
+    var showButtonClickListener: OnShowButtonClickListener? = null
+    var applyButtonClickListener:OnApplyButtonClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobAdapter.JobViewHolder {
 
@@ -52,6 +44,8 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         holder.showButton.setOnClickListener {
             showButtonClickListener?.onShowButtonClick(itemList[position])
         }
+
+        /*
         holder.applyBtn.setOnClickListener {
             val loggedInEmail = getCurrentLoggedInEmail()
 
@@ -76,8 +70,10 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
             }
         }
 
+         */
+
         holder.applyBtn.setOnClickListener {
-            showButtonClickListener?.onShowButtonClick(itemList[position])
+            applyButtonClickListener?.onApplyButtonClick(itemList[position])
         }
     }
 
@@ -88,31 +84,18 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
     public fun setOnShowButtonClickListener(listener: OnShowButtonClickListener) {
         showButtonClickListener = listener
     }
+    public fun setOnApplyButtonClickListener(listener: OnApplyButtonClickListener) {
+        applyButtonClickListener = listener
+    }
 
     public interface OnShowButtonClickListener {
         fun onShowButtonClick(item: JobModel)
     }
 
-    public fun setOnApplyButtonClickListener(listener: OnApplyButtonClickListener) {
-        applyButtonClickListener = listener
-    }
-    public fun setOnMoveButtonClickListener(listener: OnMoveButtonClickListener) {
-        moveButtonClickListener = listener
-    }
-
     public interface OnApplyButtonClickListener {
-        fun onApplyButtonClick(
-            resumeId: String?,
-            email: String?,
-            jobEmail: String?,
-            jobId: String?,
-            item:JobModel
-        )
+        fun onApplyButtonClick(item: JobModel)
     }
 
-    public interface OnMoveButtonClickListener {
-        fun onMoveButtonClick(item: JobModel)
-    }
 
 
     inner class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -133,8 +116,10 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
         var owner_name: TextView = itemView.findViewById(R.id.owner_name)
         var owner_phone: TextView = itemView.findViewById(R.id.owner_phone)
 
+        // 상세보기 버튼
         val showButton: Button = itemView.findViewById(R.id.showbtn)
 
+        // 지원하기 버튼
         val applyBtn: Button = itemView.findViewById(R.id.applyToBtn) // 지원하기 버튼
     }
 
@@ -162,7 +147,7 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
 
                 }
             }
-            .addOnFailureListener{exception ->
+            .addOnFailureListener{
                 callback(null)
             }
 

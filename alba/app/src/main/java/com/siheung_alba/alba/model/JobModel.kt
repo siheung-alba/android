@@ -18,7 +18,5 @@ class JobModel(
     var education:String,
     var ownerName:String,
     var ownerPhone:String,
-    var workTimeStart:String,
-    var workTimeEnd:String
-
+    var ownerEmail: String
 )

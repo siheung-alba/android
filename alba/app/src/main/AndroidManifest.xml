@@ -25,9 +25,6 @@
         <activity
             android:name=".activity.OwnerResumeShowActivity"
             android:exported="false" />
-        <activity
-            android:name=".ShowDetailActivity"
-            android:exported="false" />
 
         <activity
             android:name=".activity.ResumePopupActivity"
@@ -107,7 +104,8 @@
         <activity
             android:name=".activity.OwnerResumeActivity"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="true"
+            android:parentActivityName=".fragment.MyPageForOwnerFragment"/>
 
 
         <activity

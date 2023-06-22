@@ -5,89 +5,125 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.siheung_alba.alba.R
+import com.siheung_alba.alba.adapter.JobAdapter
+import com.siheung_alba.alba.databinding.ActivityDetailBinding
+import com.siheung_alba.alba.fragment.HomeFragment
+import com.siheung_alba.alba.model.JobModel
 
 class DetailActivity : AppCompatActivity() {
-    private lateinit var checkButton: Button
-    private lateinit var titleTextView: TextView
-    private lateinit var addtextTextView: TextView
-    private lateinit var moneyTextView: TextView
-    private lateinit var termTextView: TextView
-    private lateinit var sexTextView: TextView
-    private lateinit var nationTextView: TextView
-    private lateinit var ageTextView: TextView
-    private lateinit var extratextTextView: TextView
-    private lateinit var workdayTextView: TextView
-    private lateinit var worktimeTextView: TextView
-    private lateinit var preferenceTextView: TextView
-    private lateinit var educationTextView: TextView
-    private lateinit var ownernameTextView: TextView
-    private lateinit var ownerphoneTextView: TextView
 
-    @SuppressLint("MissingInflatedId")
+    private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
+
+    private val db = Firebase.firestore
+
+    private lateinit var jobId: String
+    private lateinit var ownerEmail: String
+    private lateinit var applicantEmail: String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        setContentView(binding.root)
 
-        titleTextView = findViewById(R.id.Title)
-        addtextTextView = findViewById(R.id.Addtext)
-        moneyTextView = findViewById(R.id.Money)
-        termTextView = findViewById(R.id.Term)
-        sexTextView = findViewById(R.id.Sex)
-        nationTextView = findViewById(R.id.Nation)
-        ageTextView = findViewById(R.id.Age)
-        extratextTextView = findViewById(R.id.Extratext)
-        workdayTextView = findViewById(R.id.WorkDay)
-        worktimeTextView = findViewById(R.id.WorkTime)
-        preferenceTextView = findViewById(R.id.Preference)
-        educationTextView = findViewById(R.id.Education)
-        ownernameTextView = findViewById(R.id.OwnerName)
-        ownerphoneTextView = findViewById(R.id.OwnerPhone)
 
         val intent = intent
-        val title = intent.getStringExtra("title")
-        val addtext = intent.getStringExtra("addtext")
-        val money = intent.getStringExtra("money")
-        val term = intent.getStringExtra("term")
-        val sex = intent.getStringExtra("sex")
-        val nation = intent.getStringExtra("nation")
-        val age = intent.getStringExtra("age")
-        val extratext = intent.getStringExtra("extratext")
-        val workday = intent.getStringExtra("workday")
-        val worktime = intent.getStringExtra("worktime")
-        val preference = intent.getStringExtra("preference")
-        val education = intent.getStringExtra("education")
-        val ownername = intent.getStringExtra("ownername")
-        val ownerphone = intent.getStringExtra("ownerphone")
 
-        // 정보를 해당 TextView에 설정
-        titleTextView.text = title
-        addtextTextView.text = addtext
-        moneyTextView.text = money
-        termTextView.text = term
-        sexTextView.text = sex
-        nationTextView.text = nation
-        ageTextView.text = age
-        extratextTextView.text = extratext
-        workdayTextView.text = workday
-        worktimeTextView.text = worktime
-        preferenceTextView.text = preference
-        educationTextView.text = education
-        ownernameTextView.text = ownername
-        ownerphoneTextView.text = ownerphone
+        jobId = intent.getStringExtra("jobId").toString()
 
-/*
-        apply.setOnClickListener { onApplyButtonClicked(it) }
-*/
+        binding.Title.text = intent.getStringExtra("title")
+        binding.Addtext.text = intent.getStringExtra("addtext")
+        binding.Money.text = intent.getStringExtra("money")
+        binding.Term.text = intent.getStringExtra("term")
+        binding.Sex.text = intent.getStringExtra("sex")
+        binding.Nation.text = intent.getStringExtra("nation")
+        binding.Age.text = intent.getStringExtra("age")
+        binding.Extratext.text = intent.getStringExtra("extratext")
+        binding.WorkDay.text = intent.getStringExtra("workday")
+        binding.WorkTime.text = intent.getStringExtra("worktime")
+        binding.Preference.text = intent.getStringExtra("preference")
+        binding.Education.text = intent.getStringExtra("education")
+        binding.OwnerName.text = intent.getStringExtra("ownername")
+        binding.OwnerPhone.text = intent.getStringExtra("ownerphone")
+
+        // 사장님 이메일
+        ownerEmail = intent.getStringExtra("ownerEmail").toString()
+
+        // 현재 이용자 이메일
+        val userEmail = Firebase.auth.currentUser
+        applicantEmail = userEmail?.email.toString()
+
+
+        // 지원 하기 -> 채용자에게 알림 + db에 데이터 값 넣기
+        binding.applyBtn.setOnClickListener {
+
+            getResumeId(applicantEmail){resumeId ->
+
+                if (resumeId != null) {
+                    val applyData = hashMapOf(
+                        "resume_id" to resumeId,
+                        "applicant" to applicantEmail,
+                        "job_id" to jobId,
+                        "owner" to ownerEmail
+                    )
+
+                    db.collection("apply")
+                        .add(applyData)
+                        .addOnSuccessListener {result ->
+                            val intent = Intent(this, PopupActivity::class.java)
+                            intent.putExtra("text", "지원이 완료되었습니다.")
+                            startActivity(intent)
+                            Log.e("success : ", "success to access documents : $result")
+                        }
+                        .addOnFailureListener {
+                            Log.e("error : ", "fail to access documents")
+                        }
+                }else {
+                    val intent = Intent(this, PopupActivity::class.java)
+                    intent.putExtra("text", "작성된 이력서가 없습니다.")
+                    startActivity(intent)
+                }
+
+
+            }
+        }
+
+        binding.closeBtn.setOnClickListener {
+            finish()
+        }
     }
-  /*  fun onApplyButtonClicked(view: View) {
-        val intent = Intent()
-        setResult(Activity.RESULT_OK, intent)
-        finish()
-    }*/
+
+    private fun getResumeId(currentUser: String, callback: (String?) -> Unit){
+        val db = Firebase.firestore
+        val resumeCollection = db.collection("resume")
+        val query = resumeCollection.whereEqualTo("email", currentUser)
+
+        query.get()
+            .addOnSuccessListener { documents ->
+                if(!documents.isEmpty){
+                    for(document in documents) {
+                        val resumeId = document.getString("resume_id")
+                        callback(resumeId)
+                    }
+                }else{
+                    callback(null)
+
+                }
+            }
+            .addOnFailureListener{
+                callback(null)
+            }
+
+    }
 
     fun mOnClose(view: View) {
         finish()

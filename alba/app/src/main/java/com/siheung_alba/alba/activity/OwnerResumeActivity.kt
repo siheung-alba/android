@@ -1,42 +1,37 @@
 package com.siheung_alba.alba.activity
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.siheung_alba.alba.R
 import com.siheung_alba.alba.adapter.ApplyAdapter
-import com.siheung_alba.alba.adapter.JobAdapter
+import com.siheung_alba.alba.adapter.ApplicantAdapter
 import com.siheung_alba.alba.databinding.ActivityOwnerResumeBinding
-import com.siheung_alba.alba.databinding.ActivityShopJoinBinding
+import com.siheung_alba.alba.model.Applicant
 import com.siheung_alba.alba.model.ApplyModel
-import com.siheung_alba.alba.model.JobModel
+
 class OwnerResumeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityOwnerResumeBinding
-    private lateinit var recyclerView: RecyclerView
-    private val itemList = arrayListOf<ApplyModel>()
-    private lateinit var applyAdapter: ApplyAdapter
-    private val applyadapter = ApplyAdapter(itemList)
+
+    private val binding by lazy { ActivityOwnerResumeBinding.inflate(layoutInflater) }
+
+    private val itemList = arrayListOf<Applicant>()
+    private lateinit var adapter: ApplicantAdapter
+
+    private var mAuth = Firebase.auth
+    private var db = Firebase.firestore
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityOwnerResumeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val toolbar: Toolbar = binding.ownerResume
@@ -44,44 +39,60 @@ class OwnerResumeActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        applyAdapter = ApplyAdapter(itemList)
+        adapter = ApplicantAdapter(this, itemList)
 
-        recyclerView = binding.applyList
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = applyAdapter
+        binding.applicantList.layoutManager = LinearLayoutManager(this)
+        binding.applicantList.adapter = adapter
 
-        val colJobRef = Firebase.firestore.collection("apply")
+        val currentUser = mAuth.currentUser?.email
 
-        colJobRef
+        db.collection("apply")
+            .whereEqualTo("owner", currentUser)
             .get()
-            .addOnSuccessListener { result ->
+            .addOnSuccessListener { applyDocuments ->
                 itemList.clear()
-                for (document in result) {
-                    val item = ApplyModel(
-                        document.data["applicant"].toString(),
-                        document.data["job_id"].toString(),
-                        document.data["owner"].toString(),
-                        document.data["resume_id"].toString(),
-                    )
-                    itemList.add(item)
+                for (applyDocument in applyDocuments) {
+
+                    db.collection("resume")
+                        .whereEqualTo("resume_id", applyDocument.data["resume_id"].toString())
+                        .get()
+                        .addOnSuccessListener { resumeDocuments ->
+                            for (resumeDocument in resumeDocuments) {
+
+                                db.collection("user")
+                                    .whereEqualTo("email", resumeDocument.data["email"].toString())
+                                    .get()
+                                    .addOnSuccessListener { userDocuments ->
+                                        for (userDocument in userDocuments) {
+
+                                            val item = Applicant(
+                                                resumeDocument.data["introduce"].toString(),
+                                                resumeDocument.data["career"].toString(),
+                                                resumeDocument.data["title"].toString(),
+                                                resumeDocument.data["updated_at"].toString(),
+                                                userDocument.data["birthday"].toString(),
+                                                userDocument.data["sex"].toString(),
+                                                userDocument.data["nation"].toString(),
+                                                userDocument.data["email"].toString(),
+                                                resumeDocument.data["resume_id"].toString(),
+                                                applyDocument.data["job_id"].toString(),
+                                                applyDocument.data["owner"].toString(),
+                                                userDocument.data["name"].toString(),
+                                                userDocument.data["phone"].toString()
+                                            )
+                                            itemList.add(item)
+                                        }
+                                        adapter.notifyDataSetChanged()
+                                    }
+                            }
+
+                        }
+
                 }
-                applyAdapter.notifyDataSetChanged()
             }
-            .addOnFailureListener { exception ->
-                Log.w("error", "Error getting documents: $exception")
+            .addOnFailureListener {
+                Log.w("error : ", "document cannot be accessed!")
             }
 
-        applyAdapter.setOnDetailResumeClickListener(object : ApplyAdapter.OnDetailResumeClickListener {
-            override fun onDetailResumeClick(item: ApplyModel) {
-                val intent = Intent(this@OwnerResumeActivity, OwnerResumeShowActivity::class.java)
-                intent.putExtra("resume_id", item.resume_id)
-                intent.putExtra("applicant", item.applicant)
-
-                Log.e("check", "11111111111111111111111111111111111111111111111111111")
-                Log.e("check", "resume_id:${item.resume_id}")
-
-                startActivity(intent)
-            }
-        })
     }
 }
