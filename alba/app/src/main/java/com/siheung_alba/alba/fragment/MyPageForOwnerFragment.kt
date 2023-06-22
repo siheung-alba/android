@@ -94,7 +94,9 @@ class MyPageForOwnerFragment : Fragment() {
                             document.data["preference"].toString(),
                             document.data["education"].toString(),
                             document.data["owner_name"].toString(),
-                            document.data["owner_phone"].toString()
+                            document.data["owner_phone"].toString(),
+                            document.data["workTimeStart"].toString(),
+                            document.data["workTimeEnd"].toString()
                         )
                         itemList.add(item)
                     }

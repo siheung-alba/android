@@ -57,10 +57,22 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
             intent.putExtra("jobAddtextEdit",itemList[position].jobAddtext)  // 제목
             intent.putExtra("jobTermEdit",itemList[position].jobTerm)  // 근무기간
             intent.putExtra("jobMoneyEdit",itemList[position].jobMoney) //시급
+
+            intent.putExtra("workDayEdit",itemList[position].workDay) //근무요일
+            intent.putExtra("workTimeStart",itemList[position].workTimeStart) //근무시간
+            intent.putExtra("workTimeEnd",itemList[position].workTimeEnd) //근무시간
+
             intent.putExtra("jobAgeEdit",itemList[position].jobAge) //나이
             intent.putExtra("jobSexEdit",itemList[position].jobSex) // 성별
+
+            intent.putExtra("educationEdit",itemList[position].education) //학력
+            intent.putExtra("preferenceEdit",itemList[position].preference) //우대조건
+
             intent.putExtra("jobNationEdit",itemList[position].jobNation) // 국적
             intent.putExtra("jobExtratextEdit",itemList[position].jobExtratext) // 추가 내용
+
+            intent.putExtra("workTimeStart",itemList[position].workTimeStart)
+            intent.putExtra("workTimeEnd",itemList[position].workTimeEnd)
             intent.putExtra("job_id",itemList[position].job_id) // 추가 내용
 
 
