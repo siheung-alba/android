@@ -115,25 +115,25 @@ class HomeFragment : Fragment() {
 
 
             // 상세보기 --> 없앤건가?
-            jobadapter.setOnShowButtonClickListener(object :
-                JobAdapter.OnShowButtonClickListener {
-                override fun onShowButtonClick(item: JobModel) {
-
-                    Log.e("check", "확인111111111111111111111111111111111111111111111")
-
-//                    saveApplyData(resumeId, email, jobEmail, jobId)
-
-                    val content = requireContext()
-                    val intent = Intent(context, PopupActivity::class.java)
-                    intent.putExtra("title", item.jobTitle)
-
-                    Log.e("check", "확인2222222222222222222222222222222222222222222222222222")
-
-                    content.startActivity(intent)
-
-                    Log.e("check", "확인33333333333333333333333333333333333333333333")
-                }
-            })
+//            jobadapter.setOnShowButtonClickListener(object :
+//                JobAdapter.OnShowButtonClickListener {
+//                override fun onShowButtonClick(item: JobModel) {
+//
+//                    Log.e("check", "확인111111111111111111111111111111111111111111111")
+//
+////                    saveApplyData(resumeId, email, jobEmail, jobId)
+//
+//                    val content = requireContext()
+//                    val intent = Intent(context, PopupActivity::class.java)
+//                    intent.putExtra("title", item.jobTitle)
+//
+//                    Log.e("check", "확인2222222222222222222222222222222222222222222222222222")
+//
+//                    content.startActivity(intent)
+//
+//                    Log.e("check", "확인33333333333333333333333333333333333333333333")
+//                }
+//            })
 
 
 
