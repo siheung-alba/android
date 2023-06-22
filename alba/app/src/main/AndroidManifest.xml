@@ -28,10 +28,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".activity.ResumePopupActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme.Popup" />
-        <activity
             android:name=".activity.DetailActivity"
             android:exported="false" />
 
@@ -98,10 +94,7 @@
             android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".fragment.MyPageForOwnerFragment" />
-        <activity
-            android:name=".activity.OwnerModifyActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+
         <activity
             android:name=".activity.OwnerResumeActivity"
             android:screenOrientation="portrait"
