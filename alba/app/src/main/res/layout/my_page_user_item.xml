@@ -12,8 +12,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:gravity="top|start"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -61,6 +61,7 @@
                 android:id="@+id/resume_list_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minLines="5"
                 android:text="자기소개 내용"
                 android:textSize="18dp"
                 android:textColor="#000000"/>

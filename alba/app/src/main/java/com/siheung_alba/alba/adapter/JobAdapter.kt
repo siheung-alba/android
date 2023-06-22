@@ -151,8 +151,7 @@ class JobAdapter( var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<JobA
                 callback(null)
             }
 
-        }
+    }
 
 }
-
 
