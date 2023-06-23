@@ -16,7 +16,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,15 +38,15 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.2" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/showbtn"
-                android:layout_width="100dp"
-                android:layout_height="32dp"
-                android:background="#F3F1F1"
-                android:layout_gravity="bottom"
-                android:text="상세보기"
-                android:textSize="13dp"
-                android:textColor="#DFA700"/>
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/showbtn"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:background="#F3F1F1"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:text="상세보기"-->
+<!--                android:textSize="13dp"-->
+<!--                android:textColor="#DFA700"/>-->
 
 
             <View
@@ -75,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="description"
                 android:textSize="16dp"
+                android:layout_marginBottom="10dp"
                 android:textColor="#000000"/>
 
             <LinearLayout

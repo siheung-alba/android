@@ -7,6 +7,21 @@
     tools:context=".user.CalculateSalaryActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:fillViewport="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight ="20"
+        android:gravity="center"
+
+
+        >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/calculateSalaryToolbar"
         android:layout_width="match_parent"
@@ -179,6 +194,10 @@
         android:gravity="center"
         android:text="28일(4주)기준 월급 급액입니다. "
         android:textColor="#7E7E7E"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:layout_marginBottom="30dp"/>
+
+    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
