@@ -166,7 +166,7 @@ class MapFragment : Fragment() {
 
                                 intent.putExtra("title", document.data["title"].toString())
                                 intent.putExtra("addtext", document.data["add_text"].toString())
-                                intent.putExtra("jobTerm", document.data["term"].toString())
+                                intent.putExtra("term", document.data["term"].toString())
                                 intent.putExtra("money", document.data["money"].toString())
                                 intent.putExtra("sex", document.data["sex"].toString())
                                 intent.putExtra("nation", document.data["nation"].toString())
@@ -178,8 +178,8 @@ class MapFragment : Fragment() {
                                 intent.putExtra("worktime", document.data["work_time"].toString())
                                 intent.putExtra("preference", document.data["preference"].toString())
                                 intent.putExtra("education", document.data["education"].toString())
-                                intent.putExtra("ownerName", document.data["owner_name"].toString())
-                                intent.putExtra("ownerPhone", document.data["owner_phone"].toString())
+                                intent.putExtra("ownername", document.data["owner_name"].toString())
+                                intent.putExtra("ownerphone", document.data["owner_phone"].toString())
                                 intent.putExtra("ownerEmail", document.data["email"].toString())
 
                                 context.startActivity(intent)
