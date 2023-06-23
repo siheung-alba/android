@@ -43,8 +43,6 @@ class OwnerUploadActivity : AppCompatActivity() {
     private lateinit var ownerName : String // 채용자 이름
     private lateinit var ownerPhone : String // 채용자 전화번호
 
-    private lateinit var workTimeStart : String // 시작 시간
-    private lateinit var workTimeEnd : String // 끝날 시간
 
 
     private lateinit var latitude : String
@@ -141,8 +139,6 @@ class OwnerUploadActivity : AppCompatActivity() {
             addText = binding.edtAddText.text.toString()
             extraText = binding.edtDetail.text.toString()
 
-            workTimeStart = binding.startTimeSpinner.selectedItem.toString()
-            workTimeEnd = binding.endTimeSpinner.selectedItem.toString()
 
             isChecked()
 
@@ -165,9 +161,7 @@ class OwnerUploadActivity : AppCompatActivity() {
                     "owner_name" to ownerName,
                     "owner_phone" to ownerPhone,
                     "created_at" to formatted,
-                    "updated_at" to formatted,
-                    "workTimeStart" to workTimeStart,
-                    "workTimeEnd" to workTimeEnd
+                    "updated_at" to formatted
 
 
                 )

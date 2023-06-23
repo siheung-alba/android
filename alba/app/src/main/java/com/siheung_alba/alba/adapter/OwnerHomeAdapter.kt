@@ -11,11 +11,7 @@ import com.siheung_alba.alba.activity.OwnerResumePageActivity
 import com.siheung_alba.alba.model.JobModel
 
 class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter<OwnerHomeAdapter.OwnerHomeViewHolder>() {
-    /*private val db = Firebase.firestore
-    private lateinit var auth: FirebaseAuth
-    private val colResumeOwnerRef = db.collection("job")
-    private val adapter = OwnerHomeAdapter(itemList)
-*/
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OwnerHomeAdapter.OwnerHomeViewHolder {
 
@@ -44,11 +40,7 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
         holder.update.text = itemList[position].updatedAt // 업데이트
 
         holder.ownereditbtn.setOnClickListener {
-            /*auth = FirebaseAuth.getInstance()
-            val user = auth.currentUser*/
 
-/*
-            val userEmail = user?.email*/
 
             // 클릭 시
             val intent = Intent(holder.ownereditbtn.context, OwnerResumePageActivity::class.java)
@@ -59,8 +51,7 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
             intent.putExtra("jobMoneyEdit",itemList[position].jobMoney) //시급
 
             intent.putExtra("workDayEdit",itemList[position].workDay) //근무요일
-//            intent.putExtra("workTimeStart",itemList[position].workTimeStart) //근무시간
-//            intent.putExtra("workTimeEnd",itemList[position].workTimeEnd) //근무시간
+//
 
             intent.putExtra("jobAgeEdit",itemList[position].jobAge) //나이
             intent.putExtra("jobSexEdit",itemList[position].jobSex) // 성별
@@ -71,8 +62,7 @@ class OwnerHomeAdapter(var itemList: ArrayList<JobModel>) : RecyclerView.Adapter
             intent.putExtra("jobNationEdit",itemList[position].jobNation) // 국적
             intent.putExtra("jobExtratextEdit",itemList[position].jobExtratext) // 추가 내용
 
-//            intent.putExtra("workTimeStart",itemList[position].workTimeStart)
-//            intent.putExtra("workTimeEnd",itemList[position].workTimeEnd)
+//
             intent.putExtra("job_id",itemList[position].job_id) // 추가 내용
 
 

@@ -116,8 +116,6 @@ class OwnerResumePageActivity : AppCompatActivity() {
         val jobMoneyEdit = intent.getStringExtra("jobMoneyEdit") // 시급
         val jobTermEdit = intent.getStringExtra("jobTermEdit") // 근무기간
         val workDayEdit = intent.getStringExtra("workDayEdit") // 근무요일
-        val workTimeStartEdit = intent.getStringExtra("workTimeStart")//근무시간
-        val workTimeEndEdit = intent.getStringExtra("workTimeEnd")//근무시간
         val jobSexEdit = intent.getStringExtra("jobSexEdit") // 성별
         val jobAgeEdit = intent.getStringExtra("jobAgeEdit")  // 나이
         val educationEdit = intent.getStringExtra("educationEdit")//학력
@@ -143,13 +141,6 @@ class OwnerResumePageActivity : AppCompatActivity() {
         val workDayAdapterPosition = workDayAdapter.getPosition(workDayEdit)
         binding.workDaySpinner.setSelection(workDayAdapterPosition)
 
-        //근무시간1
-        val startTimeAdapterPosition = startTimeAdapter.getPosition(workTimeStartEdit)
-        binding.startTimeSpinner.setSelection(startTimeAdapterPosition)
-
-        //근무시간2
-        val endTimeAdapterPosition = endTimeAdapter.getPosition(workTimeEndEdit)
-        binding.endTimeSpinner.setSelection(endTimeAdapterPosition)
 
         //성별
         val genderAdapterPosition = genderAdapter.getPosition(jobSexEdit)
@@ -191,8 +182,6 @@ class OwnerResumePageActivity : AppCompatActivity() {
             val editedpreferenceSpinner = binding.preferenceSpinner.selectedItem.toString()
             val editednationSpinner = binding.nationSpinner.selectedItem.toString()
             val editededtDetail = binding.edtDetail.text.toString()
-            val editedstartTimeSpinner = binding.startTimeSpinner.selectedItem.toString()
-            val editedendTimeSpinner = binding.endTimeSpinner.selectedItem.toString()
 
 
             val OwnerData = hashMapOf<String, Any>(
@@ -209,9 +198,8 @@ class OwnerResumePageActivity : AppCompatActivity() {
                 "add_text" to editedAddText,
                 "extra_text" to editededtDetail,
                 "created_at" to formatted,
-                "updated_at" to formatted,
-                "workTimeStart" to editedstartTimeSpinner,
-                "workTimeEnd" to editedendTimeSpinner
+                "updated_at" to formatted
+
 
 
             )
